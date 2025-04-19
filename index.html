@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,44 +13,79 @@
       --font: #faf4f2;
       --accent: #354532;
     }
+
     body {
       margin: 0;
       font-family: sans-serif;
       background-color: var(--bg);
       color: var(--font);
-      line-height: 1.6;
     }
-    header, nav, main, footer {
+
+    header, main, footer {
       max-width: 960px;
       margin: auto;
       padding: 1em;
     }
+
+    nav {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
     nav a {
       color: var(--font);
-      margin-right: 1em;
+      margin: 0 1em;
       text-decoration: none;
       font-weight: bold;
     }
+
+    .logo-container {
+      text-align: center;
+      margin: 2em 0 1em;
+    }
+
+    .logo-container img {
+      max-width: 200px;
+      height: auto;
+    }
+
     h1, h2 {
       color: var(--font);
     }
-    section {
-      margin-bottom: 3em;
-    }
+
     .cta {
       background: var(--accent);
       color: var(--font);
       padding: 1em;
       text-align: center;
       border-radius: 8px;
+      margin-top: 1em;
     }
+
+    section {
+      margin-bottom: 3em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75em;
+      border-bottom: 1px solid #faf4f230;
+    }
+
     form input, form textarea {
       width: 100%;
-      padding: 0.5em;
+      padding: 0.7em;
       margin-bottom: 1em;
       border: none;
       border-radius: 4px;
     }
+
     form button {
       background: var(--accent);
       color: var(--font);
@@ -58,27 +94,17 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
-    th, td {
-      padding: 0.75em;
-      text-align: left;
-      border-bottom: 1px solid var(--font);
-    }
-    .logo-container {
+
+    footer {
       text-align: center;
-      margin-bottom: 1em;
-    }
-    .logo-container img {
-      max-width: 200px;
-      height: auto;
+      font-size: 0.9em;
+      border-top: 1px solid #faf4f230;
+      padding-top: 1em;
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo-container">
       <img src="logo.png" alt="Beyond logo" />
@@ -89,73 +115,79 @@
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>  <main>
+  </header>
+
+  <main>
     <section id="home">
       <h2>Saving Time, Giving It Back</h2>
       <p>Beyond exists to free up advisers' time, reduce mental load, and return focus to what really matters — your clients, your business, your life. Whether you're a financial or mortgage adviser, Beyond is built to help you deliver with less stress and more efficiency.</p>
       <div class="cta">Let’s take your paraplanning off your plate.</div>
-    </section><section id="about">
-  <h2>About Beyond</h2>
-  <p><strong>Mission:</strong> To provide intelligent, reliable support that empowers financial and mortgage advisers to do what they do best — advise.</p>
-  <p><strong>Why I launched Beyond:</strong> After years in the profession, I saw how many brilliant advisers were stretched too thin. I wanted to create a service that lightens the load, gives time back, and brings calm to the chaos.</p>
-</section>
+    </section>
 
-<section id="pricing">
-  <h2>Pricing</h2>
-  <p>We offer clear, competitive pricing to suit the needs of busy advisers. Tool building and business consultancy are quoted as projects and costed individually.</p>
-  <table>
-    <thead>
-      <tr>
-        <th>Service</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Annual review report</td>
-        <td>£100 per report</td>
-      </tr>
-      <tr>
-        <td>Mortgage suitability letter</td>
-        <td>£100 per report</td>
-      </tr>
-      <tr>
-        <td>Protection-only suitability letter</td>
-        <td>£150 per report</td>
-      </tr>
-      <tr>
-        <td>Full suitability letter</td>
-        <td>£300 per report</td>
-      </tr>
-      <tr>
-        <td>Fund research</td>
-        <td>£54/hour</td>
-      </tr>
-      <tr>
-        <td>Tool building (quoted project)</td>
-        <td>Based on £54/hour, quoted individually</td>
-      </tr>
-      <tr>
-        <td>Business consultancy (quoted project)</td>
-        <td>Based on £54/hour, 50% upfront, 50% on completion</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+    <section id="about">
+      <h2>About Beyond</h2>
+      <p><strong>Mission:</strong> To provide intelligent, reliable support that empowers financial and mortgage advisers to do what they do best — advise.</p>
+      <p><strong>Why I launched Beyond:</strong> After years in the profession, I saw how many brilliant advisers were stretched too thin. I wanted to create a service that lightens the load, gives time back, and brings calm to the chaos.</p>
+    </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Let’s chat about how Beyond can support your business.</p>
-  <form>
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</section>
+    <section id="pricing">
+      <h2>Pricing</h2>
+      <p>We offer clear, competitive pricing to suit the needs of busy advisers. Tool building and business consultancy are quoted as projects and costed individually.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Annual review report</td>
+            <td>£100 per report</td>
+          </tr>
+          <tr>
+            <td>Mortgage suitability letter</td>
+            <td>£100 per report</td>
+          </tr>
+          <tr>
+            <td>Protection-only suitability letter</td>
+            <td>£150 per report</td>
+          </tr>
+          <tr>
+            <td>Full suitability letter</td>
+            <td>£300 per report</td>
+          </tr>
+          <tr>
+            <td>Fund research</td>
+            <td>£54/hour</td>
+          </tr>
+          <tr>
+            <td>Tool building (quoted project)</td>
+            <td>Based on £54/hour, quoted individually</td>
+          </tr>
+          <tr>
+            <td>Business consultancy (quoted project)</td>
+            <td>Based on £54/hour – 50% upfront, 50% on completion</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-  </main>  <footer>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Let’s chat about how Beyond can support your business.</p>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
     <p>&copy; 2025 Beyond Paraplanning & Adviser Solutions. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
