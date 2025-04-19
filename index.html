@@ -63,13 +63,35 @@ h1, h2 {
   text-align: center;
 }
 
+h1 {
+  font-size: 2.5em;
+}
+
 h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
 
-.cta {
+.hero {
+  text-align: center;
+  padding: 4em 1em 2em;
   background: var(--accent);
+  border-radius: 16px;
+  margin-bottom: 2em;
+}
+
+.hero h1 {
+  margin-bottom: 0.5em;
+}
+
+.hero p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: auto;
+}
+
+.cta {
+  background: var(--highlight);
   color: var(--font);
   padding: 1.2em;
   text-align: center;
@@ -87,6 +109,24 @@ section {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.service-box {
+  background: var(--accent);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: center;
+}
+
+.service-box h3 {
+  margin-top: 0;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -102,6 +142,14 @@ th, td {
 
 th {
   background-color: var(--accent);
+}
+
+blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--highlight);
+  margin: 1em 0;
+  padding-left: 1em;
+  color: #d8e1dc;
 }
 
 form input, form textarea {
@@ -145,18 +193,45 @@ footer {
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>  <main>
-    <section id="home">
-      <h2>Saving Time, Giving It Back</h2>
-      <p style="text-align: center;">Beyond exists to free up advisers' time, reduce mental load, and return focus to what really matters — your clients, your business, your life. Whether you're a financial or mortgage adviser, Beyond is built to help you deliver with less stress and more efficiency.</p>
-      <div class="cta">Let’s take your paraplanning off your plate.</div>
+    <section id="home" class="hero">
+      <h1>Professional Paraplanning & Adviser Solutions</h1>
+      <p>Built to give you time back, restore energy, and empower you to focus on your clients and business. Trusted by advisers who value precision, reliability, and calm delivery.</p>
     </section><section id="about">
   <h2>About Beyond</h2>
   <p><strong>Mission:</strong> To provide intelligent, reliable support that empowers financial and mortgage advisers to do what they do best — advise.</p>
   <p><strong>Why I launched Beyond:</strong> After years in the profession, I saw how many brilliant advisers were stretched too thin. I wanted to create a service that lightens the load, gives time back, and brings calm to the chaos.</p>
+  <blockquote>"Beyond has transformed my workflow — it's like having an extra brain and pair of hands when I need them most."</blockquote>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <div class="services">
+    <div class="service-box">
+      <h3>Review Reports</h3>
+      <p>Clear, compliant, and ready-to-send annual review reports.</p>
+    </div>
+    <div class="service-box">
+      <h3>Suitability Letters</h3>
+      <p>Mortgage, protection-only, or full advice reports tailored to your firm’s tone and compliance needs.</p>
+    </div>
+    <div class="service-box">
+      <h3>Fund Research</h3>
+      <p>Thorough research tailored to your investment approach and client needs.</p>
+    </div>
+    <div class="service-box">
+      <h3>Tool Building</h3>
+      <p>Excel tools and templates designed to streamline your operations.</p>
+    </div>
+    <div class="service-box">
+      <h3>Business Consultancy</h3>
+      <p>Project-based support to help your practice run smoother and scale smarter.</p>
+    </div>
+  </div>
 </section>
 
 <section id="pricing">
@@ -204,7 +279,7 @@ footer {
 
 <section id="contact">
   <h2>Contact</h2>
-  <p style="text-align: center;">Let’s chat about how Beyond can support your business.</p>
+  <p style="text-align: center;">Let’s discuss how Beyond can support your advice business today. No pressure — just a conversation.</p>
   <form>
     <input type="text" placeholder="Your Name" required />
     <input type="email" placeholder="Your Email" required />
