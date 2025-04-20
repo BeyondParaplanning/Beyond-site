@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Beyond – Paraplanning and Intelligent Adviser Solutions. Smart support for smart advisers." />
-  <title>Beyond | Paraplanning & Adviser Solutions</title>
+  <meta name="description" content="Beyond – Paraplanning and Intelligent Adviser Solutions. Save Time. Save Energy. Go Beyond." />
+  <title>Beyond | Paraplanning & Intelligent Adviser Solutions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <style>
     :root {
@@ -76,6 +76,25 @@
       text-align: center;
     }
 
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 2rem;
+      margin: 0.5rem 0;
+    }
+
+    ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
     .pricing-table {
       display: flex;
       flex-wrap: wrap;
@@ -91,6 +110,15 @@
       text-align: center;
     }
 
+    .highlight-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--accent-green);
+      padding: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+      border-radius: 10px;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -102,7 +130,7 @@
 <body>
   <header>
     <img src="logo.png" alt="Beyond Logo" />
-    <p><em>Smart support for smart advisers.</em></p>
+    <p><em>Save Time. Save Energy. Go Beyond.</em></p>
   </header>
 
   <nav>
@@ -122,16 +150,19 @@
     <p>
       You bring the client expertise. We’ll bring the clarity, the systems, and the calm.
     </p>
+    <div class="highlight-box">
+      You didn’t become an adviser to drown in admin. Beyond helps you get back to what matters: your clients, your advice, your impact.
+    </div>
   </section>
 
   <section id="how">
     <h2>How We Help</h2>
     <ul>
-      <li>✓ Suitability reports that actually reflect your advice</li>
-      <li>✓ Compliance-friendly annual reviews</li>
-      <li>✓ Bespoke tool creation for admin or reporting tasks</li>
-      <li>✓ Business consultancy to improve systems and workflows</li>
-      <li>✓ A dependable partner who understands your world</li>
+      <li>Suitability reports that actually reflect your advice</li>
+      <li>Compliance-friendly annual reviews</li>
+      <li>Bespoke tool creation for admin or reporting tasks</li>
+      <li>Business consultancy to improve systems and workflows</li>
+      <li>A dependable partner who understands your world</li>
     </ul>
   </section>
 
@@ -165,11 +196,11 @@
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Let’s have a conversation — no pressure. Just an opportunity to explore whether we’re the right fit.</p>
-    <p>Email: <a href="mailto:hello@beyondparaplanning.co.uk" style="color: var(--light-text); text-decoration: underline;">hello@beyondparaplanning.co.uk</a></p>
-  </section>
+   <section id="contact">
+      <h2>Contact</h2>
+      <p>If you're ready to save time, improve efficiency, and take your business Beyond, we'd love to hear from you.</p>
+      <p>Email: <a href="mailto:hello@beyondparaplanning.co.uk" style="color: #faf4f2;">hello@beyondparaplanning.co.uk</a></p>
+    </section>
 
   <footer>
     <p>© 2025 Beyond – Paraplanning & Intelligent Adviser Solutions. All rights reserved.</p>
