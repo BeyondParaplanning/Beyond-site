@@ -4,63 +4,97 @@
   <meta name="description" content="Outsourced paraplanning and consultancy services for financial and mortgage advisers. Save time, gain clarity, and grow your business with Beyond." />
   <title>Beyond Paraplanning & Intelligent Adviser Solutions</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0b2b25;
-      color: #faf4f2;
-      line-height: 1.6;
-    }header {
+    html {
+      scroll-behavior: smooth;
+    }body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0b2b25;
+  color: #faf4f2;
+  line-height: 1.6;
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+header {
   text-align: center;
-  padding: 20px 0;
+  padding: 10px 0;
+  animation: slideDown 1s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 header img {
-  max-width: 200px;
+  max-width: 260px;
   height: auto;
   display: block;
   margin: 0 auto;
-  padding: 10px 0;
 }
 
 nav {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 20px 0 40px;
 }
 
 nav a {
   color: #faf4f2;
   text-decoration: none;
-  margin: 0 15px;
+  margin: 0 20px;
   font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #354532;
+  transition: width 0.3s;
+  margin: auto;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 20px 40px;
+  animation: fadeIn 1.5s ease-in;
 }
 
 section {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
-h1, h2 {
+h1, h2, h3 {
   color: #faf4f2;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 10px;
 }
 
 h2 {
   color: #354532;
-  margin-top: 30px;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
 }
 
 p {
   margin-bottom: 15px;
+  color: #faf4f2;
 }
 
 table {
@@ -74,20 +108,30 @@ table, th, td {
 }
 
 th, td {
-  padding: 10px;
+  padding: 12px;
   text-align: left;
+  color: #faf4f2;
 }
 
 th {
   background-color: #354532;
-  color: #faf4f2;
 }
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
   font-size: 0.9rem;
   color: #faf4f2;
+  background-color: #0b2b25;
+  border-top: 1px solid #354532;
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 2s ease-in-out;
 }
 
   </style>
@@ -102,6 +146,7 @@ footer {
   </nav>  <div class="container">
     <section id="home">
       <h1>Helping Advisers Reclaim Their Time</h1>
+      <div class="tagline" id="tagline">Professional. Reliable. Beyond.</div>
       <p>Beyond offers professional outsourced paraplanning and intelligent adviser solutions for both financial and mortgage advisers. Save time, reduce your admin burden, and focus on the clients and growth that matter most.</p>
     </section><section id="about">
   <h2>About Beyond</h2>
@@ -112,7 +157,6 @@ footer {
 <section id="pricing">
   <h2>Pricing</h2>
   <p>We believe in clear, upfront pricing that reflects the value and quality of our work. Here's what we offer:</p>
-
   <table>
     <tr>
       <th>Service</th>
@@ -157,5 +201,16 @@ footer {
 
   </div>  <footer>
     &copy; 2025 Beyond Paraplanning & Intelligent Adviser Solutions
-  </footer>
-</body></html>
+  </footer>  <script>
+    const taglines = [
+      "Professional. Reliable. Beyond.",
+      "Saving You Time. Powering Your Advice.",
+      "Trusted Paraplanning for Busy Advisers.",
+      "Mortgage and Financial Planning Support That Works."
+    ];
+    let i = 0;
+    setInterval(() => {
+      document.getElementById("tagline").textContent = taglines[i];
+      i = (i + 1) % taglines.length;
+    }, 4000);
+  </script></body></html>
