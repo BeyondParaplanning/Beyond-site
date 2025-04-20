@@ -1,193 +1,188 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Beyond Paraplanning & Intelligent Adviser Solutions - saving advisers time, energy, and money through expert support and seamless delivery." />
+  <meta name="description" content="Beyond offers smart paraplanning and adviser support, saving you time and energy." />
+  <meta name="keywords" content="Paraplanning, Mortgage Advisers, Adviser Support, Financial Services, Beyond" />
+  <meta name="author" content="Beyond Paraplanning & Intelligent Adviser Solutions" />
   <title>Beyond | Paraplanning & Adviser Solutions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0b2b25;
-      color: #faf4f2;
-      overflow-x: hidden;
-    }header {
-  background-color: #0b2b25;
-  padding: 10px 0 0;
+    :root {
+      --bg-color: #0b2b25;
+      --font-color: #faf4f2;
+      --accent-color: #354532;
+    }body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  scroll-behavior: smooth;
+}
+
+header {
   text-align: center;
+  padding: 2rem 1rem 1rem 1rem;
 }
 
 .logo {
-  width: 180px;
-  margin: 0 auto 10px;
+  width: 240px;
+  height: auto;
+  margin: 0 auto 0.5rem auto;
   display: block;
 }
 
 nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 10px;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
 nav a {
   text-decoration: none;
-  color: #faf4f2;
-  background-color: #354532;
-  padding: 6px 12px;
-  border-radius: 12px;
-  transition: background 0.3s;
+  color: var(--font-color);
+  background-color: var(--accent-color);
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-  background-color: #506b4d;
+  background-color: #4a5b42;
 }
 
 section {
-  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+  border-radius: 40px;
+  background: radial-gradient(circle at top left, #0d372e 0%, #0b2b25 100%);
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease;
+}
+
+h2 {
   text-align: center;
-  position: relative;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.curved {
-  background: #112f29;
-  border-radius: 60px 60px 0 0;
-  margin-top: -40px;
-}
-
-h1, h2 {
-  font-weight: 600;
-}
-
-.taglines {
-  margin: 20px auto 0;
+.tagline {
+  font-size: 1.3rem;
+  text-align: center;
   font-style: italic;
-  font-size: 1.2rem;
-  height: 1.5em;
+  animation: rotateTaglines 12s infinite linear;
 }
 
 .pricing-table {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
-.pricing-item {
-  background-color: #354532;
-  padding: 20px;
-  border-radius: 16px;
-  width: 260px;
-  transition: transform 0.4s ease;
+.pricing-card {
+  background-color: #123d33;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
 }
 
-.pricing-item:hover {
-  transform: scale(1.05);
+.pricing-card:hover {
+  transform: scale(1.03);
+}
+
+.pricing-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card p {
+  margin: 0.5rem 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotateTaglines {
+  0% { content: "Smart support for smarter advisers."; }
+  33% { content: "Paraplanning you can trust."; }
+  66% { content: "Operational clarity, technical expertise."; }
 }
 
 footer {
-  padding: 30px 10px;
   text-align: center;
   font-size: 0.9rem;
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
+  padding: 2rem 1rem;
+  background-color: #09221c;
 }
 
   </style>
-</head><body>
+</head>
+<body>
   <header>
     <img src="logo.png" alt="Beyond Logo" class="logo" />
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#help">How We Help</a>
+      <a href="#how">How We Help</a>
       <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>  <section id="home" class="animate-on-scroll">
-    <h1>Save Time. Save Energy. Go Beyond.</h1>
-    <div class="taglines" id="tagline"></div>
-  </section>  <section id="about" class="curved animate-on-scroll">
+  </header>  <section id="home">
+    <h2>Save Time. Save Energy. Go Beyond.</h2>
+    <p class="tagline">Smart support for smarter advisers.</p>
+  </section>  <section id="about">
     <h2>About Beyond</h2>
-    <p>Our mission is to give advisers their time back. By combining technical expertise with operational understanding, we help streamline your business so you can focus on what matters: your clients.</p>
-    <p>Beyond was born out of a desire for freedom, family time, and creating intelligent systems that work. With two decades of experience and a passion for helping others succeed, Beyond stands for quality, efficiency, and trust.</p>
-  </section>  <section id="help" class="animate-on-scroll">
+    <p>Our mission is to give advisers their time back. By combining technical expertise with operational understanding, we help create space for advisers to do what they do best—build relationships and grow their business.</p>
+    <p>We launched Beyond to make professional paraplanning and support feel simple, seamless, and human. No pressure, just a conversation.</p>
+  </section>  <section id="how">
     <h2>How We Help</h2>
-    <p>We support financial and mortgage advisers with everything from complex suitability letters to smart operational solutions. Whether it’s handling your review reports or building bespoke tools, we bring clarity, accuracy, and ease.</p>
-  </section>  <section id="pricing" class="curved animate-on-scroll">
+    <ul>
+      <li>Annual review reports written with care and compliance.</li>
+      <li>Mortgage and protection reports tailored to your advice process.</li>
+      <li>Fund research, portfolio analysis, and tool-building support.</li>
+      <li>Operational consultancy to streamline your back office.</li>
+    </ul>
+  </section>  <section id="pricing">
     <h2>Pricing</h2>
     <div class="pricing-table">
-      <div class="pricing-item">
+      <div class="pricing-card">
         <h3>Review Reports</h3>
         <p>£100 per report</p>
       </div>
-      <div class="pricing-item">
+      <div class="pricing-card">
         <h3>Mortgage Suitability</h3>
         <p>£100 per report</p>
       </div>
-      <div class="pricing-item">
-        <h3>Protection Only</h3>
+      <div class="pricing-card">
+        <h3>Protection Suitability</h3>
         <p>£150 per report</p>
       </div>
-      <div class="pricing-item">
-        <h3>Full Suitability Letters</h3>
+      <div class="pricing-card">
+        <h3>Full Suitability</h3>
         <p>£300 per report</p>
       </div>
-      <div class="pricing-item">
+      <div class="pricing-card">
         <h3>Fund Research</h3>
         <p>£54 per hour</p>
       </div>
-      <div class="pricing-item">
-        <h3>Tool Building & Consultancy</h3>
-        <p>Projects quoted upfront based on £54/hr<br>50% upfront, 50% on completion</p>
+      <div class="pricing-card">
+        <h3>Tool Building / Consultancy</h3>
+        <p>Project-based, quoted at £54/hour<br />50% upfront, 50% on completion</p>
       </div>
     </div>
-  </section>  <section id="contact" class="animate-on-scroll">
+  </section>  <section id="contact">
     <h2>Contact</h2>
-    <p>Want to chat about how Beyond can help you?</p>
-    <p><strong>No pressure, just a conversation.</strong></p>
-    <p>Email: <a href="mailto:hello@beyondparaplanning.co.uk" style="color: #faf4f2;">hello@beyondparaplanning.co.uk</a></p>
+    <p>Email: hello@beyondparaplanning.co.uk</p>
+    <p>Let's talk. No pressure, just a conversation.</p>
   </section>  <footer>
-    &copy; 2025 Beyond Paraplanning & Intelligent Adviser Solutions. All rights reserved.
-  </footer>  <script>
-    const taglines = [
-      "Outsource your stress.",
-      "Reclaim your time.",
-      "Smart support for smarter advisers.",
-      "Seamless paraplanning solutions."
-    ];
-    let currentTagline = 0;
-
-    function rotateTaglines() {
-      const el = document.getElementById("tagline");
-      el.classList.remove("animate__fadeIn");
-      void el.offsetWidth;
-      el.classList.add("animate__fadeIn");
-      el.textContent = taglines[currentTagline];
-      currentTagline = (currentTagline + 1) % taglines.length;
-    }
-    setInterval(rotateTaglines, 3000);
-    window.onload = rotateTaglines;
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-  </script></body></html>
+    &copy; 2025 Beyond. Built with care.
+  </footer>
+</body>
+</html>
