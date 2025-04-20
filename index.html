@@ -1,294 +1,161 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Beyond provides paraplanning, research and business consultancy services for financial and mortgage advisers, helping you save time, reduce stress, and focus on what matters most." />
-  <meta name="keywords" content="Paraplanning, Mortgage Paraplanning, Financial Adviser Support, Business Consultancy, Outsourced Paraplanning, Adviser Tools" />
-  <meta name="author" content="Beyond Paraplanning & Adviser Solutions" />
-  <title>Beyond | Paraplanning & Adviser Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Outsourced paraplanning and consultancy services for financial and mortgage advisers. Save time, gain clarity, and grow your business with Beyond." />
+  <title>Beyond Paraplanning & Intelligent Adviser Solutions</title>
   <style>
-    :root {
-      --bg: #0b2b25;
-      --font: #faf4f2;
-      --accent: #354532;
-      --highlight: #4a6f55;
-    }* {
-  box-sizing: border-box;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b2b25;
+      color: #faf4f2;
+      line-height: 1.6;
+    }header {
+  text-align: center;
+  padding: 20px 0;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
-  color: var(--font);
-  line-height: 1.6;
-}
-
-header, main, footer {
-  max-width: 960px;
-  margin: auto;
-  padding: 1em;
+header img {
+  max-width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
 }
 
 nav {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 30px;
 }
 
 nav a {
-  color: var(--font);
-  margin: 0 1em;
+  color: #faf4f2;
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  margin: 0 15px;
+  font-weight: bold;
 }
 
-nav a:hover {
-  color: var(--highlight);
-}
-
-.logo-container {
-  text-align: center;
-  margin: 2em 0 1em;
-}
-
-.logo-container img {
-  max-width: 180px;
-  height: auto;
-}
-
-h1, h2 {
-  color: var(--font);
-  text-align: center;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-h2 {
-  font-size: 2em;
-  margin-bottom: 0.5em;
-}
-
-.hero {
-  text-align: center;
-  padding: 4em 1em 2em;
-  background: var(--accent);
-  border-radius: 16px;
-  margin-bottom: 2em;
-}
-
-.hero h1 {
-  margin-bottom: 0.5em;
-}
-
-.hero p {
-  font-size: 1.2em;
-  max-width: 700px;
-  margin: auto;
-}
-
-.cta {
-  background: var(--highlight);
-  color: var(--font);
-  padding: 1.2em;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 1.1em;
-  margin-top: 2em;
-  box-shadow: 0 0 10px rgba(250, 244, 242, 0.1);
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
 }
 
 section {
-  margin-bottom: 3em;
-  padding: 1em;
-  background-color: #0f3a33;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 50px;
 }
 
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1em;
-  margin-top: 1em;
+h1, h2 {
+  color: #faf4f2;
 }
 
-.service-box {
-  background: var(--accent);
-  border-radius: 8px;
-  padding: 1em;
-  text-align: center;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-.service-box h3 {
-  margin-top: 0;
+h2 {
+  color: #354532;
+  margin-top: 30px;
+}
+
+p {
+  margin-bottom: 15px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1em;
-  font-size: 1em;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #354532;
 }
 
 th, td {
+  padding: 10px;
   text-align: left;
-  padding: 0.75em;
-  border-bottom: 1px solid #faf4f230;
 }
 
 th {
-  background-color: var(--accent);
-}
-
-blockquote {
-  font-style: italic;
-  border-left: 4px solid var(--highlight);
-  margin: 1em 0;
-  padding-left: 1em;
-  color: #d8e1dc;
-}
-
-form input, form textarea {
-  width: 100%;
-  padding: 0.9em;
-  margin-bottom: 1em;
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-}
-
-form button {
-  background: var(--highlight);
-  color: var(--font);
-  padding: 0.9em 2em;
-  border: none;
-  border-radius: 6px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-form button:hover {
-  background: var(--accent);
+  background-color: #354532;
+  color: #faf4f2;
 }
 
 footer {
   text-align: center;
-  font-size: 0.9em;
-  border-top: 1px solid #faf4f230;
-  padding-top: 1em;
-  margin-top: 4em;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #faf4f2;
 }
 
   </style>
-</head>
-<body>  <header>
-    <div class="logo-container">
-      <img src="logo.png" alt="Beyond logo" />
-    </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>  <main>
-    <section id="home" class="hero">
-      <h1>Professional Paraplanning & Adviser Solutions</h1>
-      <p>Built to give you time back, restore energy, and empower you to focus on your clients and business. Trusted by advisers who value precision, reliability, and calm delivery.</p>
+</head><body>
+  <header>
+    <img src="logo.png" alt="Beyond Logo" />
+  </header>  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </nav>  <div class="container">
+    <section id="home">
+      <h1>Helping Advisers Reclaim Their Time</h1>
+      <p>Beyond offers professional outsourced paraplanning and intelligent adviser solutions for both financial and mortgage advisers. Save time, reduce your admin burden, and focus on the clients and growth that matter most.</p>
     </section><section id="about">
   <h2>About Beyond</h2>
-  <p><strong>Mission:</strong> To provide intelligent, reliable support that empowers financial and mortgage advisers to do what they do best — advise.</p>
-  <p><strong>Why I launched Beyond:</strong> After years in the profession, I saw how many brilliant advisers were stretched too thin. I wanted to create a service that lightens the load, gives time back, and brings calm to the chaos.</p>
-  <blockquote>"Beyond has transformed my workflow — it's like having an extra brain and pair of hands when I need them most."</blockquote>
-</section>
-
-<section id="services">
-  <h2>Services</h2>
-  <div class="services">
-    <div class="service-box">
-      <h3>Review Reports</h3>
-      <p>Clear, compliant, and ready-to-send annual review reports.</p>
-    </div>
-    <div class="service-box">
-      <h3>Suitability Letters</h3>
-      <p>Mortgage, protection-only, or full advice reports tailored to your firm’s tone and compliance needs.</p>
-    </div>
-    <div class="service-box">
-      <h3>Fund Research</h3>
-      <p>Thorough research tailored to your investment approach and client needs.</p>
-    </div>
-    <div class="service-box">
-      <h3>Tool Building</h3>
-      <p>Excel tools and templates designed to streamline your operations.</p>
-    </div>
-    <div class="service-box">
-      <h3>Business Consultancy</h3>
-      <p>Project-based support to help your practice run smoother and scale smarter.</p>
-    </div>
-  </div>
+  <p><strong>Our mission:</strong> To deliver high-quality, intelligent support that gives advisers back their most precious resource — time.</p>
+  <p>Beyond was launched with a simple goal: to provide paraplanning and consultancy services that free up advisers to do what they do best. After years in the industry, we saw how time-consuming admin and suitability reporting can be — so we built a solution that puts your needs first, whether you're a financial planner, mortgage adviser, or both.</p>
 </section>
 
 <section id="pricing">
   <h2>Pricing</h2>
-  <p style="text-align: center;">We offer clear, competitive pricing to suit the needs of busy advisers. Tool building and business consultancy are quoted as projects and costed individually.</p>
+  <p>We believe in clear, upfront pricing that reflects the value and quality of our work. Here's what we offer:</p>
+
   <table>
-    <thead>
-      <tr>
-        <th>Service</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Annual review report</td>
-        <td>£100 per report</td>
-      </tr>
-      <tr>
-        <td>Mortgage suitability letter</td>
-        <td>£100 per report</td>
-      </tr>
-      <tr>
-        <td>Protection-only suitability letter</td>
-        <td>£150 per report</td>
-      </tr>
-      <tr>
-        <td>Full suitability letter</td>
-        <td>£300 per report</td>
-      </tr>
-      <tr>
-        <td>Fund research</td>
-        <td>£54/hour</td>
-      </tr>
-      <tr>
-        <td>Tool building (quoted project)</td>
-        <td>Based on £54/hour, quoted individually</td>
-      </tr>
-      <tr>
-        <td>Business consultancy (quoted project)</td>
-        <td>Based on £54/hour – 50% upfront, 50% on completion</td>
-      </tr>
-    </tbody>
+    <tr>
+      <th>Service</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Annual Review Reports</td>
+      <td>£100 per report</td>
+    </tr>
+    <tr>
+      <td>Mortgage Suitability Letters</td>
+      <td>£100 per report</td>
+    </tr>
+    <tr>
+      <td>Protection-Only Suitability Letters</td>
+      <td>£150 per report</td>
+    </tr>
+    <tr>
+      <td>Full Suitability Letters</td>
+      <td>£300 per report</td>
+    </tr>
+    <tr>
+      <td>Fund Research</td>
+      <td>£54 per hour</td>
+    </tr>
+    <tr>
+      <td>Tool Building</td>
+      <td>Project-based, quoted individually</td>
+    </tr>
+    <tr>
+      <td>Business Consultancy</td>
+      <td>Project-based, quoted at £54 per hour – 50% due upfront, 50% on completion</td>
+    </tr>
   </table>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p style="text-align: center;">Let’s discuss how Beyond can support your advice business today. No pressure — just a conversation.</p>
-  <form>
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea placeholder="Your Message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <p>If you're ready to save time, improve efficiency, and take your business Beyond, we'd love to hear from you.</p>
+  <p>Email: <a href="mailto:hello@beyondparaplanning.co.uk" style="color: #faf4f2;">hello@beyondparaplanning.co.uk</a></p>
 </section>
 
-  </main>  <footer>
-    <p>&copy; 2025 Beyond Paraplanning & Adviser Solutions. All rights reserved.</p>
-  </footer></body>
-</html>
+  </div>  <footer>
+    &copy; 2025 Beyond Paraplanning & Intelligent Adviser Solutions
+  </footer>
+</body></html>
