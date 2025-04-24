@@ -4,18 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Beyond – Expert Paraplanning and Intelligent Adviser Solutions for Financial Advisers. Save Time, Improve Client Outcomes, and Scale Your Business." />
-  <meta name="keywords" content="paraplanning, financial adviser solutions, suitability reports, business intelligence, annual reviews, mortgage solutions, financial services, protection reports" />
-  <meta name="author" content="Beyond Paraplanning" />
-  <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="Beyond | Premium Paraplanning & Intelligent Adviser Solutions" />
-  <meta property="og:description" content="Beyond helps financial advisers deliver better outcomes by providing expert paraplanning, business intelligence, and operational efficiency solutions." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://beyondparaplanning.co.uk" />
-  <meta property="og:image" content="BeyondLogo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <title>Beyond | Premium Paraplanning & Intelligent Adviser Solutions | UK</title>
-  <link rel="canonical" href="https://beyondparaplanning.co.uk" />
+  <meta name="description" content="Beyond – Paraplanning and Intelligent Adviser Solutions. Save Time. Save Energy. Go Beyond." />
+  <title>Beyond | Paraplanning & Intelligent Adviser Solutions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
@@ -48,16 +38,12 @@
 
     .logo-container {
       text-align: center;
-      width: 90%;
-      max-width: 400px;
-      margin: 0 auto;
     }
 
     header img {
-      width: 100%;
+      max-width: 400px;
       height: auto;
       margin-bottom: 0.5rem;
-      max-width: 400px;
     }
 
     .tagline {
@@ -76,7 +62,6 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      flex-wrap: wrap;
     }
 
     nav a {
@@ -88,7 +73,6 @@
       font-weight: bold;
       transition: all 0.3s;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      margin: 0.25rem;
     }
 
     nav a:hover {
@@ -173,24 +157,22 @@
       background-color: var(--accent-green);
     }
 
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+    ul.benefits {
+      list-style: none;
+      padding: 0;
     }
 
-    .benefit-item {
+    ul.benefits li {
       position: relative;
       padding-left: 2rem;
-      margin: 0.5rem 0;
+      margin: 1rem 0;
     }
 
-    .benefit-item::before {
+    ul.benefits li::before {
       content: '✓';
       position: absolute;
       left: 0;
-      color: var(--light-text);
+      color: var(--accent-green);
       font-weight: bold;
     }
 
@@ -208,8 +190,6 @@
       transition: transform 0.3s, box-shadow 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
     }
 
     .service-card:hover {
@@ -219,7 +199,7 @@
 
     .service-icon {
       font-size: 2.5rem;
-      color: var(--light-text);
+      color: #faf4f2;
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -232,7 +212,6 @@
 
     .service-description {
       flex: 1;
-      text-align: center;
     }
 
     .pricing-table {
@@ -281,35 +260,22 @@
       box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .testimonials-container {
-      position: relative;
-      overflow: hidden;
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
       margin-top: 2rem;
-      height: 280px;
-    }
-
-    .testimonials-slider {
-      display: flex;
-      transition: transform 0.5s ease;
-      height: 100%;
     }
 
     .testimonial {
-      min-width: 100%;
       background-color: var(--subtle-bg);
       border-radius: 15px;
       padding: 1.5rem;
-      box-sizing: border-box;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      position: relative;
     }
 
     .testimonial-quote {
       font-style: italic;
-      font-size: 1.1rem;
-      flex-grow: 1;
     }
 
     .testimonial-author {
@@ -372,7 +338,7 @@
 
     .contact-icon {
       font-size: 2rem;
-      color: var(--light-text);
+      color: #faf4f2;
       margin-bottom: 1rem;
     }
 
@@ -429,98 +395,25 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
       .hero h1 {
         font-size: 2rem;
       }
 
       section {
         padding: 1.5rem;
-        margin: 3rem 1rem;
       }
-      
-      .testimonials-container {
-        height: 320px;
-      }
-    }
-
-    /* Structured Data Styling */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
     }
   </style>
 </head>
 
 <body>
-  <!-- Structured data for SEO -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Beyond Paraplanning & Intelligent Adviser Solutions",
-      "description": "Beyond helps financial advisers deliver better outcomes for their clients by providing expert paraplanning, business intelligence, and operational efficiency solutions.",
-      "url": "https://beyondparaplanning.co.uk",
-      "logo": "BeyondLogo.png",
-      "sameAs": ["https://www.linkedin.com/company/beyond-paraplanning"],
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "UK"
-      },
-      "priceRange": "££",
-      "service": [
-        {
-          "@type": "Service",
-          "name": "Suitability Reports",
-          "description": "Comprehensive, compliant, and client-friendly reports that accurately capture your advice"
-        },
-        {
-          "@type": "Service",
-          "name": "Annual Reviews",
-          "description": "Detailed annual review documentation that satisfies regulatory requirements"
-        },
-        {
-          "@type": "Service",
-          "name": "Mortgage Solutions",
-          "description": "Clear, compliant mortgage suitability letters"
-        }
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Beyond Paraplanning Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Full Suitability Reports"
-            },
-            "price": "300",
-            "priceCurrency": "GBP"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Annual Review Reports"
-            },
-            "price": "100",
-            "priceCurrency": "GBP"
-          }
-        ]
-      }
-    }
-  </script>
-
   <header>
     <div class="logo-container">
-      <img src="BeyondLogo.png" alt="Beyond Paraplanning Logo" />
+      <img src="BeyondLogo.png" alt="Beyond Logo" />
       <p class="tagline">Save Time. Save Energy. Go Beyond.</p>
     </div>
   </header>
@@ -551,13 +444,13 @@
     </div>
     
     <h3>Why Choose Beyond?</h3>
-    <div class="benefits-grid">
-      <div class="benefit-item">Expertise in financial services and regulatory requirements</div>
-      <div class="benefit-item">Tailored solutions that reflect your unique advice style</div>
-      <div class="benefit-item">Quick turnaround times to help you meet client deadlines</div>
-      <div class="benefit-item">Capacity when you need it, without fixed overhead costs</div>
-      <div class="benefit-item">Partnership approach focused on your business growth</div>
-    </div>
+    <ul class="benefits">
+      <li>Expertise in financial services and regulatory requirements</li>
+      <li>Tailored solutions that reflect your unique advice style</li>
+      <li>Quick turnaround times to help you meet client deadlines</li>
+      <li>Capacity when you need it, without fixed overhead costs</li>
+      <li>Partnership approach focused on your business growth</li>
+    </ul>
   </section>
 
   <section id="services" class="services-section">
@@ -697,31 +590,23 @@
 
   <section id="testimonials" class="testimonials-section">
     <h2>What Our Clients Say</h2>
-    <div class="testimonials-container">
-      <div class="testimonials-slider">
-        <div class="testimonial">
-          <p class="testimonial-quote">"Beyond has transformed the way we operate. Their suitability reports perfectly capture our advice style, and the turnaround is excellent. We've been able to increase our client capacity by 30% since working with them."</p>
-          <div>
-            <p class="testimonial-author">James Wilson</p>
-            <p class="testimonial-company">Independent Financial Adviser</p>
-          </div>
-        </div>
-        
-        <div class="testimonial">
-          <p class="testimonial-quote">"The custom client onboarding tool Beyond built for us has saved countless hours and improved our client experience. Their understanding of our business needs was impressive."</p>
-          <div>
-            <p class="testimonial-author">Sarah Thompson</p>
-            <p class="testimonial-company">Mortgage Advice Practice</p>
-          </div>
-        </div>
-        
-        <div class="testimonial">
-          <p class="testimonial-quote">"Beyond's protection reports have received great feedback from clients who appreciate the clear explanations. Their work is consistently high quality and compliant."</p>
-          <div>
-            <p class="testimonial-author">Michael Doherty</p>
-            <p class="testimonial-company">Protection Specialist</p>
-          </div>
-        </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p class="testimonial-quote">"Beyond has transformed the way we operate. Their suitability reports perfectly capture our advice style, and the turnaround is excellent. We've been able to increase our client capacity by 30% since working with them."</p>
+        <p class="testimonial-author">James Wilson</p>
+        <p class="testimonial-company">Independent Financial Adviser</p>
+      </div>
+      
+      <div class="testimonial">
+        <p class="testimonial-quote">"The custom client onboarding tool Beyond built for us has saved countless hours and improved our client experience. Their understanding of our business needs was impressive."</p>
+        <p class="testimonial-author">Sarah Thompson</p>
+        <p class="testimonial-company">Mortgage Advice Practice</p>
+      </div>
+      
+      <div class="testimonial">
+        <p class="testimonial-quote">"Beyond's protection reports have received great feedback from clients who appreciate the clear explanations. Their work is consistently high quality and compliant."</p>
+        <p class="testimonial-author">Michael Doherty</p>
+        <p class="testimonial-company">Protection Specialist</p>
       </div>
     </div>
   </section>
@@ -788,13 +673,6 @@
     
     <div class="copyright">
       <p>© 2025 Beyond – Paraplanning & Intelligent Adviser Solutions. All rights reserved.</p>
-      <!-- Hidden text for SEO -->
-      <div class="sr-only">
-        <h2>Financial Adviser Support Services UK</h2>
-        <p>Beyond provides expert paraplanning services across the UK including London, Manchester, Birmingham, Edinburgh, Glasgow, Leeds, Bristol and Cardiff.</p>
-        <h3>Financial Services Keywords</h3>
-        <p>Paraplanning, Financial Adviser Solutions, Suitability Reports, Annual Reviews, Mortgage Reports, Protection Solutions, Financial Services Support, Regulatory Compliance, FCA Compliance, Client Reporting.</p>
-      </div>
     </div>
   </footer>
 
@@ -830,8 +708,6 @@
         }
       });
     });
-    
-    // Testimonials auto-slide functionality
-    const slider = document.querySelector('.testimonials-slider');
-    const testimonials = document.querySelectorAll('.testimonial');
-    
+  </script>
+</body>
+</html>
