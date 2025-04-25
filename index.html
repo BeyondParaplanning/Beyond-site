@@ -34,12 +34,41 @@
       padding: 2rem 0;
       background-color: rgba(0, 0, 0, 0.2);
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-    }
+  .logo-container {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 1rem; /* Add horizontal padding */
+}
 
-    .logo-container {
-      text-align: center;
-    }
+/* This ensures the image is responsive and has proper margins */
+.logo-container img {
+  max-width: 100%; /* Make sure image can't overflow its container */
+  height: auto;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
 
+/* Add these additional media queries for mobile */
+@media (max-width: 768px) {
+  .logo-container {
+    padding: 0 1.5rem; /* Increase padding on smaller screens */
+  }
+  
+  .logo-container img {
+    max-width: 90%; /* Make image slightly smaller relative to container */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    padding: 0 1rem; /* Adjust padding for very small screens */
+  }
+  
+  .logo-container img {
+    max-width: 85%; /* Further reduce relative size on very small screens */
+  }
+}
     header img {
       max-width: 400px;
       height: auto;
