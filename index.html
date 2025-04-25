@@ -38,8 +38,22 @@
 
     .logo-container {
       text-align: center;
-    }
+      padding: 0 15px; /* Add horizontal padding */
+  box-sizing: border-box;
+  width: 100%;
+}
 
+.logo-container img {
+  max-width: 100%; /* Ensure image doesn't overflow on mobile */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .logo-container img {
+    max-width: 90%; /* Adjust for smaller screens */
+  }
+}
+    
     header img {
       max-width: 400px;
       height: auto;
