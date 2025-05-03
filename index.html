@@ -495,6 +495,70 @@ ul.benefits li {
 .services-section p {
   margin-bottom: 1rem;
 }
+    .pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.pricing-list li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+}
+
+.pricing-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--light-text);
+  font-weight: bold;
+}
+
+.package-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.package-benefits > li {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+}
+
+.package-benefits > li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--light-text);
+  font-weight: bold;
+}
+
+.sub-benefits {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.sub-benefits li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+  display: block;
+}
+
+.sub-benefits li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--light-text);
+}
   </style>
 </head>
 
@@ -550,7 +614,7 @@ ul.benefits li {
       <p>FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
       
       <h4>Prices:</h4>
-      <ul class="benefits">
+      <ul class="pricing-list">
         <li><strong>Annual Review Report</strong> – £100 (typically 1.5 hrs)</li>
         <li><strong>Protection Suitability Report</strong> – £150 (+£50 per additional policy)</li>
         <li><strong>Mortgage Suitability Report</strong> – £100</li>
@@ -609,7 +673,7 @@ ul.benefits li {
       <p class="price-tag">£2,000/month</p>
       
       <p>Includes a tailored mix:</p>
-      <ul class="benefits">
+      <ul class="package-benefits">
         <li><strong>Report allocation</strong> (£1,200 value):
           <ul class="sub-benefits">
             <li>4 Investment/Pension reports OR</li>
@@ -730,7 +794,6 @@ ul.benefits li {
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
-          <li><a href="#pricing">Pricing</a></li>
         </ul>
       </div>
       
