@@ -435,68 +435,65 @@ ul.benefits li {
   .dot.active {
     background-color: var(--accent-green);
   }
-    #services {
-  background-color: #f9fafb;
+/* Services section styling - matches the site's dark theme */
+.service-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#services h2 {
-  color: #1e3a8a;
-  margin-bottom: 1.5rem;
+.service-block:last-child {
+  border-bottom: none;
 }
 
-#services h3 {
-  color: #1e3a8a;
-  border-left: 4px solid #3b82f6;
+.service-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   padding-left: 0.75rem;
+  border-left: 4px solid var(--accent-green);
 }
 
-#services .border-b {
-  border-color: #e5e7eb;
+.service-block h4 {
+  font-size: 1.2rem;
+  margin: 1.5rem 0 1rem;
 }
 
-/* Service item styling */
-.service-item {
-  transition: all 0.3s ease;
+.price-tag {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--light-text);
+  margin: 1.5rem 0;
 }
 
-.service-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.sub-benefits {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
 }
 
-/* Pricing emphasis */
-.price-highlight {
-  font-weight: 700;
-  color: #1e3a8a;
-  font-size: 1.25rem;
+.sub-benefits li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 0.25rem 0;
 }
 
-/* Ideal for styling */
-.ideal-for {
-  background-color: #f3f4f6;
-  border-radius: 0.375rem;
-  padding: 0.75rem;
-  font-style: italic;
-  color: #4b5563;
+.sub-benefits li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--light-text);
 }
 
-/* Full-service package styling */
 .premium-package {
-  background-color: #eff6ff;
+  background-color: rgba(74, 94, 69, 0.2);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  border: 1px solid #dbeafe;
+  border: 1px solid var(--accent-green);
+  margin-top: 3rem;
 }
 
-/* Value indicator */
-.value-tag {
-  display: inline-block;
-  background-color: #dbeafe;
-  color: #1e40af;
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-  margin-left: 0.5rem;
+.services-section p {
+  margin-bottom: 1rem;
 }
   </style>
 </head>
@@ -543,18 +540,17 @@ ul.benefits li {
     </ul>
   </section>
 
-  <section id="services" class="py-16 bg-white">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Beyond – Services for Financial Advisers</h2>
-    <p class="text-xl text-center mb-16">Paraplanning and operational support to help you work smarter, not harder.</p>
+  <section id="services" class="services-section">
+    <h2>Our Services</h2>
+    <p>Paraplanning and operational support to help you work smarter, not harder.</p>
     
     <!-- Report Writing Services -->
-    <div class="mb-16 border-b pb-12">
-      <h3 class="text-2xl font-semibold mb-4">Report Writing Services</h3>
-      <p class="mb-6">FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
+    <div class="service-block">
+      <h3>Report Writing Services</h3>
+      <p>FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
       
-      <h4 class="text-lg font-semibold mb-3">Prices:</h4>
-      <ul class="mb-6 space-y-2">
+      <h4>Prices:</h4>
+      <ul class="benefits">
         <li><strong>Annual Review Report</strong> – £100 (typically 1.5 hrs)</li>
         <li><strong>Protection Suitability Report</strong> – £150 (+£50 per additional policy)</li>
         <li><strong>Mortgage Suitability Report</strong> – £100</li>
@@ -562,52 +558,60 @@ ul.benefits li {
         <li><strong>Investment & Pension Suitability Report</strong> – £300 (typically 3-4 hrs)</li>
       </ul>
       
-      <p class="italic">Ideal for: Advisers who want to reclaim 10+ hours weekly while maintaining compliance excellence</p>
+      <div class="highlight-box">
+        <p>Ideal for: Advisers who want to reclaim 10+ hours weekly while maintaining compliance excellence</p>
+      </div>
     </div>
     
     <!-- Systems & Operations Projects -->
-    <div class="mb-16 border-b pb-12">
-      <h3 class="text-2xl font-semibold mb-4">Systems & Operations Projects</h3>
-      <p class="mb-6">Streamline how you work behind the scenes. From workflows to file structure to templated emails — small changes that make a big difference.</p>
+    <div class="service-block">
+      <h3>Systems & Operations Projects</h3>
+      <p>Streamline how you work behind the scenes. From workflows to file structure to templated emails — small changes that make a big difference.</p>
       
-      <p class="font-semibold mb-4">From £495 per project</p>
+      <p class="price-tag">From £495 per project</p>
       
-      <p class="italic">Ideal for: Firms preparing for growth, struggling with capacity, or looking to improve profit margins</p>
+      <div class="highlight-box">
+        <p>Ideal for: Firms preparing for growth, struggling with capacity, or looking to improve profit margins</p>
+      </div>
     </div>
     
     <!-- Strategic Support -->
-    <div class="mb-16 border-b pb-12">
-      <h3 class="text-2xl font-semibold mb-4">Strategic Support</h3>
-      <p class="mb-6">A thinking partner to bounce ideas off, make operational decisions with, or help you find clarity in complexity.</p>
+    <div class="service-block">
+      <h3>Strategic Support</h3>
+      <p>A thinking partner to bounce ideas off, make operational decisions with, or help you find clarity in complexity.</p>
       
-      <p class="font-semibold mb-4">£150/month or £400/quarter</p>
+      <p class="price-tag">£150/month or £400/quarter</p>
       
-      <p class="mb-4">Includes a monthly call + follow-up notes, with voice note/email access in between.</p>
+      <p>Includes a monthly call + follow-up notes, with voice note/email access in between.</p>
       
-      <p class="italic">Ideal for: Self-employed advisers and practice owners who need experienced guidance without hiring a permanent operations manager</p>
+      <div class="highlight-box">
+        <p>Ideal for: Self-employed advisers and practice owners who need experienced guidance without hiring a permanent operations manager</p>
+      </div>
     </div>
     
     <!-- Custom Templates & Tools -->
-    <div class="mb-16 border-b pb-12">
-      <h3 class="text-2xl font-semibold mb-4">Custom Templates & Tools</h3>
-      <p class="mb-6">Polished, practical assets that save time — whether it's a client-facing timeline, an internal checklist, or a review summary template.</p>
+    <div class="service-block">
+      <h3>Custom Templates & Tools</h3>
+      <p>Polished, practical assets that save time — whether it's a client-facing timeline, an internal checklist, or a review summary template.</p>
       
-      <p class="font-semibold mb-4">From £75 per item</p>
+      <p class="price-tag">From £75 per item</p>
       
-      <p class="italic">Ideal for: Advisers looking to improve client experience, conversion rates, and team efficiency</p>
+      <div class="highlight-box">
+        <p>Ideal for: Advisers looking to improve client experience, conversion rates, and team efficiency</p>
+      </div>
     </div>
     
     <!-- Full-Service Monthly Package -->
-    <div class="mb-8">
-      <h3 class="text-2xl font-semibold mb-4">Full-Service Monthly Package</h3>
-      <p class="mb-6">A complete solution for busy advisers who want reports, strategic support, systems help and tools — all in one place.</p>
+    <div class="service-block premium-package">
+      <h3>Full-Service Monthly Package</h3>
+      <p>A complete solution for busy advisers who want reports, strategic support, systems help and tools — all in one place.</p>
       
-      <p class="font-semibold mb-4">£2,000/month</p>
+      <p class="price-tag">£2,000/month</p>
       
-      <p class="mb-4">Includes a tailored mix:</p>
-      <ul class="mb-6 space-y-2">
+      <p>Includes a tailored mix:</p>
+      <ul class="benefits">
         <li><strong>Report allocation</strong> (£1,200 value):
-          <ul class="ml-6 mt-2 space-y-1">
+          <ul class="sub-benefits">
             <li>4 Investment/Pension reports OR</li>
             <li>8 Protection/Mortgage reports OR</li>
             <li>12 Annual reviews OR</li>
@@ -620,12 +624,13 @@ ul.benefits li {
         <li><strong>Priority support</strong> with 48-hour turnaround guarantee</li>
       </ul>
       
-      <p class="mb-4">Discounts available for multiple advisers within the same firm.</p>
+      <p>Discounts available for multiple advisers within the same firm.</p>
       
-      <p class="italic">Ideal for: Established advisers who want a trusted, long-term partner to handle the detail and drive progress</p>
+      <div class="highlight-box">
+        <p>Ideal for: Established advisers who want a trusted, long-term partner to handle the detail and drive progress</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   
   <section id="process" class="process-section">
     <h2>Our Process</h2>
