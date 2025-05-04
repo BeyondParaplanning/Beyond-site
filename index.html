@@ -559,6 +559,37 @@ ul.benefits li {
   left: 0;
   color: var(--light-text);
 }
+    
+    @media (max-width: 600px) {
+  .package-benefits > li {
+    padding-left: 1.5rem;
+  }
+
+  .package-benefits > li > ul.sub-benefits {
+    padding-left: 1rem;
+  }
+
+  .package-benefits > li > ul.sub-benefits li {
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    word-wrap: break-word;
+  }
+      
+}
+    @media (max-width: 600px) {
+  /* ... (Your previous mobile fixes) ... */
+
+  .pricing-list li {
+    padding-left: 1rem; /* Reduce from 2rem */
+    font-size: 0.9rem; /* Slightly reduce font size */
+    line-height: 1.4; /* Improve readability with smaller font */
+    word-wrap: break-word; /* Prevent long words from overflowing */
+  }
+
+  .pricing-list li strong {
+    font-size: 1rem; /* Keep the strong text slightly larger for emphasis */
+  }
+}
   </style>
 </head>
 
@@ -745,9 +776,9 @@ ul.benefits li {
       </div>
       
       <div class="testimonial slide">
-        <p class="testimonial-quote">"Beyond's protection reports have received great feedback from clients who appreciate the clear explanations. Their work is consistently high quality and compliant."</p>
-        <p class="testimonial-author">Michael Doherty</p>
-        <p class="testimonial-company">Protection Specialist</p>
+        <p class="testimonial-quote">"Placeholder-Kascade Testimonial"</p>
+        <p class="testimonial-author">Kate Scrace, APFS</p>
+        <p class="testimonial-company">Chartered Financial Planner</p>
       </div>
     </div>
     
@@ -792,18 +823,7 @@ ul.benefits li {
         <h3>Beyond</h3>
         <ul>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-column">
-        <h3>Services</h3>
-        <ul>
-          <li><a href="#services">Suitability Reports</a></li>
-          <li><a href="#services">Annual Reviews</a></li>
-          <li><a href="#services">Fund Research</a></li>
-          <li><a href="#services">Business Tools</a></li>
         </ul>
       </div>
       
@@ -861,7 +881,7 @@ ul.benefits li {
     if (!slider || slides.length === 0) return;
     
     let currentSlide = 0;
-    const slideInterval = 10000; // 10 second interval
+    const slideInterval = 20000; // 10 second interval
     
     // Create dot indicators
     slides.forEach((_, index) => {
