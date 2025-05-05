@@ -590,6 +590,70 @@ ul.benefits li {
     font-size: 1rem; /* Keep the strong text slightly larger for emphasis */
   }
 }
+
+     /* LinkedIn link styling */
+  .linkedin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light-text);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .linkedin-link:hover {
+    color: #0077b5; /* LinkedIn blue */
+  }
+  
+  .linkedin-link i {
+    font-size: 1.2rem;
+  }
+  
+  /* Founder's message layout */
+  .founder-message {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    align-items: flex-start;
+  }
+  
+  .founder-image {
+    flex: 0 0 300px;
+  }
+  
+  .founder-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .founder-text {
+    flex: 1;
+  }
+  
+  .founder-text h3 {
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--accent-green);
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .founder-message {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .founder-image {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
   </style>
 </head>
 
@@ -616,24 +680,39 @@ ul.benefits li {
   </div>
 
   <section id="about" class="about-section">
-    <h2>About Beyond</h2>
-    <p>At Beyond, our mission is simple: to give advisers their time back. We know the weight that comes with compliance, report writing, and trying to juggle the admin that keeps you from your clients. That's why we built Beyond — a partner for advisers who want to do what they do best while trusting someone else to handle the technical, the operational, and the time-consuming bits.</p>
-    
-    <p>Whether you're a financial or mortgage adviser, our background in both paraplanning and business consultancy means we understand the challenges you're facing — and we offer solutions that are tailored, efficient, and always professional.</p>
-    
-    <div class="highlight-box">
-      You didn't become an adviser to drown in admin. Beyond helps you get back to what matters: your clients, your advice, your impact.
+  <h2>About Beyond</h2>
+  
+  <!-- Founder's message with image layout -->
+  <div class="founder-message">
+    <div class="founder-image">
+      <img src="founderimage.jpg" alt="Founder's Photo" />
     </div>
-    
-    <h3>Why Choose Beyond?</h3>
-    <ul class="benefits">
-      <li>Expertise in financial services and regulatory requirements</li>
-      <li>Tailored solutions that reflect your unique advice style</li>
-      <li>Quick turnaround times to help you meet client deadlines</li>
-      <li>Capacity when you need it, without fixed overhead costs</li>
-      <li>Partnership approach focused on your business growth</li>
-    </ul>
-  </section>
+    <div class="founder-text">
+      <h3>A Message from Our Founder</h3>
+      <p>Since the very start of my working life — both inside and outside of financial services — I've always found myself drawn to improving how things run. Whether I was piloting new processes or streamlining systems, I kept ending up in roles where the goal was the same: make things smoother, simpler, and more effective. And the truth is, I've found real joy in it.</p>
+      <p>That passion eventually led me to create Beyond.</p>
+      <p>After years of supporting advisers in-house, I saw how much time and energy gets lost to reporting, research, and admin — time that could be spent on the work that really matters. So I set out to offer something different: intelligent, reliable support that gives advisers space to do what only they can do.</p>
+      <p>Whether it's suitability and review reports, fund research, tool building or strategic operational help, Beyond is here to take the weight off your shoulders — so you can focus on your clients, your business, and the bigger picture.</p>
+      <p>We don't just deliver outputs — we give you back your time, energy, and headspace.</p>
+      <p><strong>Save time. Save energy. Go Beyond.</strong></p>
+      <p>Thanks for being here — I'd love to hear how we can support your journey.</p>
+      <p>Warmly,<br><strong>Phil Williams</strong><br>Founder, Beyond – Paraplanning & Intelligent Adviser Solutions<br><a href="https://www.linkedin.com/in/phillip-williams-dippfs-cert-cii-mp-er-b063444a/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a></p>
+    </div>
+  </div>
+  
+  <div class="highlight-box">
+    You didn't become an adviser to drown in admin. Beyond helps you get back to what matters: your clients, your advice, your impact.
+  </div>
+  
+  <h3>Why Choose Beyond?</h3>
+  <ul class="benefits">
+    <li>Expertise in financial services and regulatory requirements</li>
+    <li>Tailored solutions that reflect your unique advice style</li>
+    <li>Quick turnaround times to help you meet client deadlines</li>
+    <li>Capacity when you need it, without fixed overhead costs</li>
+    <li>Partnership approach focused on your business growth</li>
+  </ul>
+</section>
 
   <section id="services" class="services-section">
     <h2>Our Services</h2>
