@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service | Beyond</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #faf4f2;
+      color: #0b2b25;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #354532;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      border-bottom: 1px solid #4a5e45;
+      padding-bottom: 0.3rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    a { color: #0b2b25; }
+
+    ul { margin-top: 0.5rem; }
+
+    .muted {
+      color: #3b3b3b;
+      font-size: 0.95rem;
+    }
+
+    /* Signature Section Styles */
+    .signature-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: #fff;
+      border: 2px solid #354532;
+      border-radius: 8px;
+      page-break-inside: avoid;
+    }
+
+    .signature-section h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #354532;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #354532;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #4a5e45;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .signature-canvas-container {
+      border: 2px dashed #4a5e45;
+      border-radius: 4px;
+      background-color: #ffffff;
+      margin-top: 0.5rem;
+    }
+
+    #signatureCanvas {
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .button-group {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-clear {
+      background-color: #d9534f;
+      color: white;
+    }
+
+    .btn-clear:hover {
+      background-color: #c9302c;
+    }
+
+    .btn-print {
+      background-color: #354532;
+      color: white;
+    }
+
+    .btn-print:hover {
+      background-color: #2a3628;
+    }
+
+    .btn-download {
+      background-color: #4a5e45;
+      color: white;
+    }
+
+    .btn-download:hover {
+      background-color: #3b4c38;
+    }
+
+    .instruction-text {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .callout {
+      background: rgba(53, 69, 50, 0.08);
+      border-left: 4px solid #354532;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+    }
+
+    /* Print-specific styles */
+    @media print {
+      body {
+        background-color: white;
+        padding: 1rem;
+      }
+
+      button { display: none; }
+
+      .no-print { display: none; }
+
+      .signature-section { border: 1px solid #000; }
+
+      #signatureCanvas { border: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Terms of Service</h1>
+<p><strong>Effective Date:</strong> 1 June 2025</p>
+
+<p class="muted">
+  These Terms of Service apply to paraplanning, operational support and advisory services provided by
+  Beyond Paraplanning & Intelligent Adviser Solutions (“Beyond”, “we”, “us”). By instructing Beyond, the Client
+  agrees to be bound by these terms.
+</p>
+
+<div class="callout">
+  <strong>Important:</strong> Beyond provides professional support and advisory services. We do not provide regulated financial advice
+  to end clients and we do not assume responsibility for the suitability of recommendations made by the Client.
+</div>
+
+<h2>1. Services Provided</h2>
+<p>Beyond provides support services to independent financial advisers and firms. Services may include:</p>
+<ul>
+  <li>Paraplanning and report writing (e.g. suitability reports, annual review reports)</li>
+  <li>Research and technical support (e.g. comparisons, provider information, product / platform analysis)</li>
+  <li>Operational projects (e.g. process design, MI, workflow improvement, file / template systems)</li>
+  <li>Strategic and structural support (e.g. capacity, segmentation, service standards, operating rhythm)</li>
+  <li>Custom tools and templates (e.g. Word / Excel assets, flowcharts, checklists)</li>
+</ul>
+
+<h2>2. Instruction, Delivery and Turnaround</h2>
+<p>
+  Instructions should be provided in writing (email, Teams or agreed channel) with sufficient detail and relevant supporting information.
+  Turnaround times will be agreed on a case-by-case basis and may depend on complexity and the completeness of information provided.
+</p>
+<p>
+  The Client is responsible for reviewing all deliverables and confirming accuracy before use. Any regulated communications to end clients
+  remain the responsibility of the Client.
+</p>
+
+<h2>3. Fees and Payment Terms</h2>
+<p><strong>Hourly Services:</strong> £60 per hour unless otherwise agreed in writing.</p>
+<p><strong>Report Writing:</strong> Fixed pricing where quoted. Multi-area, complex or bespoke cases may be quoted separately.</p>
+<p><strong>Projects:</strong> Quoted in writing prior to commencement, typically with a 50% deposit payable upfront and the balance payable prior to delivery, unless otherwise agreed.</p>
+
+<p><strong>Invoices:</strong> Payable within 7 calendar days of issue unless otherwise agreed in writing.</p>
+<p><strong>Late Payment:</strong> Invoices unpaid after 14 days may incur a 2% monthly fee. If payment remains outstanding, Beyond reserves the right to pause work until the account is brought up to date.</p>
+
+<h2>4. Cancellations and Changes</h2>
+<p>
+  Where work is instructed and subsequently cancelled, the Client remains responsible for fees relating to work completed up to the point of cancellation.
+  For projects, deposits are non-refundable once work has commenced.
+</p>
+<p>
+  If scope changes materially following instruction, Beyond may re-quote or revise time and cost estimates before continuing.
+</p>
+
+<h2>5. Confidentiality and Data Protection</h2>
+<p>
+  Beyond will treat all non-public information as confidential and will not disclose it without written consent, unless required by law.
+  We act as a data processor where applicable and comply with relevant data protection obligations.
+  Please refer to our <a href="privacy-notice.html">Privacy Notice</a> for details.
+</p>
+<p>
+  The Client warrants that they have the lawful basis to share any client data required for the provision of services.
+</p>
+
+<h2>6. Client Responsibilities</h2>
+<p>The Client is responsible for:</p>
+<ul>
+  <li>Providing accurate, complete and timely information</li>
+  <li>Responding to queries, approvals and requests promptly</li>
+  <li>Reviewing deliverables for accuracy and appropriateness</li>
+  <li>Ensuring all regulated advice, suitability and client communications are approved and issued by the Client</li>
+</ul>
+
+<h2>7. Intellectual Property</h2>
+<p>
+  Unless otherwise agreed in writing, all frameworks, templates, tools and materials developed by Beyond remain the intellectual property of Beyond.
+  The Client is granted a licence to use deliverables internally for their business. Sharing, resale or distribution to third parties is not permitted
+  without written permission.
+</p>
+
+<h2>8. Limitation of Liability</h2>
+<p>
+  Beyond’s liability for any claim shall be limited to the value of the specific service giving rise to the claim.
+  Beyond shall not be liable for indirect, consequential or commercial losses, including loss of profit, business or goodwill.
+</p>
+<p>
+  Beyond does not accept responsibility for outcomes arising from the Client’s advice, recommendations, investment decisions or client communications,
+  including where the Client approves or amends deliverables prior to issue.
+</p>
+
+<h2>9. Termination</h2>
+<p>
+  Either party may terminate ongoing arrangements with 30 days’ written notice unless otherwise agreed.
+  Fees remain payable for all work completed up to the termination date.
+</p>
+<p>
+  Beyond reserves the right to terminate immediately where payments are overdue, terms are breached, or where continued work becomes unfeasible.
+</p>
+
+<h2>10. Disputes and Governing Law</h2>
+<p>
+  If a dispute arises, both parties agree to attempt resolution in good faith through discussion. If unresolved, the parties will consider mediation
+  before court proceedings.
+</p>
+<p>This agreement is governed by the laws of England and Wales.</p>
+
+<h2>11. Miscellaneous</h2>
+<p>
+  These terms constitute the entire agreement regarding services provided by Beyond and override prior discussions or understandings.
+  Any amendments must be agreed in writing. If any clause is found invalid, the remainder will continue in full force.
+</p>
+
+<p><strong>By instructing Beyond, you agree to these Terms of Service.</strong></p>
+
+<!-- Signature Section -->
+<div class="signature-section">
+  <h2>Acceptance and Agreement</h2>
+  <p>I confirm that I have read, understood, and agree to be bound by these Terms of Service.</p>
+
+  <div class="form-group">
+    <label for="adviserName">Full Name:</label>
+    <input type="text" id="adviserName" name="adviserName" placeholder="Enter your full name" autocomplete="name">
+  </div>
+
+  <div class="form-group">
+    <label for="firmName">Firm Name:</label>
+    <input type="text" id="firmName" name="firmName" placeholder="Enter your firm name">
+  </div>
+
+  <div class="form-group">
+    <label for="emailAddress">Email Address:</label>
+    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter your email address" autocomplete="email">
+  </div>
+
+  <div class="form-group">
+    <label for="signature">Signature:</label>
+    <p class="instruction-text no-print">Please sign below using your mouse or touchscreen</p>
+    <div class="signature-canvas-container">
+      <canvas id="signatureCanvas" width="850" height="150"></canvas>
+    </div>
+    <div class="button-group no-print">
+      <button type="button" class="btn-clear" onclick="clearSignature()">Clear Signature</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="signatureDate">Date:</label>
+    <input type="date" id="signatureDate" name="signatureDate">
+  </div>
+
+  <div class="button-group no-print">
+    <button type="button" class="btn-print" onclick="window.print()">Print to PDF</button>
+    <button type="button" class="btn-download" onclick="downloadSignatureData()">Download Confirmation (JSON)</button>
+  </div>
+
+  <p class="instruction-text no-print" style="margin-top: 1.5rem;">
+    <strong>Instructions:</strong> Fill in your details and sign above, then click "Print to PDF".
+    In the print dialog, select "Save as PDF" as your printer, then email the saved PDF to
+    <a href="mailto:hello@beyondparaplanning.co.uk">hello@beyondparaplanning.co.uk</a>.
+  </p>
+
+  <p class="instruction-text no-print">
+    <strong>Optional:</strong> The "Download Confirmation" button saves a JSON file containing your typed details and a signature image (base64).
+    This can be uploaded to your shared folder for record keeping.
+  </p>
+</div>
+
+<p style="margin-top: 2rem;"><strong>Contact:</strong><br/>
+  Beyond Paraplanning & Intelligent Adviser Solutions<br/>
+  Email: <a href="mailto:hello@beyondparaplanning.co.uk">hello@beyondparaplanning.co.uk</a><br/>
+  Website: <a href="https://www.beyondparaplanning.co.uk">www.beyondparaplanning.co.uk</a>
+</p>
+
+<script>
+  // Signature canvas functionality
+  const canvas = document.getElementById('signatureCanvas');
+  const ctx = canvas.getContext('2d');
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  // Set up canvas drawing
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  function getEventXY(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = (e.clientX !== undefined) ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = (e.clientY !== undefined) ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    return [clientX - rect.left, clientY - rect.top];
+  }
+
+  function startDrawing(e) {
+    isDrawing = true;
+    [lastX, lastY] = getEventXY(e);
+  }
+
+  function draw(e) {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const [currentX, currentY] = getEventXY(e);
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(currentX, currentY);
+    ctx.stroke();
+
+    [lastX, lastY] = [currentX, currentY];
+  }
+
+  function stopDrawing() {
+    isDrawing = false;
+  }
+
+  // Mouse events
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseout', stopDrawing);
+
+  // Touch events
+  canvas.addEventListener('touchstart', startDrawing, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', stopDrawing);
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Set today's date by default
+  document.getElementById('signatureDate').valueAsDate = new Date();
+
+  // Download a simple confirmation bundle (client-side only)
+  function downloadSignatureData() {
+    const name = document.getElementById('adviserName').value.trim();
+    const firm = document.getElementById('firmName').value.trim();
+    const email = document.getElementById('emailAddress').value.trim();
+    const date = document.getElementById('signatureDate').value;
+
+    const signatureImage = canvas.toDataURL('image/png');
+
+    const payload = {
+      document: "Beyond Terms of Service",
+      effective_date: "2025-06-01",
+      accepted_by: {
+        name,
+        firm,
+        email,
+        date
+      },
+      signature_image_png_base64: signatureImage
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "Beyond_Terms_of_Service_Acceptance.json";
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
