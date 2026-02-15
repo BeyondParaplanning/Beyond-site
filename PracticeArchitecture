@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="beyondiconn.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="beyondiconn.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="beyondiconn.png">
+  <link rel="apple-touch-icon" href="beyondiconn.png">
+  <link rel="shortcut icon" href="beyondiconn.png">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Beyond | Practice Architecture Programme</title>
+  <meta name="description" content="A structured programme for ambitious UK advice firms seeking structural clarity before scaling. Align segmentation, capacity, and service standards to reduce operational friction and build commercial confidence." />
+
+  <meta property="og:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
+  <meta name="twitter:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --dark-green: #0b2b25;
+      --light-text: #faf4f2;
+      --accent-green: #354532;
+      --highlight: #4a5e45;
+      --subtle-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark-green);
+      color: var(--light-text);
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-container {
+      text-align: center;
+      padding: 0 15px;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .logo-container img {
+      max-width: 100%;
+      max-width: 500px;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .logo-container img { max-width: 50%; }
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    nav {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      background-color: var(--accent-green);
+      color: var(--light-text);
+      padding: 0.5rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a:hover {
+      background-color: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(rgba(11, 43, 37, 0.9), rgba(11, 43, 37, 0.7)),
+                  url('/api/placeholder/1200/500') center/cover no-repeat;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-green);
+      color: var(--light-text);
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      background-color: var(--highlight);
+      transform: translateY(-3px);
+    }
+
+    .cta-button.secondary {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+    }
+
+    .cta-button.secondary:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 2.5rem;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2, h3 { color: var(--light-text); }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: var(--accent-green);
+    }
+
+    .highlight-box {
+      background-color: var(--subtle-bg);
+      border-left: 4px solid var(--accent-green);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    ul.benefits {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    ul.benefits li {
+      position: relative;
+      padding-left: 2rem;
+      flex: 1 1 calc(50% - 1rem);
+      margin: 0.5rem 0;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+      ul.benefits li { flex: 1 1 100%; }
+    }
+
+    ul.benefits li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--light-text);
+      font-weight: bold;
+    }
+
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .phase-card {
+      background-color: var(--subtle-bg);
+      border-radius: 18px;
+      padding: 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .phase-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 4px solid var(--accent-green);
+    }
+
+    .phase-price {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .mini-list {
+      margin: 0.75rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    .mini-list li { margin: 0.35rem 0; }
+
+    .doc-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .doc-link {
+      background-color: var(--subtle-bg);
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .doc-link a {
+      color: var(--light-text);
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 14px;
+      background-color: var(--accent-green);
+      transition: all 0.3s;
+      margin-top: 0.75rem;
+    }
+
+    .doc-link a:hover {
+      background-color: var(--highlight);
+      transform: translateY(-2px);
+    }
+
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-method {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--subtle-bg);
+      border-radius: 15px;
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--light-text);
+      margin-bottom: 1rem;
+    }
+
+    .contact-cta {
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.3);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li { margin-bottom: 0.5rem; }
+
+    .footer-column a {
+      color: var(--light-text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover { color: var(--accent-green); }
+
+    .copyright {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      section { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="BeyondLogo.png" alt="Beyond Logo" />
+      <p class="tagline">Save Time. Save Energy. Go Beyond.</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#programme">Programme</a>
+    <a href="#outcomes">Outcomes</a>
+    <a href="#documents">Documents</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hero" id="top">
+    <h1>Practice Architecture Programme</h1>
+    <p>
+      Structural clarity for advice firms that intend to scale deliberately.
+      We align segmentation, capacity and service standards so operational strain reduces and commercial confidence increases.
+    </p>
+
+    <div class="cta-row">
+      <!-- You said you'll add the brochure as BeyondPAP.pdf -->
+      <a class="cta-button" href="BeyondPAP.pdf" target="_blank" rel="noopener">
+        View Programme Brochure
+      </a>
+
+      <!-- You said you'll add a signable ToE page named BeyondPAPToE.html -->
+      <a class="cta-button secondary" href="BeyondPAPToE.html">
+        Review & Sign Terms of Engagement
+      </a>
+    </div>
+  </div>
+
+  <section id="overview">
+    <h2>Why This Exists</h2>
+
+    <div class="highlight-box">
+      Growth without design creates friction. Friction reduces capacity. Reduced capacity forces reactive decisions.
+      The Practice Architecture Programme is built to restore clarity before scale.
+    </div>
+
+    <ul class="benefits">
+      <li>Clear segmentation logic that aligns with commercial reality</li>
+      <li>Controlled capacity through defined roles, ownership and workflow</li>
+      <li>Service standards that remain consistent across advisers</li>
+      <li>Reduced operational strain and fewer bottlenecks</li>
+      <li>A deliberate roadmap for expansion, hiring and intake discipline</li>
+      <li>Leadership confidence based on structure, not gut feel</li>
+    </ul>
+  </section>
+
+  <section id="programme">
+    <h2>The Programme</h2>
+    <p style="text-align:center; max-width: 850px; margin: 0 auto;">
+      Delivered in three phases. Each phase is optional. There is no obligation to proceed beyond Phase I.
+    </p>
+
+    <div class="phase-grid">
+      <div class="phase-card">
+        <h3>Phase I – Strategic Diagnostic</h3>
+        <p>Establish structural clarity by examining segmentation, capacity distortion and operational friction.</p>
+        <ul class="mini-list">
+          <li>Operating model snapshot</li>
+          <li>Task allocation and role clarity review</li>
+          <li>Revenue distribution and service alignment</li>
+          <li>Diagnostic report with key findings</li>
+        </ul>
+        <p class="phase-price">£3,000</p>
+        <p style="opacity:0.85; margin:0;">
+          No obligation beyond Phase I.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h3>Phase II – Structural Design</h3>
+        <p>Design the architecture required for deliberate scale, based on Phase I findings.</p>
+        <ul class="mini-list">
+          <li>Segmentation redesign</li>
+          <li>Service standards and cadence</li>
+          <li>Capacity and workflow design</li>
+          <li>Defined intake criteria</li>
+        </ul>
+        <p class="phase-price">From £6,000</p>
+        <p style="opacity:0.85; margin:0;">
+          Subject to scope confirmation and illustrative proposal.
+        </p>
+      </div>
+
+      <div class="phase-card">
+        <h3>Phase III – Operational Activation</h3>
+        <p>Embed the design into day-to-day operations with clarity, accountability and rhythm.</p>
+        <ul class="mini-list">
+          <li>Implementation support</li>
+          <li>Team alignment and adoption</li>
+          <li>SOP and workflow activation</li>
+          <li>Operating cadence and review points</li>
+        </ul>
+        <p class="phase-price">From £6,000</p>
+        <p style="opacity:0.85; margin:0;">
+          Subject to scope confirmation and illustrative proposal.
+        </p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:2.5rem;">
+      Payment structure: 50% payable upfront per phase, with the remaining 50% payable prior to delivery of that phase’s outputs.
+    </div>
+  </section>
+
+  <section id="outcomes">
+    <h2>Structural Clarity Creates Strategic Freedom</h2>
+
+    <ul class="benefits">
+      <li><strong>Controlled Capacity</strong> – predictable adviser workload and clearer ownership</li>
+      <li><strong>Revenue Discipline</strong> – service intensity aligned to client value</li>
+      <li><strong>Scalable Growth</strong> – defined intake criteria and expansion readiness</li>
+      <li><strong>Operational Stability</strong> – less firefighting, fewer bottlenecks</li>
+      <li><strong>Leadership Confidence</strong> – decisions based on structure, not pressure</li>
+      <li><strong>Consistency</strong> – reduced variation in servicing across advisers</li>
+    </ul>
+
+    <div class="highlight-box">
+      Clarity reduces friction. Friction reduction creates momentum.
+    </div>
+  </section>
+
+  <section id="documents">
+    <h2>Documents</h2>
+    <p style="text-align:center; max-width: 850px; margin: 0 auto;">
+      Programme documents are provided here for convenience. If you have any questions before signing, email us and we will clarify.
+    </p>
+
+    <div class="doc-links">
+      <div class="doc-link">
+        <h3>Programme Brochure</h3>
+        <p>Full overview of the Practice Architecture Programme, including scope, phases and positioning.</p>
+        <a href="BeyondPAP.pdf" target="_blank" rel="noopener">
+          <i class="fas fa-file-pdf"></i> Open BeyondPAP.pdf
+        </a>
+      </div>
+
+      <div class="doc-link">
+        <h3>Terms of Engagement</h3>
+        <p>Digital signature enabled. Signing confirms acceptance and initiates Phase I on receipt of deposit.</p>
+        <a href="BeyondPAPToE.html">
+          <i class="fas fa-file-signature"></i> Open BeyondPAPToE.html
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      If you want to explore whether this programme fits your firm, send a short note outlining your current structure and what you are trying to solve.
+    </p>
+
+    <div class="contact-methods">
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <h3>Email</h3>
+        <p><a href="mailto:hello@beyondparaplanning.co.uk" style="color: #faf4f2;">hello@beyondparaplanning.co.uk</a></p>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>Next Step</h3>
+        <p>Reply to the email thread and we will confirm next steps and data requirements.</p>
+      </div>
+
+      <div class="contact-method">
+        <div class="contact-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Confidential</h3>
+        <p>All information shared is treated as confidential and used solely for the purposes of the Programme.</p>
+      </div>
+    </div>
+
+    <div class="contact-cta">
+      <a href="mailto:hello@beyondparaplanning.co.uk" class="cta-button">Email Beyond</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Beyond</h3>
+        <ul>
+          <li><a href="index.html">Main Site</a></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#programme">Programme</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Documents</h3>
+        <ul>
+          <li><a href="BeyondPAP.pdf" target="_blank" rel="noopener">Brochure (PDF)</a></li>
+          <li><a href="BeyondPAPToE.html">Terms of Engagement</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy-notice.html">Privacy Notice</a></li>
+          <li><a href="terms-of-service-with-signature.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© 2025 Beyond – Paraplanning & Intelligent Adviser Solutions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for section animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach((section) => observer.observe(section));
+
+    // Smooth scrolling for navigation links and CTA buttons that reference anchors
+    document.querySelectorAll('nav a, .cta-button').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+
+        e.preventDefault();
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script>
+    window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+        palette: {
+          popup: { background: "#0b2b25", text: "#faf4f2" },
+          button: { background: "#354532", text: "#faf4f2", border: "#4a5e45" }
+        },
+        theme: "classic",
+        position: "bottom",
+        content: {
+          message: "We use cookies to improve your experience. You can manage your preferences at any time.",
+          dismiss: "Accept",
+          link: "Privacy Notice",
+          href: "/privacy-notice.html"
+        }
+      });
+    });
+  </script>
+</body>
+</html>
