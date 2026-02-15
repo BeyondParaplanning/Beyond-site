@@ -102,13 +102,15 @@
       color: #354532;
     }
 
-    .form-group input {
+    .form-group input, .form-group select {
       width: 100%;
       padding: 0.5rem;
       border: 1px solid #4a5e45;
       border-radius: 4px;
       font-size: 1rem;
       box-sizing: border-box;
+      background: #fff;
+      color: #0b2b25;
     }
 
     .signature-canvas-container {
@@ -173,8 +175,8 @@
 <p class="muted"><strong>Effective Date:</strong> 1 February 2026</p>
 
 <div class="callout">
-  <strong>Programme positioning:</strong> The Practice Architecture Programme is designed to establish structural clarity,
-  align segmentation, capacity and service standards, and reduce operational friction. It is delivered in optional phases.
+  <strong>How this document works:</strong> These Terms govern the Practice Architecture Programme as a whole (Phases I–III).
+  Only <strong>Phase I</strong> is accepted and initiated on signature. Progression to Phase II and Phase III is optional and requires separate written acceptance.
 </div>
 
 <p>
@@ -183,11 +185,11 @@
 </p>
 
 <p class="muted">
-  <span class="pill">Strategic</span>
-  <span class="pill">Architectural</span>
-  <span class="pill">Non-regulated advisory</span>
-  <span class="pill">No obligation beyond Phase I</span>
+  <span class="pill">Programme terms (Phases I–III)</span>
+  <span class="pill">Phase-by-phase opt-in</span>
   <span class="pill">7-day cooling-off per phase</span>
+  <span class="pill">50% upfront, 50% prior to delivery</span>
+  <span class="pill">Liability capped per phase</span>
 </p>
 
 <h2>1. Programme Structure</h2>
@@ -209,23 +211,36 @@
   solely with the Client’s directors.
 </p>
 
-<h2>3. Phase I – Strategic Diagnostic</h2>
-<p>
-  Phase I establishes structural clarity through a structured examination of the Client’s current operating model.
-  The scope may include (where relevant):
-</p>
+<h2>3. Phase Scopes (Summary)</h2>
+<p class="muted">Detailed scope and outputs for Phase II and Phase III will be confirmed in the illustrative proposal for that phase.</p>
+
+<h3 style="color:#354532; margin-top:1.25rem;">Phase I – Strategic Diagnostic</h3>
 <ul>
-  <li>Segmentation logic and service alignment</li>
-  <li>Adviser capacity allocation and task distribution</li>
-  <li>Operational workflow observation and bottlenecks</li>
+  <li>Segmentation logic and service alignment review</li>
+  <li>Capacity and task distribution analysis</li>
+  <li>Operational workflow observation and friction points</li>
   <li>Revenue distribution and structural strain indicators</li>
 </ul>
+<p><strong>Outputs:</strong> written Diagnostic Report and defined structural observations.</p>
+<p class="muted">Phase I does not include implementation, structural redesign, regulated advice, or compliance sign-off.</p>
 
-<p><strong>Phase I Outputs:</strong> a written Diagnostic Report and defined structural observations.</p>
+<h3 style="color:#354532; margin-top:1.25rem;">Phase II – Structural Design</h3>
+<ul>
+  <li>Segmentation model design and thresholds</li>
+  <li>Service standards, cadence and access rules</li>
+  <li>Capacity model and role ownership</li>
+  <li>Defined intake criteria and operating architecture</li>
+</ul>
+<p class="muted">Outputs to be confirmed in the Phase II illustrative proposal following Phase I.</p>
 
-<p class="muted">
-  Phase I does not include implementation, structural redesign, regulated advice, or compliance sign-off.
-</p>
+<h3 style="color:#354532; margin-top:1.25rem;">Phase III – Operational Activation</h3>
+<ul>
+  <li>Activation support to embed the design into operations</li>
+  <li>Team alignment and adoption rhythm</li>
+  <li>SOP and workflow activation (where in scope)</li>
+  <li>Operating cadence and review checkpoints</li>
+</ul>
+<p class="muted">Outputs to be confirmed in the Phase III illustrative proposal following Phase I.</p>
 
 <h2>4. Fees and Payment</h2>
 <p>
@@ -238,15 +253,15 @@
     <th>Phase I – Strategic Diagnostic</th>
     <td>
       <strong>£3,000</strong><br/>
-      50% payable upon acceptance of these Terms.<br/>
-      50% payable prior to release of the Phase I Diagnostic Report.<br/>
+      50% payable upon acceptance of these Terms (Phase I acceptance).<br/>
+      50% payable prior to release of the Phase I Diagnostic Report.
     </td>
   </tr>
   <tr>
     <th>Phase II – Structural Design</th>
     <td>
       <strong>From £6,000</strong> (subject to scope confirmation and illustrative proposal following Phase I).<br/>
-      50% payable upon written agreement to proceed.<br/>
+      50% payable upon written acceptance of the Phase II proposal.<br/>
       50% payable prior to delivery of Phase II outputs.
     </td>
   </tr>
@@ -254,7 +269,7 @@
     <th>Phase III – Operational Activation</th>
     <td>
       <strong>From £6,000</strong> (subject to scope confirmation and illustrative proposal following Phase I).<br/>
-      50% payable upon written agreement to proceed.<br/>
+      50% payable upon written acceptance of the Phase III proposal.<br/>
       50% payable prior to delivery of Phase III outputs.
     </td>
   </tr>
@@ -265,9 +280,9 @@
   where payments remain outstanding.
 </p>
 
-<h2>5. Cooling-Off Period</h2>
+<h2>5. Cooling-Off Period (Applies Per Phase)</h2>
 <p>
-  A 7-day cooling-off period applies to each phase from the date of written acceptance of these Terms (or written acceptance of a later phase).
+  A 7-day cooling-off period applies to each phase from the date of written acceptance of that phase.
 </p>
 <p>
   The initial 50% phase fee is payable upon acceptance. No substantive work will commence until the expiry of the cooling-off period.
@@ -321,7 +336,22 @@
 <!-- Signature Section -->
 <div class="signature-section">
   <h2>Acceptance and Agreement</h2>
-  <p>I confirm that I am authorised to sign on behalf of the Client and agree to be bound by these Terms of Engagement.</p>
+  <p>
+    By signing below, the Client accepts these Programme Terms and confirms acceptance of <strong>Phase I – Strategic Diagnostic</strong>.
+    Phase II and Phase III (if required) will be accepted separately in writing following Phase I.
+  </p>
+
+  <div class="form-group">
+    <label for="acceptedPhase">Phase Being Accepted:</label>
+    <select id="acceptedPhase" name="acceptedPhase">
+      <option value="Phase I – Strategic Diagnostic" selected>Phase I – Strategic Diagnostic</option>
+      <option value="Phase II – Structural Design">Phase II – Structural Design</option>
+      <option value="Phase III – Operational Activation">Phase III – Operational Activation</option>
+    </select>
+    <p class="instruction-text no-print">
+      Default is Phase I. If you later use this same page for Phase II or III, select the phase being accepted and sign again.
+    </p>
+  </div>
 
   <div class="form-group">
     <label for="firmName">Firm Name:</label>
@@ -368,11 +398,6 @@
     <strong>Instructions:</strong> Fill in your details and sign above, then click "Print to PDF".
     In the print dialog, select "Save as PDF" as your printer, then email the saved PDF to
     <a href="mailto:hello@beyondparaplanning.co.uk">hello@beyondparaplanning.co.uk</a>.
-  </p>
-
-  <p class="instruction-text no-print">
-    <strong>Optional:</strong> The "Download Confirmation" button saves a JSON file containing typed details and a signature image (base64).
-    This can be uploaded to your shared folder for record keeping.
   </p>
 </div>
 
@@ -438,9 +463,12 @@
   document.getElementById('signatureDate').valueAsDate = new Date();
 
   function downloadAcceptance() {
+    const acceptedPhase = document.getElementById('acceptedPhase').value;
+
     const payload = {
       document: "Beyond Practice Architecture Programme - Terms of Engagement",
       effective_date: "2026-02-01",
+      phase_accepted: acceptedPhase,
       client: {
         firm_name: document.getElementById('firmName').value.trim(),
         authorised_signatory: document.getElementById('signatoryName').value.trim(),
@@ -450,12 +478,12 @@
       },
       fees: {
         phase_1: "£3,000 (50% on acceptance, 50% prior to delivery)",
-        phase_2: "From £6,000 (50% on agreement, 50% prior to delivery)",
-        phase_3: "From £6,000 (50% on agreement, 50% prior to delivery)"
+        phase_2: "From £6,000 (50% on acceptance, 50% prior to delivery)",
+        phase_3: "From £6,000 (50% on acceptance, 50% prior to delivery)"
       },
       cooling_off: "7 days per phase. No substantive work begins until cooling-off expires. Cancellation within cooling-off results in full refund for that phase.",
       signature_image_png_base64: canvas.toDataURL('image/png'),
-      acknowledgement: "Client confirms acceptance of Beyond Practice Architecture Programme Terms of Engagement."
+      acknowledgement: "Client confirms acceptance of Programme Terms and the selected phase."
     };
 
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -463,7 +491,7 @@
 
     const a = document.createElement('a');
     a.href = url;
-    a.download = "Beyond_PAP_Terms_of_Engagement_Acceptance.json";
+    a.download = "Beyond_PAP_ToE_Acceptance.json";
     document.body.appendChild(a);
     a.click();
 
