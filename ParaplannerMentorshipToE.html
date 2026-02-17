@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Engagement | Trainee Paraplanner Technical Support | Beyond</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #faf4f2;
+      color: #0b2b25;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 { color: #354532; }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      border-bottom: 1px solid #4a5e45;
+      padding-bottom: 0.3rem;
+    }
+
+    p { margin-bottom: 1rem; }
+    a { color: #0b2b25; }
+    ul { margin-top: 0.5rem; }
+
+    .muted {
+      color: #3b3b3b;
+      font-size: 0.95rem;
+    }
+
+    .callout {
+      background: rgba(53, 69, 50, 0.08);
+      border-left: 4px solid #354532;
+      padding: 1rem 1.25rem;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(53, 69, 50, 0.10);
+      border: 1px solid rgba(74, 94, 69, 0.45);
+      font-size: 0.85rem;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 0;
+      font-size: 0.95rem;
+    }
+
+    .mini-table th, .mini-table td {
+      border: 1px solid rgba(74, 94, 69, 0.4);
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .mini-table th {
+      background: rgba(53, 69, 50, 0.08);
+      color: #354532;
+      width: 32%;
+    }
+
+    /* Signature Section Styles */
+    .signature-section {
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: #fff;
+      border: 2px solid #354532;
+      border-radius: 8px;
+      page-break-inside: avoid;
+    }
+
+    .signature-section h2 {
+      margin-top: 0;
+      border-bottom: 2px solid #354532;
+    }
+
+    .form-group { margin-bottom: 1.5rem; }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #354532;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #4a5e45;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: #fff;
+      color: #0b2b25;
+    }
+
+    .signature-canvas-container {
+      border: 2px dashed #4a5e45;
+      border-radius: 4px;
+      background-color: #ffffff;
+      margin-top: 0.5rem;
+    }
+
+    #signatureCanvas {
+      display: block;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .button-group {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-clear { background-color: #d9534f; color: white; }
+    .btn-clear:hover { background-color: #c9302c; }
+
+    .btn-print { background-color: #354532; color: white; }
+    .btn-print:hover { background-color: #2a3628; }
+
+    .btn-download { background-color: #4a5e45; color: white; }
+    .btn-download:hover { background-color: #3b4c38; }
+
+    .btn-validate { background-color: #0b2b25; color: #faf4f2; }
+    .btn-validate:hover { background-color: #061c18; }
+
+    .instruction-text {
+      font-size: 0.9rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    .value-box {
+      background: rgba(53, 69, 50, 0.06);
+      border: 1px solid rgba(74, 94, 69, 0.35);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .value-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .value-row strong { color: #354532; }
+
+    .error {
+      background: rgba(217, 83, 79, 0.10);
+      border: 1px solid rgba(217, 83, 79, 0.35);
+      color: #7a1f1c;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    @media print {
+      body { background-color: white; padding: 1rem; }
+      button { display: none; }
+      .no-print { display: none; }
+      .signature-section { border: 1px solid #000; }
+      #signatureCanvas { border: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Terms of Engagement</h1>
+<p><strong>Trainee Paraplanner Technical Support</strong></p>
+<p class="muted"><strong>Effective Date:</strong> 17 February 2026</p>
+
+<div class="callout">
+  <strong>How this document works:</strong> These Terms govern a monthly retainer arrangement for trainee/junior paraplanner
+  technical support (primarily via consolidated email queries and scheduled Teams discussions). The monthly fee is based on the
+  selected weekly allocation (<strong>£250 per month per allocated hour per week</strong>).
+</div>
+
+<p>
+  These Terms of Engagement are entered into between <strong>Beyond</strong> (“Beyond”, “we”, “us”) and the <strong>Client</strong> (the firm signing below).
+</p>
+
+<p class="muted">
+  <span class="pill">Retainer-based mentorship</span>
+  <span class="pill">Scheduled support blocks</span>
+  <span class="pill">Consolidated email queries</span>
+  <span class="pill">Developmental guidance</span>
+  <span class="pill">Not regulated advice</span>
+</p>
+
+<h2>1. Purpose</h2>
+<p>
+  The purpose of this arrangement is to support the development of a trainee/junior paraplanner through structured technical guidance.
+  The objective is to increase competence, confidence, and independence by improving reasoning, report structure, research method and clarity.
+</p>
+
+<h2>2. Nature of Services</h2>
+<p>
+  Beyond provides technical guidance and mentoring support. This service does <strong>not</strong> constitute regulated financial advice,
+  compliance certification, supervision under the firm’s regulatory permissions, or responsibility for advice suitability.
+</p>
+<p>
+  The Client retains full responsibility for all client recommendations, compliance sign-off, supervision and regulatory oversight.
+</p>
+
+<h2>3. Scope of Support</h2>
+<p>The retainer may include, within the agreed time allocation:</p>
+<ul>
+  <li>Review and response to consolidated technical queries submitted by email</li>
+  <li>Scheduled Teams calls to discuss cases, reasoning, report structure and approach</li>
+  <li>Feedback on draft paraplanning outputs (for example: suitability letter structure, research approach, charge presentation)</li>
+  <li>Guidance on presenting pros/cons, risk language, assumptions, and recommendation rationale</li>
+  <li>Development support and pattern-based learning to reduce reliance over time</li>
+</ul>
+<p class="muted">
+  This service is designed to support development and decision-making quality, not to act as an “always-on” helpdesk.
+  Where the nature of support shifts into operational delivery (for example: producing reports), this will be treated as separate paraplanning work under separate terms.
+</p>
+
+<h2>4. Support Method and Turnaround</h2>
+<p>
+  Support is delivered primarily via email and scheduled Teams blocks. To maintain clarity and avoid delays:
+</p>
+<ul>
+  <li>Queries should be consolidated where possible (rather than sent as multiple small emails).</li>
+  <li>Beyond will typically respond within <strong>1–2 working days</strong> (subject to volume and agreed allocation).</li>
+  <li>Where a query is complex, Beyond may suggest it is best handled in the next scheduled Teams session.</li>
+</ul>
+<p class="muted">
+  Urgent client matters and regulatory deadlines remain the responsibility of the Client and supervising adviser(s).
+</p>
+
+<h2>5. Fees and Allocation</h2>
+<p>
+  The monthly retainer fee is based on the selected weekly allocation:
+  <strong>£250 per month per allocated hour per week</strong>.
+</p>
+
+<table class="mini-table">
+  <tr>
+    <th>Fee Basis</th>
+    <td><strong>£250</strong> per month per allocated hour per week</td>
+  </tr>
+  <tr>
+    <th>Example</th>
+    <td>1 hour per week equivalent = <strong>£250</strong> per month</td>
+  </tr>
+  <tr>
+    <th>Payment</th>
+    <td>Monthly in advance. Due within <strong>7 days</strong> of invoice.</td>
+  </tr>
+</table>
+
+<p class="muted">
+  Beyond is not currently VAT registered. If VAT registration status changes, fees will be adjusted accordingly.
+</p>
+
+<div class="callout">
+  <strong>Additional time:</strong> If support requirements consistently exceed the agreed allocation, we will either (a) agree an increased retainer,
+  or (b) invoice additional time separately at <strong>£60 per hour</strong>, by agreement in advance.
+</div>
+
+<h2>6. Client Responsibilities</h2>
+<p>The Client agrees to:</p>
+<ul>
+  <li>Ensure the trainee/junior paraplanner operates under appropriate internal supervision</li>
+  <li>Provide timely and accurate information required for case discussion</li>
+  <li>Ensure any client information shared is limited to what is necessary and redacted where appropriate</li>
+  <li>Retain responsibility for all advice decisions and compliance sign-off</li>
+</ul>
+
+<h2>7. Confidentiality and Data Protection</h2>
+<p>
+  Both parties will treat information shared as confidential and will not disclose it to third parties without consent, except where legally required.
+  The Client remains responsible for ensuring appropriate permissions, lawful basis, and secure transfer for any client information shared.
+</p>
+
+<h2>8. Intellectual Property</h2>
+<p>
+  Any frameworks, templates, methodologies, or written guidance created by Beyond remain the intellectual property of Beyond unless otherwise agreed in writing.
+  The Client is granted internal usage rights for training and internal development purposes only.
+</p>
+
+<h2>9. Limitation of Liability</h2>
+<p>
+  Beyond provides guidance only. The Client retains responsibility for decisions taken and any implementation.
+  Beyond shall not be liable for any loss arising from advice issued by the Client, compliance breaches, or regulatory complaints.
+</p>
+<p>
+  Beyond’s total aggregate liability under these Terms shall be limited to the total retainer fees paid by the Client in the <strong>3 months</strong> preceding any claim.
+</p>
+
+<h2>10. Term, Review and Termination</h2>
+<p>
+  This agreement operates on a rolling monthly basis unless otherwise agreed in writing.
+  Either party may terminate the agreement by providing <strong>30 days’</strong> written notice.
+</p>
+<p class="muted">
+  If termination occurs, fees already paid for the current month remain payable/non-refundable and services will continue until the end of the notice period unless otherwise agreed.
+</p>
+
+<h2>11. Governing Law</h2>
+<p>This agreement shall be governed by the laws of England and Wales.</p>
+
+<!-- Signature Section -->
+<div class="signature-section">
+  <h2>Acceptance and Agreement</h2>
+  <p>
+    By signing below, the Client accepts these Terms of Engagement and confirms the selected weekly allocation and resulting monthly retainer fee.
+  </p>
+
+  <div class="form-group">
+    <label for="firmName">Firm Name:</label>
+    <input type="text" id="firmName" name="firmName" placeholder="Enter firm name">
+  </div>
+
+  <div class="form-group">
+    <label for="traineeName">Trainee / Junior Paraplanner Name:</label>
+    <input type="text" id="traineeName" name="traineeName" placeholder="Enter name">
+  </div>
+
+  <div class="form-group">
+    <label for="allocationHours">Weekly Allocation (Hours per Week Equivalent):</label>
+    <select id="allocationHours" name="allocationHours">
+      <option value="0.5">0.5 hour per week</option>
+      <option value="1" selected>1 hour per week</option>
+      <option value="2">2 hours per week</option>
+      <option value="3">3 hours per week</option>
+      <option value="4">4 hours per week</option>
+    </select>
+    <p class="instruction-text no-print">
+      Fee basis is £250 per month per allocated hour per week.
+    </p>
+
+    <div class="value-box">
+      <div class="value-row">
+        <div><strong>Selected allocation:</strong> <span id="allocationLabel">1</span> hour(s) per week equivalent</div>
+        <div><strong>Monthly retainer:</strong> £<span id="monthlyFee">250</span></div>
+      </div>
+      <p class="muted" style="margin-top:0.75rem;">
+        This allocation covers consolidated email responses and scheduled Teams support within the agreed time allocation.
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="signatoryName">Authorised Signatory (Full Name):</label>
+    <input type="text" id="signatoryName" name="signatoryName" placeholder="Enter full name" autocomplete="name">
+  </div>
+
+  <div class="form-group">
+    <label for="position">Position / Role:</label>
+    <input type="text" id="position" name="position" placeholder="e.g. Managing Director">
+  </div>
+
+  <div class="form-group">
+    <label for="emailAddress">Email Address:</label>
+    <input type="email" id="emailAddress" name="emailAddress" placeholder="Enter email address" autocomplete="email">
+  </div>
+
+  <div class="form-group">
+    <label for="signature">Signature:</label>
+    <p class="instruction-text no-print">Please sign below using your mouse or touchscreen</p>
+    <div class="signature-canvas-container">
+      <canvas id="signatureCanvas" width="850" height="150"></canvas>
+    </div>
+    <div class="button-group no-print">
+      <button type="button" class="btn-clear" onclick="clearSignature()">Clear Signature</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="signatureDate">Date:</label>
+    <input type="date" id="signatureDate" name="signatureDate">
+  </div>
+
+  <div class="button-group no-print">
+    <button type="button" class="btn-validate" onclick="validateAndPrint()">Validate & Print to PDF</button>
+    <button type="button" class="btn-print" onclick="window.print()">Print to PDF</button>
+    <button type="button" class="btn-download" onclick="downloadAcceptance()">Download Confirmation (JSON)</button>
+  </div>
+
+  <div id="errorBox" class="error no-print"></div>
+
+  <p class="instruction-text no-print" style="margin-top: 1.5rem;">
+    <strong>Instructions:</strong> Fill in your details and sign above, then click "Validate & Print to PDF".
+    In the print dialog, select "Save as PDF" as your printer, then email the saved PDF to
+    <a href="mailto:hello@beyondparaplanning.co.uk">hello@beyondparaplanning.co.uk</a>.
+  </p>
+</div>
+
+<p style="margin-top: 2rem;"><strong>Contact:</strong><br/>
+  Beyond<br/>
+  Email: <a href="mailto:hello@beyondparaplanning.co.uk">hello@beyondparaplanning.co.uk</a><br/>
+  Website: <a href="https://www.beyondparaplanning.co.uk">www.beyondparaplanning.co.uk</a>
+</p>
+
+<script>
+  // ===== Fee calculator =====
+  const allocationSelect = document.getElementById('allocationHours');
+  const allocationLabel = document.getElementById('allocationLabel');
+  const monthlyFeeEl = document.getElementById('monthlyFee');
+
+  const FEE_PER_WEEKLY_HOUR_PER_MONTH = 250; // £250 per month per 1 hour/week equivalent
+
+  function formatHours(val) {
+    // Keep 0.5 readable as "0.5" not "0.50"
+    const n = Number(val);
+    return Number.isInteger(n) ? String(n) : String(n);
+  }
+
+  function updateFee() {
+    const hours = Number(allocationSelect.value);
+    const monthly = Math.round(hours * FEE_PER_WEEKLY_HOUR_PER_MONTH);
+    allocationLabel.textContent = formatHours(hours);
+    monthlyFeeEl.textContent = monthly.toLocaleString('en-GB');
+  }
+
+  allocationSelect.addEventListener('change', updateFee);
+  updateFee();
+
+  // ===== Signature canvas functionality =====
+  const canvas = document.getElementById('signatureCanvas');
+  const ctx = canvas.getContext('2d');
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  function getEventXY(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = (e.clientX !== undefined) ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const clientY = (e.clientY !== undefined) ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    return [clientX - rect.left, clientY - rect.top];
+  }
+
+  function startDrawing(e) {
+    isDrawing = true;
+    [lastX, lastY] = getEventXY(e);
+  }
+
+  function draw(e) {
+    if (!isDrawing) return;
+    e.preventDefault();
+    const [currentX, currentY] = getEventXY(e);
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(currentX, currentY);
+    ctx.stroke();
+
+    [lastX, lastY] = [currentX, currentY];
+  }
+
+  function stopDrawing() { isDrawing = false; }
+
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseout', stopDrawing);
+
+  canvas.addEventListener('touchstart', startDrawing, { passive: false });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', stopDrawing);
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  document.getElementById('signatureDate').valueAsDate = new Date();
+
+  // ===== Simple validation =====
+  function hasSignatureInk() {
+    const img = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    for (let i = 3; i < img.length; i += 4) {
+      if (img[i] !== 0) return true; // alpha channel non-zero
+    }
+    return false;
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('errorBox');
+    box.style.display = 'block';
+    box.textContent = msg;
+  }
+
+  function clearError() {
+    const box = document.getElementById('errorBox');
+    box.style.display = 'none';
+    box.textContent = '';
+  }
+
+  function validateAndPrint() {
+    clearError();
+
+    const firmName = document.getElementById('firmName').value.trim();
+    const signatory = document.getElementById('signatoryName').value.trim();
+    const email = document.getElementById('emailAddress').value.trim();
+    const date = document.getElementById('signatureDate').value;
+
+    if (!firmName) return showError('Please enter the firm name.');
+    if (!signatory) return showError('Please enter the authorised signatory full name.');
+    if (!email) return showError('Please enter an email address.');
+    if (!date) return showError('Please select the signature date.');
+    if (!hasSignatureInk()) return showError('Please add a signature in the signature box.');
+
+    window.print();
+  }
+
+  // ===== Download acceptance payload =====
+  function downloadAcceptance() {
+    clearError();
+
+    const firmName = document.getElementById('firmName').value.trim();
+    const traineeName = document.getElementById('traineeName').value.trim();
+    const signatory = document.getElementById('signatoryName').value.trim();
+    const position = document.getElementById('position').value.trim();
+    const email = document.getElementById('emailAddress').value.trim();
+    const date = document.getElementById('signatureDate').value;
+
+    const hours = Number(allocationSelect.value);
+    const monthly = Math.round(hours * FEE_PER_WEEKLY_HOUR_PER_MONTH);
+
+    const payload = {
+      document: "Beyond - Trainee Paraplanner Technical Support - Terms of Engagement",
+      effective_date: "2026-02-17",
+      client: {
+        firm_name: firmName,
+        trainee_name: traineeName,
+        authorised_signatory: signatory,
+        position: position,
+        email: email,
+        date: date
+      },
+      allocation: {
+        weekly_hours_equivalent: hours,
+        monthly_retainer_gbp: monthly,
+        fee_basis: "£250 per month per allocated hour per week equivalent"
+      },
+      payment_terms: "Monthly in advance. Due within 7 days of invoice.",
+      additional_time: "If support exceeds allocation, either agree increased retainer or invoice additional time at £60 per hour (by agreement in advance).",
+      service_method: "Consolidated email queries and scheduled Teams discussions (typical response 1–2 working days).",
+      liability_cap: "Aggregate liability limited to retainer fees paid in the 3 months preceding any claim.",
+      signature_image_png_base64: canvas.toDataURL('image/png'),
+      acknowledgement: "Client confirms acceptance of Terms of Engagement and the selected allocation."
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = "Beyond_Trainee_Paraplanner_Technical_Support_Acceptance.json";
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>
