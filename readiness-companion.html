@@ -154,28 +154,26 @@
       grid-template-columns: 1fr;
     }
 
+    /* Taller banner (fix) */
     .banner-img{
       position:relative;
       width:100%;
-      aspect-ratio: 5 / 1;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        radial-gradient(700px 260px at 20% 10%, rgba(255,255,255,0.10), transparent 60%),
-        rgba(255,255,255,0.02);
+      max-height: 320px;     /* desktop cap */
+      min-height: 200px;     /* prevents skinny strip */
+      background: rgba(255,255,255,0.02);
       border-bottom: 1px solid rgba(255,255,255,0.10);
+      overflow:hidden;
       display:flex;
       align-items:center;
       justify-content:center;
-      text-align:center;
-      padding: 0;
-      overflow:hidden;
     }
 
     .banner-img img{
       width:100%;
       height:100%;
-      object-fit: cover;
+      object-fit: contain;   /* show full banner */
       display:block;
+      background: rgba(255,255,255,0.02);
     }
 
     .banner-meta{
@@ -209,7 +207,6 @@
       font-weight: 700;
       white-space:nowrap;
     }
-
     .banner-cta:hover{ background: rgba(255,255,255,0.09); }
 
     header{
@@ -249,7 +246,7 @@
       .pill{white-space:normal}
       .topbar{flex-direction:column; align-items:flex-start}
       .topbar-right{justify-content:flex-start}
-      .banner-img{aspect-ratio: 3 / 1;}
+      .banner-img{min-height: 160px; max-height: 260px;}
     }
 
     .card{
@@ -518,7 +515,7 @@
       <div class="topbar-left">
         <a class="logo-link" href="https://beyondparaplanning.co.uk" target="_blank" rel="noopener">
           <div class="logo" aria-label="Beyond logo">
-            <img src="B.png" alt="Beyond logo">
+            <img src="b.png" alt="Beyond logo">
           </div>
           <div class="brand-mini">
             <strong>Beyond</strong>
@@ -537,7 +534,7 @@
       </div>
     </div>
 
-    <!-- Book banner (live assets + live link) -->
+    <!-- Book banner -->
     <div class="book-banner">
       <a href="https://www.amazon.co.uk/dp/B0GPXXQJM1" target="_blank" rel="noopener">
         <div class="banner-inner">
@@ -1164,6 +1161,7 @@ function getReportPayloadJson(){
 }
 
 document.getElementById("btnGenerate").addEventListener("click", renderResults);
+
 document.getElementById("btnReset").addEventListener("click", ()=>{
   state.answers = {};
   state.flags = new Set();
