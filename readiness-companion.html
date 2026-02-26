@@ -149,31 +149,22 @@
       color: var(--text);
     }
 
-    .banner-inner{
-      display:grid;
-      grid-template-columns: 1fr;
-    }
-
-    /* Taller banner (fix) */
+    /* Banner is 1536 x 515, preserve ratio so it scales on mobile */
     .banner-img{
-      position:relative;
       width:100%;
-      max-height: 320px;     /* desktop cap */
-      min-height: 200px;     /* prevents skinny strip */
+      aspect-ratio: 1536 / 515;
       background: rgba(255,255,255,0.02);
       border-bottom: 1px solid rgba(255,255,255,0.10);
       overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:block;
     }
 
     .banner-img img{
       width:100%;
       height:100%;
-      object-fit: contain;   /* show full banner */
+      object-fit: cover;
+      object-position: center;
       display:block;
-      background: rgba(255,255,255,0.02);
     }
 
     .banner-meta{
@@ -246,7 +237,8 @@
       .pill{white-space:normal}
       .topbar{flex-direction:column; align-items:flex-start}
       .topbar-right{justify-content:flex-start}
-      .banner-img{min-height: 160px; max-height: 260px;}
+      .banner-meta{padding: 12px 12px;}
+      .banner-cta{width: 100%; justify-content:center;}
     }
 
     .card{
@@ -443,65 +435,12 @@
       opacity:0.8;
     }
 
-    .callout{
-      border-left: 4px solid rgba(255,255,255,0.28);
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      margin-top: 12px;
-      font-size: 13px;
-      opacity: 0.95;
-    }
-
-    .ai-box{
-      display:none;
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .ai-header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .ai-header strong{
-      font-weight: 700;
-      letter-spacing:0.2px;
-    }
-
-    .ai-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-    }
-
-    textarea{
-      width:100%;
-      min-height: 140px;
-      margin-top: 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 10px 10px;
-      font-size: 13px;
-      line-height:1.5;
-      resize: vertical;
-    }
-
     @media print{
       body{ background:#fff; color:#0b2b25; }
       .topbar, .book-banner, header, aside, #questions, .row, #progressTag, .pill, .foot{ display:none !important; }
       #engineCard{ border:none; box-shadow:none; background:#fff; }
       #results{ display:block !important; }
-      .card, .meter, .note, .callout, .ai-box{ border:1px solid #d7dedc !important; background:#fff !important; color:#0b2b25 !important; }
-      textarea{ display:none !important; }
+      .card, .meter, .note{ border:1px solid #d7dedc !important; background:#fff !important; color:#0b2b25 !important; }
       button{ display:none !important; }
     }
   </style>
@@ -537,17 +476,15 @@
     <!-- Book banner -->
     <div class="book-banner">
       <a href="https://www.amazon.co.uk/dp/B0GPXXQJM1" target="_blank" rel="noopener">
-        <div class="banner-inner">
-          <div class="banner-img">
-            <img src="bookbannersimple.png" alt="What If? Working for Yourself. Building a Paraplanning Business.">
+        <div class="banner-img">
+          <img src="bookbannersimple.png" alt="What If? Working for Yourself. Building a Paraplanning Business.">
+        </div>
+        <div class="banner-meta">
+          <div>
+            <div class="title">What If? Working for Yourself. Building a Paraplanning Business.</div>
+            <div class="sub">A practical reflection guide for paraplanners considering self-employment</div>
           </div>
-          <div class="banner-meta">
-            <div>
-              <div class="title">What If? Working for Yourself. Building a Paraplanning Business.</div>
-              <div class="sub">A practical reflection guide for paraplanners considering self-employment</div>
-            </div>
-            <div class="banner-cta">View on Amazon ↗</div>
-          </div>
+          <div class="banner-cta">View on Amazon ↗</div>
         </div>
       </a>
     </div>
@@ -628,27 +565,6 @@
             <tbody></tbody>
           </table>
 
-          <div class="divider"></div>
-
-          <h2>Companion commentary</h2>
-          <div class="callout">
-            This is a plain-English interpretation of your output. It is intentionally direct and conservative.
-          </div>
-
-          <div class="ai-box" id="aiBox">
-            <div class="ai-header">
-              <strong id="aiHeadline">Commentary</strong>
-              <span class="tag" id="aiToneTag">Local analysis</span>
-            </div>
-
-            <textarea id="aiText" readonly></textarea>
-
-            <div class="ai-actions">
-              <button class="primary" id="btnCopyCommentary" type="button">Copy commentary</button>
-              <button id="btnCopyPayload" type="button">Copy report payload</button>
-            </div>
-          </div>
-
           <div class="row">
             <button class="primary" id="btnDownload" type="button">Download report (HTML)</button>
             <button id="btnPrint" type="button">Print</button>
@@ -683,7 +599,7 @@
         <div class="divider"></div>
 
         <p class="tiny muted">
-          This runs locally and stores nothing. If you later want AI commentary via an API, we can wire it in.
+          This runs locally and stores nothing.
         </p>
       </aside>
     </div>
@@ -696,7 +612,6 @@
  * - Weighted dimensions
  * - Hard stop logic
  * - Downloadable report (HTML)
- * - Local companion commentary
  */
 
 const DIMENSIONS = {
@@ -992,66 +907,6 @@ function buildInsights(dimPct, hardStopNotes){
   return { strengths, risks, steps };
 }
 
-function buildCommentary(report){
-  const { overall, positioning, dimPct } = report;
-  const weak = Object.entries(dimPct).filter(([_,p])=>p < 55).sort((a,b)=>a[1]-b[1]);
-  const topWeak = weak.slice(0,2).map(([d,p])=>`${DIMENSIONS[d].label} (${p}%)`);
-  const strong = Object.entries(dimPct).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([d,p])=>`${DIMENSIONS[d].label} (${p}%)`);
-  const flags = state.flags;
-  const lines = [];
-
-  lines.push(`Positioning: ${positioning}. Score: ${overall}/100.`);
-  lines.push("");
-
-  if(overall >= 80){
-    lines.push("You look ready. The job now is protecting quality as volume rises.");
-  } else if(overall >= 65){
-    lines.push("You can start, but only if you keep it structured. The risk is going too bespoke too fast and losing margin.");
-  } else if(overall >= 50){
-    lines.push("You’re close. Capability isn’t the issue. Foundation is. Tighten the weak points and it becomes calmer.");
-  } else {
-    lines.push("Stage this. You can still do it, but not by leaping. Reduce risk first, then increase exposure.");
-  }
-
-  lines.push("");
-  lines.push(`What’s working: ${strong.join(", ")}.`);
-  if(topWeak.length){
-    lines.push(`Where you’re exposed: ${topWeak.join(", ")}.`);
-  }
-
-  if(flags.has("low_buffer") && flags.has("unproven_demand")){
-    lines.push("");
-    lines.push("Low buffer plus unproven demand forces bad behaviour. You undercharge, over-deliver, and take the wrong clients. Fix one of those first.");
-  }
-
-  if(flags.has("data_risk")){
-    lines.push("");
-    lines.push("Data handling is a credibility pillar. Lock it down now so you’re not redesigning security when you’re busy.");
-  }
-
-  if(flags.has("risk_red") || flags.has("risk_blur")){
-    lines.push("");
-    lines.push("Your line around regulated advice needs to be written and enforced. Helpful is fine. Deciding is not.");
-  }
-
-  if(flags.has("pricing_red") || flags.has("pricing_wobble")){
-    lines.push("");
-    lines.push("Pricing stabilises when you stop selling time and start selling what your fee protects: accuracy, risk reduction, and turnaround. One sentence. Then stop talking.");
-  }
-
-  if(flags.has("capacity_red")){
-    lines.push("");
-    lines.push("Capacity is a design problem, not a motivation problem. Reduce bespoke work, increase price, or add support. Pick one first.");
-  }
-
-  lines.push("");
-  lines.push("Three actions that will change things fastest:");
-  const top3 = (report.insights.steps || []).slice(0,3);
-  top3.forEach((s, i)=>lines.push(`${i+1}. ${s}`));
-
-  return lines.join("\n");
-}
-
 function buildReportPayload(overall, positioning, dimPct, insights, hardStopNotes){
   const answers = QUESTIONS.map((q, i)=>{
     const a = state.answers[q.id];
@@ -1067,6 +922,15 @@ function buildReportPayload(overall, positioning, dimPct, insights, hardStopNote
     flags: Array.from(state.flags),
     stamp
   };
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 function renderResults(){
@@ -1122,62 +986,10 @@ function renderResults(){
 
   window.__REPORT__ = buildReportPayload(overall, positioning, dimPct, insights, result.hardStopNotes);
 
-  const commentary = buildCommentary(window.__REPORT__);
-  document.getElementById("aiText").value = commentary;
-  document.getElementById("aiHeadline").textContent = "Commentary (local)";
-  document.getElementById("aiToneTag").textContent = "No tracking";
-  document.getElementById("aiBox").style.display = "block";
-
   resultsEl.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
-function escapeHtml(str){
-  return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-async function copyToClipboard(text){
-  try{
-    await navigator.clipboard.writeText(text);
-    return true;
-  }catch(e){
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    try{ document.execCommand("copy"); }catch(_){}
-    ta.remove();
-    return true;
-  }
-}
-
-function getReportPayloadJson(){
-  if(!window.__REPORT__) return "";
-  return JSON.stringify(window.__REPORT__, null, 2);
-}
-
-document.getElementById("btnGenerate").addEventListener("click", renderResults);
-
-document.getElementById("btnReset").addEventListener("click", ()=>{
-  state.answers = {};
-  state.flags = new Set();
-  window.__REPORT__ = null;
-  renderQuestions();
-  document.getElementById("results").style.display = "none";
-  document.getElementById("aiBox").style.display = "none";
-  document.getElementById("scoreBar").style.width = "0%";
-  document.getElementById("scoreText").textContent = "0/100";
-  document.getElementById("positionText").textContent = "–";
-  window.scrollTo({top:0, behavior:"smooth"});
-});
-
-document.getElementById("btnPrint").addEventListener("click", ()=>window.print());
-
-document.getElementById("btnDownload").addEventListener("click", ()=>{
+function downloadReport(){
   const r = window.__REPORT__;
   if(!r){
     alert("Generate the readiness report first.");
@@ -1207,7 +1019,6 @@ document.getElementById("btnDownload").addEventListener("click", ()=>{
   table{ width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12.5px; }
   th, td{ border-bottom: 1px solid #e2e8e6; padding: 8px 6px; text-align:left; vertical-align:top; }
   .small{ font-size: 12px; opacity: 0.85; }
-  pre{ white-space: pre-wrap; background:#f6f8f7; border:1px solid #e2e8e6; padding:10px 12px; border-radius:10px; }
   @media print{ .no-print{ display:none; } .page{ padding: 28px 24px; } }
 </style>
 </head>
@@ -1226,9 +1037,6 @@ document.getElementById("btnDownload").addEventListener("click", ()=>{
         <div style="font-size:18px; font-weight:700;">${escapeHtml(r.positioning)}</div>
       </div>
     </div>
-
-    <h2>Companion commentary</h2>
-    <pre>${escapeHtml(document.getElementById("aiText").value || "")}</pre>
 
     <h2>What’s helping you</h2>
     <div class="box">
@@ -1301,22 +1109,27 @@ document.getElementById("btnDownload").addEventListener("click", ()=>{
   a.click();
   a.remove();
   setTimeout(()=>URL.revokeObjectURL(url), 1000);
-});
+}
 
-document.getElementById("btnCopyCommentary").addEventListener("click", async ()=>{
-  const text = document.getElementById("aiText").value || "";
-  if(!text){ alert("No commentary to copy."); return; }
-  await copyToClipboard(text);
-  alert("Copied commentary.");
-});
+function resetAll(){
+  state.answers = {};
+  state.flags = new Set();
+  window.__REPORT__ = null;
+  renderQuestions();
+  document.getElementById("results").style.display = "none";
+  document.getElementById("scoreBar").style.width = "0%";
+  document.getElementById("scoreText").textContent = "0/100";
+  document.getElementById("positionText").textContent = "–";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
 
-document.getElementById("btnCopyPayload").addEventListener("click", async ()=>{
-  const payload = getReportPayloadJson();
-  if(!payload){ alert("Generate the report first."); return; }
-  await copyToClipboard(payload);
-  alert("Copied report payload.");
-});
+// Wire up UI
+document.getElementById("btnGenerate").addEventListener("click", renderResults);
+document.getElementById("btnDownload").addEventListener("click", downloadReport);
+document.getElementById("btnPrint").addEventListener("click", ()=>window.print());
+document.getElementById("btnReset").addEventListener("click", resetAll);
 
+// Init
 renderQuestions();
 </script>
 </body>
