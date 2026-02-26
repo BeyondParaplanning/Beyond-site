@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Beyond | Self-Employed Paraplanner Readiness Engine</title>
+
   <style>
     :root{
       --bg:#0b2b25;
@@ -194,6 +195,10 @@
       border-color: rgba(255,255,255,0.22);
     }
     button.primary:hover{background: rgba(255,255,255,0.18)}
+    button:disabled{
+      opacity: 0.5;
+      cursor:not-allowed;
+    }
 
     .note{
       padding: 12px;
@@ -272,8 +277,79 @@
       font-size: 12px;
       opacity:0.8;
     }
+
+    .callout{
+      border-left: 4px solid rgba(255,255,255,0.28);
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      margin-top: 12px;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .ai-box{
+      display:none;
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .ai-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .ai-header strong{
+      font-weight: 700;
+      letter-spacing:0.2px;
+    }
+
+    .ai-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+
+    textarea{
+      width:100%;
+      min-height: 140px;
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px 10px;
+      font-size: 13px;
+      line-height:1.5;
+      resize: vertical;
+    }
+
+    .tiny-link{
+      font-size: 12px;
+      opacity:0.85;
+      text-decoration: underline;
+      cursor:pointer;
+    }
+
+    /* Print: only print results, not questions/sidebar */
+    @media print{
+      body{ background:#fff; color:#0b2b25; }
+      header, aside, #questions, .row, #progressTag, .pill, .foot, .tiny-link{ display:none !important; }
+      #engineCard{ border:none; box-shadow:none; background:#fff; }
+      #results{ display:block !important; }
+      .card, .meter, .note, .callout, .ai-box{ border:1px solid #d7dedc !important; background:#fff !important; color:#0b2b25 !important; }
+      textarea{ display:none !important; }
+      button{ display:none !important; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -292,6 +368,7 @@
           <h2>Readiness assessment</h2>
           <span class="tag" id="progressTag">0% complete</span>
         </div>
+
         <p class="muted tiny">
           This is not “should you quit your job”. It’s: are your foundations strong enough to start safely, and what would reduce risk fast.
           <br/>If you own the book, you’ll recognise the themes. If you don’t, it still works.
@@ -302,11 +379,11 @@
         <div id="questions"></div>
 
         <div class="row">
-          <button class="primary" id="btnGenerate">Generate readiness report</button>
+          <button class="primary" id="btnGenerate" type="button">Generate readiness report</button>
           <button id="btnReset" type="button">Reset</button>
         </div>
 
-        <div class="results" id="results">
+        <div class="results" id="results" aria-live="polite">
           <div class="divider"></div>
           <h2>Results</h2>
 
@@ -354,9 +431,51 @@
             <tbody></tbody>
           </table>
 
+          <div class="divider"></div>
+
+          <h2>Companion commentary</h2>
+          <div class="callout">
+            This is a plain-English interpretation of your output. It is intentionally direct and conservative.
+          </div>
+
+          <div class="ai-box" id="aiBox">
+            <div class="ai-header">
+              <strong id="aiHeadline">Commentary</strong>
+              <span class="tag" id="aiToneTag">Local analysis</span>
+            </div>
+            <div class="muted tiny" style="margin-top:8px">
+              Want a deeper commentary later? You can wire the report to an API endpoint. Until then, this runs locally and stores nothing.
+            </div>
+
+            <textarea id="aiText" readonly></textarea>
+
+            <div class="ai-actions">
+              <button class="primary" id="btnCopyCommentary" type="button">Copy commentary</button>
+              <button id="btnCopyPayload" type="button">Copy report payload</button>
+              <button id="btnAskApi" type="button" disabled title="Optional. Requires you to configure an endpoint.">Ask via API (optional)</button>
+              <span class="tiny-link" id="toggleApiConfig">Configure API endpoint</span>
+            </div>
+
+            <div id="apiConfig" style="display:none; margin-top:12px">
+              <div class="note">
+                <strong>Optional API wiring</strong><br/>
+                Add your endpoint below (for example, a Cloudflare Worker). When enabled, the tool sends only the finished report payload you choose to copy.
+                No keys are stored in this page. Keep secrets server-side.
+              </div>
+              <textarea id="apiUrl" placeholder="https://your-endpoint.example.com/readiness-commentary"></textarea>
+              <div class="row">
+                <button class="primary" id="btnEnableApi" type="button">Enable API button</button>
+                <button id="btnDisableApi" type="button">Disable API</button>
+              </div>
+              <div class="tiny muted">
+                Expected response: JSON with a "commentary" field (plain text). You control the prompt on your server.
+              </div>
+            </div>
+          </div>
+
           <div class="row">
-            <button class="primary" id="btnDownload">Download report (HTML)</button>
-            <button id="btnPrint">Print</button>
+            <button class="primary" id="btnDownload" type="button">Download report (HTML)</button>
+            <button id="btnPrint" type="button">Print</button>
           </div>
 
           <div class="foot">
@@ -370,6 +489,7 @@
         <p class="muted">
           Your answers map to 6 readiness dimensions. Each has a weight. The engine then applies a few “hard stop” rules where needed.
         </p>
+
         <div class="divider"></div>
 
         <div class="note">
@@ -387,7 +507,7 @@
         <div class="divider"></div>
 
         <p class="tiny muted">
-          If you later want AI commentary on the generated report, we can add an optional “Ask the Companion” button that sends only your finished report text to an API.
+          If you later want external AI commentary, wire the report payload to an endpoint that you control.
           Until then, everything runs locally.
         </p>
       </aside>
@@ -401,48 +521,47 @@
  * - Weighted dimensions
  * - Hard stop logic
  * - Downloadable report (HTML)
+ * - Local companion commentary (no API)
+ * - Optional API call if user configures endpoint
  */
 
 const DIMENSIONS = {
-  buffer: { label: "Financial buffer", weight: 0.22, meaning: "Your ability to absorb slow weeks without panic pricing or burnout." },
-  demand: { label: "Demand and pipeline", weight: 0.18, meaning: "Evidence that your skills convert into paying work consistently." },
-  ops:    { label: "Operational readiness", weight: 0.18, meaning: "Case intake, workflow, QA, invoicing, and basic delivery discipline." },
-  risk:   { label: "Risk and compliance", weight: 0.16, meaning: "Data handling, boundaries, ToB, and not drifting into regulated advice." },
-  identity:{ label:"Identity and discipline", weight: 0.16, meaning:"Your ability to self-manage without recreating employment pressure." },
-  support:{ label:"Support and capacity", weight: 0.10, meaning:"Whether you have help, or a plan for help, when volume rises." },
+  buffer:  { label: "Financial buffer",         weight: 0.22, meaning: "Your ability to absorb slow weeks without panic pricing or burnout." },
+  demand:  { label: "Demand and pipeline",      weight: 0.18, meaning: "Evidence that your skills convert into paying work consistently." },
+  ops:     { label: "Operational readiness",    weight: 0.18, meaning: "Case intake, workflow, QA, invoicing, and basic delivery discipline." },
+  risk:    { label: "Risk and compliance",      weight: 0.16, meaning: "Data handling, boundaries, terms, and not drifting into regulated advice." },
+  identity:{ label: "Identity and discipline",  weight: 0.16, meaning: "Your ability to self-manage without recreating employment pressure." },
+  support: { label: "Support and capacity",     weight: 0.10, meaning: "Whether you have help, or a plan for help, when volume rises." },
 };
 
 // Question bank
-// Each choice contributes points 0..5 to one or more dimensions (mostly one).
+// Each choice contributes points 0..5 to one dimension.
 // Score is normalised per dimension to 0..100, then weighted.
 const QUESTIONS = [
   {
-    id:"q1",
-    dim:"buffer",
+    id:"q1", dim:"buffer",
     title:"If work dropped for 4 weeks, how safe are you financially?",
     desc:"Not optimism. Reality. Savings, household coverage, and breathing room.",
     choices:[
       { label:"I’d be fine. I have a buffer of 3+ months of essential costs.", pts:5, flags:["stable_base"] },
       { label:"I could cope. About 1–3 months buffer.", pts:3, flags:["needs_buffer_plan"] },
       { label:"It would be tight. Less than a month buffer.", pts:1, flags:["low_buffer"] },
-      { label:"It would be a problem immediately.", pts:0, flags:["low_buffer","hard_stop_candidate"] }
+      { label:"It would be a problem immediately.", pts:0, flags:["low_buffer"] }
     ]
   },
   {
-    id:"q2",
-    dim:"demand",
+    id:"q2", dim:"demand",
     title:"How proven is demand for your service outside your current employer?",
     desc:"You can be brilliant and still not have a pipeline yet.",
     choices:[
       { label:"I already have paying clients, or signed commitments.", pts:5, flags:["proven_demand"] },
       { label:"Strong leads and warm conversations. Not signed yet.", pts:3, flags:["emerging_demand"] },
       { label:"A few likes and ‘keep me posted’, nothing concrete.", pts:1, flags:["unproven_demand"] },
-      { label:"No outreach yet. I’m hoping it will appear.", pts:0, flags:["unproven_demand","hard_stop_candidate"] }
+      { label:"No outreach yet. I’m hoping it will appear.", pts:0, flags:["unproven_demand"] }
     ]
   },
   {
-    id:"q3",
-    dim:"ops",
+    id:"q3", dim:"ops",
     title:"Do you have a repeatable case intake and workflow tracker?",
     desc:"Inbox-led businesses drift. Tracker-led businesses scale.",
     choices:[
@@ -453,8 +572,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id:"q4",
-    dim:"risk",
+    id:"q4", dim:"risk",
     title:"How strong are your boundaries around regulated advice and liability?",
     desc:"You can be helpful without crossing the line.",
     choices:[
@@ -465,20 +583,18 @@ const QUESTIONS = [
     ]
   },
   {
-    id:"q5",
-    dim:"risk",
+    id:"q5", dim:"risk",
     title:"Data security: how are you handling client data day-to-day?",
     desc:"This is about professionalism and protecting everyone involved.",
     choices:[
-      { label:"Secure storage and sharing (OneDrive/SharePoint/Workspace) plus ICO registration.", pts:5, flags:["data_ready"] },
+      { label:"Secure storage and sharing plus ICO registration.", pts:5, flags:["data_ready"] },
       { label:"Secure storage, but my process is not fully consistent yet.", pts:3, flags:["data_partial"] },
       { label:"Email attachments and ad-hoc file sharing happens.", pts:1, flags:["data_risk"] },
-      { label:"No defined approach yet.", pts:0, flags:["data_risk","hard_stop_candidate"] }
+      { label:"No defined approach yet.", pts:0, flags:["data_risk"] }
     ]
   },
   {
-    id:"q6",
-    dim:"identity",
+    id:"q6", dim:"identity",
     title:"How well do you self-direct without external pressure?",
     desc:"This is the ‘can I lead myself’ question.",
     choices:[
@@ -489,20 +605,18 @@ const QUESTIONS = [
     ]
   },
   {
-    id:"q7",
-    dim:"support",
+    id:"q7", dim:"support",
     title:"If volume increased by 30% next month, what happens?",
     desc:"This is where founders either scale or crack.",
     choices:[
       { label:"I can handle it. I have buffer time, systems, or reliable support.", pts:5, flags:["capacity_ready"] },
       { label:"I could stretch, but it would squeeze my life.", pts:3, flags:["capacity_tight"] },
-      { label:"I’d probably work evenings and weekends.", pts:1, flags:["capacity_tight"] },
+      { label:"I’d probably work evenings and weekends.", pts:1, flags:["capacity_tight","capacity_red"] },
       { label:"It would overwhelm me.", pts:0, flags:["capacity_red"] }
     ]
   },
   {
-    id:"q8",
-    dim:"ops",
+    id:"q8", dim:"ops",
     title:"Quality control: do you have a consistent QA process?",
     desc:"Reputation is built in the second read, not the first draft.",
     choices:[
@@ -513,8 +627,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id:"q9",
-    dim:"demand",
+    id:"q9", dim:"demand",
     title:"How confident are you discussing pricing without flinching?",
     desc:"Not arrogance. Calm certainty.",
     choices:[
@@ -525,8 +638,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id:"q10",
-    dim:"support",
+    id:"q10", dim:"support",
     title:"Do you have a plan for help (admin or subcontractor) when needed?",
     desc:"Help is not a luxury. It is a stabiliser.",
     choices:[
@@ -535,12 +647,29 @@ const QUESTIONS = [
       { label:"I’ll think about it when I’m too busy.", pts:1, flags:["help_weak"] },
       { label:"I want to do it all myself.", pts:0, flags:["help_weak"] }
     ]
+  },
+  // Bonus: the killer failure mode
+  {
+    id:"q11", dim:"identity",
+    title:"When pressure rises, which default shows up most?",
+    desc:"This is often the real reason self-employment feels ‘hard’.",
+    choices:[
+      { label:"I protect scope and renegotiate deadlines calmly.", pts:5, flags:["scope_control"] },
+      { label:"I push harder for a bit, then recover intentionally.", pts:3, flags:["overpush_tendency"] },
+      { label:"I over-deliver and work late to feel safe.", pts:1, flags:["overdeliver_risk"] },
+      { label:"I freeze or avoid, then sprint at the last minute.", pts:0, flags:["avoid_sprint","identity_risk"] }
+    ]
   }
 ];
 
 const state = {
-  answers: {},   // qid -> pts
+  answers: {},   // qid -> {pts, dim, label, flags}
   flags: new Set(),
+};
+
+const apiState = {
+  enabled: false,
+  url: ""
 };
 
 function el(tag, attrs={}, children=[]){
@@ -577,17 +706,16 @@ function renderQuestions(){
       const input = el("input", {type:"radio", name:q.id, id:rid});
       input.addEventListener("change", ()=>{
         state.answers[q.id] = {pts:c.pts, dim:q.dim, label:c.label, flags:c.flags || []};
-        // rebuild flags safely
         recomputeFlags();
         updateProgress();
       });
 
-      const label = el("label", {class:"choice", for:rid}, [
+      // Patch: no "for" because input sits inside label
+      const label = el("label", {class:"choice"}, [
         input,
-        el("div", {}, [
-          el("div", {}, [c.label])
-        ])
+        el("div", {}, [ el("div", {}, [c.label]) ])
       ]);
+
       choices.appendChild(label);
     });
 
@@ -614,7 +742,6 @@ function updateProgress(){
 }
 
 function computeScores(){
-  // Dimension raw totals and max totals
   const dimRaw = {};
   const dimMax = {};
   Object.keys(DIMENSIONS).forEach(d=>{
@@ -629,13 +756,11 @@ function computeScores(){
     if(ans) dimRaw[q.dim] += ans.pts;
   });
 
-  // Normalise per dimension
   const dimPct = {};
   Object.keys(DIMENSIONS).forEach(d=>{
     dimPct[d] = dimMax[d] === 0 ? 0 : Math.round((dimRaw[d]/dimMax[d]) * 100);
   });
 
-  // Weighted overall
   let overall = 0;
   Object.entries(DIMENSIONS).forEach(([d, meta])=>{
     overall += dimPct[d] * meta.weight;
@@ -646,23 +771,29 @@ function computeScores(){
 }
 
 function applyHardStops(result){
-  // conservative rules:
-  // if low buffer + unproven demand -> cap overall and push staged transition
   const flags = state.flags;
   let cap = null;
   const notes = [];
 
-  if(flags.has("low_buffer") && (flags.has("unproven_demand") || flags.has("hard_stop_candidate"))){
+  // Conservative: low buffer + unproven demand
+  if(flags.has("low_buffer") && flags.has("unproven_demand")){
     cap = 45;
     notes.push("Your buffer and demand evidence are both low. A fast leap would likely force panic pricing and reduce quality. Stage this transition.");
   }
+
+  // Risk / data handling
   if(flags.has("risk_red") || flags.has("data_risk")){
     cap = Math.min(cap ?? 100, 55);
     notes.push("Risk boundaries or data handling need tightening before you scale. This is fixable, but it has to be deliberate.");
   }
 
-  if(cap !== null && result.overall > cap) result.overall = cap;
+  // Over-delivery under pressure (quiet killer)
+  if(flags.has("overdeliver_risk")){
+    cap = Math.min(cap ?? 100, 65);
+    notes.push("Your stress default is over-delivery. That is a hidden liability. Build boundaries and a scope script before you rely on volume.");
+  }
 
+  if(cap !== null && result.overall > cap) result.overall = cap;
   return { ...result, hardStopNotes: notes };
 }
 
@@ -696,6 +827,9 @@ function buildInsights(dimPct, overall, hardStopNotes){
   if(state.flags.has("qa_risk")) risks.push("QA is not yet consistent. This is one of the quickest ways to damage trust.");
   if(state.flags.has("pricing_red")) risks.push("Pricing conversations are currently a stress point. That usually leads to undercharging and over-delivery.");
   if(state.flags.has("capacity_red")) risks.push("Your life will take the hit first when volume rises. Build a buffer or support plan before you grow.");
+  if(state.flags.has("risk_blur")) risks.push("Your boundary line is a little fuzzy in practice. Write it down and enforce it.");
+  if(state.flags.has("overdeliver_risk")) risks.push("Your pressure default is over-delivery. This is the root of burnout and scope creep.");
+  if(state.flags.has("avoid_sprint")) risks.push("Avoidance followed by sprinting is unstable. Build a weekly cadence that makes progress boring.");
 
   // Steps: ordered, pragmatic
   if(state.flags.has("low_buffer")){
@@ -716,6 +850,9 @@ function buildInsights(dimPct, overall, hardStopNotes){
   if(state.flags.has("pricing_wobble") || state.flags.has("pricing_red")){
     steps.push("Rewrite your pricing script: one calm sentence that explains what your fee protects (quality, risk, turnaround), then stop talking.");
   }
+  if(state.flags.has("overdeliver_risk")){
+    steps.push("Write a scope boundary script: what you do, what you do not do, and what triggers a re-quote. Use it before you start any case.");
+  }
   if(state.flags.has("help_weak") || state.flags.has("help_partial")){
     steps.push("Plan your first delegation: choose admin or a specialist slice first. Document what ‘good’ looks like, then test with one case.");
   }
@@ -723,14 +860,89 @@ function buildInsights(dimPct, overall, hardStopNotes){
     steps.push("Keep your rhythm: protect deep work, keep boundaries, and avoid ‘yes’ reflexes that recreate employment pressure.");
   }
 
-  // Hard stop notes (if any)
+  // Hard stop notes first
   hardStopNotes.forEach(n=>risks.unshift(n));
-
   return { strengths, risks, steps };
 }
 
+function buildCommentary(report){
+  const { overall, positioning, dimPct, insights } = report;
+
+  // Pull key weak points
+  const weak = Object.entries(dimPct).filter(([_,p])=>p < 55).sort((a,b)=>a[1]-b[1]);
+  const topWeak = weak.slice(0,2).map(([d,p])=>`${DIMENSIONS[d].label} (${p}%)`);
+
+  // Pull key strengths
+  const strong = Object.entries(dimPct).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([d,p])=>`${DIMENSIONS[d].label} (${p}%)`);
+
+  const flags = state.flags;
+
+  const lines = [];
+
+  lines.push(`Positioning: ${positioning}. Score: ${overall}/100.`);
+  lines.push("");
+
+  // Main read
+  if(overall >= 80){
+    lines.push("This is a green-light profile, with a caveat: do not confuse readiness with inevitability. Your job is to protect delivery quality as volume increases.");
+  } else if(overall >= 65){
+    lines.push("You are ready to start, but only if you keep it structured. The danger zone is going too bespoke, too fast, then losing margin and control.");
+  } else if(overall >= 50){
+    lines.push("You are close. Your capability is not the question. Your foundation is the question. If you tighten the weak points, the whole thing becomes calmer.");
+  } else {
+    lines.push("This is a staged-transition recommendation. You can still do it, but not by leaping. Reduce risk first, then increase exposure.");
+  }
+
+  lines.push("");
+  lines.push(`What’s already working: ${strong.join(", ")}.`);
+  if(topWeak.length){
+    lines.push(`Where you are exposed: ${topWeak.join(", ")}.`);
+  }
+
+  // Flag-based directness
+  if(flags.has("low_buffer") && flags.has("unproven_demand")){
+    lines.push("");
+    lines.push("The blunt truth: low buffer plus unproven demand forces bad behaviour. You undercharge, you over-deliver, and you say yes to the wrong clients. Fix one of those two first.");
+  }
+
+  if(flags.has("data_risk")){
+    lines.push("");
+    lines.push("Data handling is a credibility pillar. Lock it down now, because you do not want to be redesigning security when you are busy.");
+  }
+
+  if(flags.has("risk_red") || flags.has("risk_blur")){
+    lines.push("");
+    lines.push("Your boundary around regulated advice needs a written line. Your best version is helpful without deciding. Document the boundary and make it part of your intake.");
+  }
+
+  if(flags.has("overdeliver_risk")){
+    lines.push("");
+    lines.push("Your biggest risk is not market demand. It is your stress default. Over-delivery feels noble, but it quietly deletes your margin and your family time. Your next step is a scope script and a re-quote trigger.");
+  }
+
+  if(flags.has("pricing_red") || flags.has("pricing_wobble")){
+    lines.push("");
+    lines.push("Pricing will stabilise when you stop selling your time and start selling what your fee protects: accuracy, risk reduction, and turnaround. One sentence. Then stop talking.");
+  }
+
+  if(flags.has("capacity_red")){
+    lines.push("");
+    lines.push("Capacity is not a motivation problem. It is a design problem. Either reduce bespoke work, increase price, or add support. Pick one first.");
+  }
+
+  // Close with the top 3 actions (from steps)
+  lines.push("");
+  lines.push("The three actions that will change your trajectory fastest:");
+  const top3 = (insights.steps || []).slice(0,3);
+  top3.forEach((s, i)=>lines.push(`${i+1}. ${s}`));
+
+  lines.push("");
+  lines.push("If you want this to become a true companion, the next upgrade is not more questions. It’s a tighter staged plan that turns your weak scores into a 30-day checklist.");
+
+  return lines.join("\n");
+}
+
 function renderResults(){
-  // Validation
   if(Object.keys(state.answers).length !== QUESTIONS.length){
     alert("Answer all questions first so the report is accurate.");
     return;
@@ -738,13 +950,12 @@ function renderResults(){
 
   const base = computeScores();
   const result = applyHardStops(base);
+
   const dimPct = result.dimPct;
   const overall = result.overall;
-
   const positioning = positioningFromScore(overall);
   const insights = buildInsights(dimPct, overall, result.hardStopNotes);
 
-  // UI update
   const resultsEl = document.getElementById("results");
   resultsEl.style.display = "block";
 
@@ -770,7 +981,6 @@ function renderResults(){
     stepsOl.appendChild(li);
   });
 
-  // Breakdown table
   const tbody = document.querySelector("#breakdownTable tbody");
   tbody.innerHTML = "";
   Object.entries(dimPct).forEach(([d,p])=>{
@@ -783,13 +993,18 @@ function renderResults(){
     tbody.appendChild(tr);
   });
 
-  // Save generated report data in-memory for export/print
-  window.__REPORT__ = buildReportPayload(overall, positioning, dimPct, insights);
-  // Scroll to results
+  window.__REPORT__ = buildReportPayload(overall, positioning, dimPct, insights, result.hardStopNotes);
+
+  // Companion commentary (local)
+  const commentary = buildCommentary(window.__REPORT__);
+  document.getElementById("aiText").value = commentary;
+  document.getElementById("aiHeadline").textContent = "Commentary (local, no tracking)";
+  document.getElementById("aiBox").style.display = "block";
+
   resultsEl.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
-function buildReportPayload(overall, positioning, dimPct, insights){
+function buildReportPayload(overall, positioning, dimPct, insights, hardStopNotes){
   const answers = QUESTIONS.map((q, i)=>{
     const a = state.answers[q.id];
     return {
@@ -803,7 +1018,16 @@ function buildReportPayload(overall, positioning, dimPct, insights){
   const now = new Date();
   const stamp = now.toLocaleString("en-GB", { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
 
-  return { overall, positioning, dimPct, insights, answers, stamp };
+  return {
+    overall,
+    positioning,
+    dimPct,
+    insights,
+    answers,
+    hardStopNotes: hardStopNotes || [],
+    flags: Array.from(state.flags),
+    stamp
+  };
 }
 
 function downloadReport(){
@@ -813,7 +1037,6 @@ function downloadReport(){
     return;
   }
 
-  // Create a clean printable HTML report
   const html = `
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -837,6 +1060,7 @@ function downloadReport(){
   table{ width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12.5px; }
   th, td{ border-bottom: 1px solid #e2e8e6; padding: 8px 6px; text-align:left; vertical-align:top; }
   .small{ font-size: 12px; opacity: 0.85; }
+  pre{ white-space: pre-wrap; background:#f6f8f7; border:1px solid #e2e8e6; padding:10px 12px; border-radius:10px; }
   @media print{
     .no-print{ display:none; }
     .page{ padding: 28px 24px; }
@@ -858,6 +1082,9 @@ function downloadReport(){
         <div style="font-size:18px; font-weight:700;">${escapeHtml(r.positioning)}</div>
       </div>
     </div>
+
+    <h2>Companion commentary</h2>
+    <pre>${escapeHtml(buildCommentary(r))}</pre>
 
     <h2>What’s helping you</h2>
     <div class="box">
@@ -936,21 +1163,13 @@ function downloadReport(){
   setTimeout(()=>URL.revokeObjectURL(url), 1000);
 }
 
-function printCurrent(){
-  if(!window.__REPORT__){
-    alert("Generate the readiness report first.");
-    return;
-  }
-  // Print the on-screen results view
-  window.print();
-}
-
 function resetAll(){
   state.answers = {};
   state.flags = new Set();
   window.__REPORT__ = null;
   renderQuestions();
   document.getElementById("results").style.display = "none";
+  document.getElementById("aiBox").style.display = "none";
   document.getElementById("scoreBar").style.width = "0%";
   document.getElementById("scoreText").textContent = "0/100";
   document.getElementById("positionText").textContent = "–";
@@ -966,11 +1185,117 @@ function escapeHtml(str){
     .replaceAll("'","&#039;");
 }
 
+async function copyToClipboard(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    return true;
+  }catch(e){
+    // fallback
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand("copy"); }catch(_){}
+    ta.remove();
+    return true;
+  }
+}
+
+function getReportPayloadJson(){
+  if(!window.__REPORT__) return "";
+  return JSON.stringify(window.__REPORT__, null, 2);
+}
+
+function toggleApiConfig(){
+  const box = document.getElementById("apiConfig");
+  box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
+}
+
+function enableApi(){
+  const url = document.getElementById("apiUrl").value.trim();
+  if(!url){
+    alert("Paste an endpoint URL first.");
+    return;
+  }
+  apiState.enabled = true;
+  apiState.url = url;
+  document.getElementById("btnAskApi").disabled = false;
+  document.getElementById("aiToneTag").textContent = "API enabled";
+}
+
+function disableApi(){
+  apiState.enabled = false;
+  apiState.url = "";
+  document.getElementById("btnAskApi").disabled = true;
+  document.getElementById("aiToneTag").textContent = "Local analysis";
+}
+
+async function askViaApi(){
+  if(!window.__REPORT__){
+    alert("Generate the readiness report first.");
+    return;
+  }
+  if(!apiState.enabled || !apiState.url){
+    alert("Configure and enable an API endpoint first.");
+    return;
+  }
+
+  const btn = document.getElementById("btnAskApi");
+  btn.disabled = true;
+  btn.textContent = "Asking...";
+
+  try{
+    const res = await fetch(apiState.url, {
+      method: "POST",
+      headers: { "Content-Type":"application/json" },
+      body: JSON.stringify({ report: window.__REPORT__ })
+    });
+
+    if(!res.ok){
+      throw new Error(`Request failed (${res.status})`);
+    }
+
+    const data = await res.json();
+    const commentary = (data && data.commentary) ? String(data.commentary) : "";
+    if(!commentary){
+      throw new Error("No 'commentary' field returned by the endpoint.");
+    }
+
+    document.getElementById("aiHeadline").textContent = "Commentary (via API)";
+    document.getElementById("aiText").value = commentary;
+
+  }catch(err){
+    alert(`API error: ${err.message}`);
+  }finally{
+    btn.disabled = false;
+    btn.textContent = "Ask via API (optional)";
+  }
+}
+
 // Wire up UI
 document.getElementById("btnGenerate").addEventListener("click", renderResults);
 document.getElementById("btnDownload").addEventListener("click", downloadReport);
-document.getElementById("btnPrint").addEventListener("click", printCurrent);
+document.getElementById("btnPrint").addEventListener("click", ()=>window.print());
 document.getElementById("btnReset").addEventListener("click", resetAll);
+
+document.getElementById("btnCopyCommentary").addEventListener("click", async ()=>{
+  const text = document.getElementById("aiText").value || "";
+  if(!text){ alert("No commentary to copy."); return; }
+  await copyToClipboard(text);
+  alert("Copied commentary.");
+});
+
+document.getElementById("btnCopyPayload").addEventListener("click", async ()=>{
+  const payload = getReportPayloadJson();
+  if(!payload){ alert("Generate the report first."); return; }
+  await copyToClipboard(payload);
+  alert("Copied report payload.");
+});
+
+document.getElementById("toggleApiConfig").addEventListener("click", toggleApiConfig);
+document.getElementById("btnEnableApi").addEventListener("click", enableApi);
+document.getElementById("btnDisableApi").addEventListener("click", disableApi);
+document.getElementById("btnAskApi").addEventListener("click", askViaApi);
 
 // Init
 renderQuestions();
