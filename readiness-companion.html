@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Beyond | Self-Employed Paraplanner Readiness Engine</title>
+  <style>
+    :root{
+      --bg:#0b2b25;
+      --text:#faf4f2;
+      --accent:#354532;
+      --highlight:#4a5e45;
+      --subtle:rgba(255,255,255,0.06);
+      --subtle2:rgba(255,255,255,0.10);
+      --ink:#0b2b25;
+      --paper:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,0.06), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,0.05), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      justify-content:space-between;
+      margin-bottom: 18px;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .brand h1{
+      margin:0;
+      font-size: 22px;
+      letter-spacing:0.2px;
+    }
+    .brand p{
+      margin:0;
+      opacity:0.9;
+      max-width: 64ch;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      font-size: 13px;
+      opacity: 0.95;
+      white-space: nowrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap:16px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+      header{flex-direction:column}
+      .pill{white-space:normal}
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+    }
+
+    .card h2{
+      margin:0 0 8px 0;
+      font-size: 16px;
+      letter-spacing:0.2px;
+    }
+
+    .muted{opacity:0.85}
+    .tiny{font-size: 12px; opacity:0.85}
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,0.14);
+      margin: 14px 0;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+
+    .tag{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05);
+      opacity: 0.95;
+    }
+
+    .q{
+      padding: 14px 12px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      margin: 10px 0;
+    }
+
+    .q .qhead{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+
+    .q strong{
+      display:block;
+      font-weight: 650;
+      letter-spacing:0.15px;
+    }
+
+    .q .desc{
+      margin-top:6px;
+      opacity:0.85;
+      font-size: 13px;
+    }
+
+    .choices{
+      display:grid;
+      gap:8px;
+      margin-top: 10px;
+    }
+
+    .choice{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding: 10px 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.02);
+      border-radius: 12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .choice:hover{background: rgba(255,255,255,0.04)}
+    .choice input{margin-top:3px}
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+
+    button{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 11px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-weight: 650;
+      letter-spacing:0.2px;
+    }
+    button:hover{background: rgba(255,255,255,0.09)}
+    button.primary{
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.22);
+    }
+    button.primary:hover{background: rgba(255,255,255,0.18)}
+
+    .note{
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .meter{
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    .bar{
+      height: 12px;
+      width: 100%;
+      background: rgba(255,255,255,0.10);
+      border-radius: 999px;
+      overflow:hidden;
+      margin-top: 10px;
+    }
+    .bar > div{
+      height:100%;
+      width:0%;
+      background: rgba(255,255,255,0.75);
+      border-radius: 999px;
+      transition: width 240ms ease;
+    }
+
+    .kpi{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .kpi .box{
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .kpi .box .label{font-size:12px; opacity:0.85}
+    .kpi .box .value{font-size:16px; font-weight:700; margin-top:3px}
+
+    .results{
+      display:none;
+      margin-top: 14px;
+    }
+
+    .risklist{
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    .risklist li{margin: 6px 0}
+
+    .mini-table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .mini-table th, .mini-table td{
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 6px;
+      text-align:left;
+      vertical-align:top;
+    }
+    .mini-table th{opacity:0.9}
+
+    .foot{
+      margin-top: 16px;
+      font-size: 12px;
+      opacity:0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Beyond Readiness Engine</h1>
+        <p class="muted">A practical, anonymous check of whether self-employed paraplanning fits you now, what’s missing, and the next sensible move.</p>
+      </div>
+      <div class="pill" title="No logins. No tracking. No data stored.">
+        🔒 Anonymous by design
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card" id="engineCard">
+        <div class="section-title">
+          <h2>Readiness assessment</h2>
+          <span class="tag" id="progressTag">0% complete</span>
+        </div>
+        <p class="muted tiny">
+          This is not “should you quit your job”. It’s: are your foundations strong enough to start safely, and what would reduce risk fast.
+          <br/>If you own the book, you’ll recognise the themes. If you don’t, it still works.
+        </p>
+
+        <div class="divider"></div>
+
+        <div id="questions"></div>
+
+        <div class="row">
+          <button class="primary" id="btnGenerate">Generate readiness report</button>
+          <button id="btnReset" type="button">Reset</button>
+        </div>
+
+        <div class="results" id="results">
+          <div class="divider"></div>
+          <h2>Results</h2>
+
+          <div class="meter">
+            <div class="muted tiny">Overall readiness</div>
+            <div class="bar"><div id="scoreBar"></div></div>
+            <div class="kpi">
+              <div class="box">
+                <div class="label">Readiness score</div>
+                <div class="value" id="scoreText">0/100</div>
+              </div>
+              <div class="box">
+                <div class="label">Positioning</div>
+                <div class="value" id="positionText">–</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2>What’s helping you</h2>
+          <div class="note" id="strengths"></div>
+
+          <div class="divider"></div>
+
+          <h2>Risks to address first</h2>
+          <ul class="risklist" id="risks"></ul>
+
+          <div class="divider"></div>
+
+          <h2>Suggested next steps (in order)</h2>
+          <ol class="risklist" id="steps"></ol>
+
+          <div class="divider"></div>
+
+          <h2>Breakdown by dimension</h2>
+          <table class="mini-table" id="breakdownTable">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Score</th>
+                <th>What it means</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <div class="row">
+            <button class="primary" id="btnDownload">Download report (HTML)</button>
+            <button id="btnPrint">Print</button>
+          </div>
+
+          <div class="foot">
+            Note: This tool is intentionally conservative. It will push you towards stability, clarity and integrity over hype.
+          </div>
+        </div>
+      </main>
+
+      <aside class="card">
+        <h2>How it scores</h2>
+        <p class="muted">
+          Your answers map to 6 readiness dimensions. Each has a weight. The engine then applies a few “hard stop” rules where needed.
+        </p>
+        <div class="divider"></div>
+
+        <div class="note">
+          <strong>Dimensions</strong><br/>
+          Financial Buffer, Demand and Pipeline, Operational Readiness, Risk and Compliance, Identity and Discipline, Support and Capacity
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="note">
+          <strong>Hard stop examples</strong><br/>
+          If buffer is low and demand is unproven, it will not recommend a fast leap. It will recommend a staged transition.
+        </div>
+
+        <div class="divider"></div>
+
+        <p class="tiny muted">
+          If you later want AI commentary on the generated report, we can add an optional “Ask the Companion” button that sends only your finished report text to an API.
+          Until then, everything runs locally.
+        </p>
+      </aside>
+    </div>
+  </div>
+
+<script>
+/**
+ * Beyond Readiness Engine (no storage)
+ * - Rule based scoring
+ * - Weighted dimensions
+ * - Hard stop logic
+ * - Downloadable report (HTML)
+ */
+
+const DIMENSIONS = {
+  buffer: { label: "Financial buffer", weight: 0.22, meaning: "Your ability to absorb slow weeks without panic pricing or burnout." },
+  demand: { label: "Demand and pipeline", weight: 0.18, meaning: "Evidence that your skills convert into paying work consistently." },
+  ops:    { label: "Operational readiness", weight: 0.18, meaning: "Case intake, workflow, QA, invoicing, and basic delivery discipline." },
+  risk:   { label: "Risk and compliance", weight: 0.16, meaning: "Data handling, boundaries, ToB, and not drifting into regulated advice." },
+  identity:{ label:"Identity and discipline", weight: 0.16, meaning:"Your ability to self-manage without recreating employment pressure." },
+  support:{ label:"Support and capacity", weight: 0.10, meaning:"Whether you have help, or a plan for help, when volume rises." },
+};
+
+// Question bank
+// Each choice contributes points 0..5 to one or more dimensions (mostly one).
+// Score is normalised per dimension to 0..100, then weighted.
+const QUESTIONS = [
+  {
+    id:"q1",
+    dim:"buffer",
+    title:"If work dropped for 4 weeks, how safe are you financially?",
+    desc:"Not optimism. Reality. Savings, household coverage, and breathing room.",
+    choices:[
+      { label:"I’d be fine. I have a buffer of 3+ months of essential costs.", pts:5, flags:["stable_base"] },
+      { label:"I could cope. About 1–3 months buffer.", pts:3, flags:["needs_buffer_plan"] },
+      { label:"It would be tight. Less than a month buffer.", pts:1, flags:["low_buffer"] },
+      { label:"It would be a problem immediately.", pts:0, flags:["low_buffer","hard_stop_candidate"] }
+    ]
+  },
+  {
+    id:"q2",
+    dim:"demand",
+    title:"How proven is demand for your service outside your current employer?",
+    desc:"You can be brilliant and still not have a pipeline yet.",
+    choices:[
+      { label:"I already have paying clients, or signed commitments.", pts:5, flags:["proven_demand"] },
+      { label:"Strong leads and warm conversations. Not signed yet.", pts:3, flags:["emerging_demand"] },
+      { label:"A few likes and ‘keep me posted’, nothing concrete.", pts:1, flags:["unproven_demand"] },
+      { label:"No outreach yet. I’m hoping it will appear.", pts:0, flags:["unproven_demand","hard_stop_candidate"] }
+    ]
+  },
+  {
+    id:"q3",
+    dim:"ops",
+    title:"Do you have a repeatable case intake and workflow tracker?",
+    desc:"Inbox-led businesses drift. Tracker-led businesses scale.",
+    choices:[
+      { label:"Yes. Case submission template, tracker, and clear stages.", pts:5, flags:["ops_ready"] },
+      { label:"Partly. Some structure, but not consistent.", pts:3, flags:["ops_partial"] },
+      { label:"Not really. I mostly work off email/Teams messages.", pts:1, flags:["ops_weak"] },
+      { label:"No system at all yet.", pts:0, flags:["ops_weak"] }
+    ]
+  },
+  {
+    id:"q4",
+    dim:"risk",
+    title:"How strong are your boundaries around regulated advice and liability?",
+    desc:"You can be helpful without crossing the line.",
+    choices:[
+      { label:"Very clear. I offer clarity and research, not recommendations.", pts:5, flags:["risk_ready"] },
+      { label:"Mostly clear, but I sometimes get pulled into shaping outcomes.", pts:3, flags:["risk_blur"] },
+      { label:"I’m not sure where the line is in practice.", pts:1, flags:["risk_blur"] },
+      { label:"I often end up deciding what the adviser should recommend.", pts:0, flags:["risk_red"] }
+    ]
+  },
+  {
+    id:"q5",
+    dim:"risk",
+    title:"Data security: how are you handling client data day-to-day?",
+    desc:"This is about professionalism and protecting everyone involved.",
+    choices:[
+      { label:"Secure storage and sharing (OneDrive/SharePoint/Workspace) plus ICO registration.", pts:5, flags:["data_ready"] },
+      { label:"Secure storage, but my process is not fully consistent yet.", pts:3, flags:["data_partial"] },
+      { label:"Email attachments and ad-hoc file sharing happens.", pts:1, flags:["data_risk"] },
+      { label:"No defined approach yet.", pts:0, flags:["data_risk","hard_stop_candidate"] }
+    ]
+  },
+  {
+    id:"q6",
+    dim:"identity",
+    title:"How well do you self-direct without external pressure?",
+    desc:"This is the ‘can I lead myself’ question.",
+    choices:[
+      { label:"Strongly. I plan my week, protect deep work, and finish on time.", pts:5, flags:["self_lead"] },
+      { label:"Moderate. I’m good when busy, wobble when quiet.", pts:3, flags:["quiet_wobble"] },
+      { label:"I tend to drift or overwork to feel safe.", pts:1, flags:["identity_risk"] },
+      { label:"I struggle without someone else setting the pace.", pts:0, flags:["identity_risk"] }
+    ]
+  },
+  {
+    id:"q7",
+    dim:"support",
+    title:"If volume increased by 30% next month, what happens?",
+    desc:"This is where founders either scale or crack.",
+    choices:[
+      { label:"I can handle it. I have buffer time, systems, or reliable support.", pts:5, flags:["capacity_ready"] },
+      { label:"I could stretch, but it would squeeze my life.", pts:3, flags:["capacity_tight"] },
+      { label:"I’d probably work evenings and weekends.", pts:1, flags:["capacity_tight"] },
+      { label:"It would overwhelm me.", pts:0, flags:["capacity_red"] }
+    ]
+  },
+  {
+    id:"q8",
+    dim:"ops",
+    title:"Quality control: do you have a consistent QA process?",
+    desc:"Reputation is built in the second read, not the first draft.",
+    choices:[
+      { label:"Yes. Checklist, pause-break, and a final read every time.", pts:5, flags:["qa_ready"] },
+      { label:"Some QA, but it gets skipped under pressure.", pts:3, flags:["qa_partial"] },
+      { label:"I rely on ‘I’ll spot it later’ and hope for the best.", pts:1, flags:["qa_risk"] },
+      { label:"No QA process.", pts:0, flags:["qa_risk"] }
+    ]
+  },
+  {
+    id:"q9",
+    dim:"demand",
+    title:"How confident are you discussing pricing without flinching?",
+    desc:"Not arrogance. Calm certainty.",
+    choices:[
+      { label:"Very. I quote cleanly and hold my boundaries.", pts:5, flags:["pricing_ready"] },
+      { label:"Fairly. I sometimes over-explain.", pts:3, flags:["pricing_wobble"] },
+      { label:"I often discount or hesitate.", pts:1, flags:["pricing_wobble"] },
+      { label:"I avoid the conversation.", pts:0, flags:["pricing_red"] }
+    ]
+  },
+  {
+    id:"q10",
+    dim:"support",
+    title:"Do you have a plan for help (admin or subcontractor) when needed?",
+    desc:"Help is not a luxury. It is a stabiliser.",
+    choices:[
+      { label:"Yes. I know who, when, and how I will delegate.", pts:5, flags:["help_plan"] },
+      { label:"I have names in mind, not formalised.", pts:3, flags:["help_partial"] },
+      { label:"I’ll think about it when I’m too busy.", pts:1, flags:["help_weak"] },
+      { label:"I want to do it all myself.", pts:0, flags:["help_weak"] }
+    ]
+  }
+];
+
+const state = {
+  answers: {},   // qid -> pts
+  flags: new Set(),
+};
+
+function el(tag, attrs={}, children=[]){
+  const node = document.createElement(tag);
+  Object.entries(attrs).forEach(([k,v])=>{
+    if(k==="class") node.className = v;
+    else if(k==="html") node.innerHTML = v;
+    else node.setAttribute(k,v);
+  });
+  children.forEach(ch=>{
+    if(typeof ch === "string") node.appendChild(document.createTextNode(ch));
+    else node.appendChild(ch);
+  });
+  return node;
+}
+
+function renderQuestions(){
+  const container = document.getElementById("questions");
+  container.innerHTML = "";
+
+  QUESTIONS.forEach((q, idx)=>{
+    const qWrap = el("div", {class:"q", id:`wrap_${q.id}`});
+    const head = el("div", {class:"qhead"}, [
+      el("div", {}, [
+        el("strong", {}, [`${idx+1}. ${q.title}`]),
+        el("div", {class:"desc"}, [q.desc])
+      ]),
+      el("span", {class:"tag"}, [DIMENSIONS[q.dim].label])
+    ]);
+
+    const choices = el("div", {class:"choices"});
+    q.choices.forEach((c, cidx)=>{
+      const rid = `${q.id}_${cidx}`;
+      const input = el("input", {type:"radio", name:q.id, id:rid});
+      input.addEventListener("change", ()=>{
+        state.answers[q.id] = {pts:c.pts, dim:q.dim, label:c.label, flags:c.flags || []};
+        // rebuild flags safely
+        recomputeFlags();
+        updateProgress();
+      });
+
+      const label = el("label", {class:"choice", for:rid}, [
+        input,
+        el("div", {}, [
+          el("div", {}, [c.label])
+        ])
+      ]);
+      choices.appendChild(label);
+    });
+
+    qWrap.appendChild(head);
+    qWrap.appendChild(choices);
+    container.appendChild(qWrap);
+  });
+
+  updateProgress();
+}
+
+function recomputeFlags(){
+  state.flags = new Set();
+  Object.values(state.answers).forEach(a=>{
+    (a.flags || []).forEach(f=>state.flags.add(f));
+  });
+}
+
+function updateProgress(){
+  const answered = Object.keys(state.answers).length;
+  const total = QUESTIONS.length;
+  const pct = Math.round((answered/total)*100);
+  document.getElementById("progressTag").textContent = `${pct}% complete`;
+}
+
+function computeScores(){
+  // Dimension raw totals and max totals
+  const dimRaw = {};
+  const dimMax = {};
+  Object.keys(DIMENSIONS).forEach(d=>{
+    dimRaw[d]=0;
+    dimMax[d]=0;
+  });
+
+  QUESTIONS.forEach(q=>{
+    const maxForQ = Math.max(...q.choices.map(c=>c.pts));
+    dimMax[q.dim] += maxForQ;
+    const ans = state.answers[q.id];
+    if(ans) dimRaw[q.dim] += ans.pts;
+  });
+
+  // Normalise per dimension
+  const dimPct = {};
+  Object.keys(DIMENSIONS).forEach(d=>{
+    dimPct[d] = dimMax[d] === 0 ? 0 : Math.round((dimRaw[d]/dimMax[d]) * 100);
+  });
+
+  // Weighted overall
+  let overall = 0;
+  Object.entries(DIMENSIONS).forEach(([d, meta])=>{
+    overall += dimPct[d] * meta.weight;
+  });
+  overall = Math.round(overall);
+
+  return { dimPct, overall };
+}
+
+function applyHardStops(result){
+  // conservative rules:
+  // if low buffer + unproven demand -> cap overall and push staged transition
+  const flags = state.flags;
+  let cap = null;
+  const notes = [];
+
+  if(flags.has("low_buffer") && (flags.has("unproven_demand") || flags.has("hard_stop_candidate"))){
+    cap = 45;
+    notes.push("Your buffer and demand evidence are both low. A fast leap would likely force panic pricing and reduce quality. Stage this transition.");
+  }
+  if(flags.has("risk_red") || flags.has("data_risk")){
+    cap = Math.min(cap ?? 100, 55);
+    notes.push("Risk boundaries or data handling need tightening before you scale. This is fixable, but it has to be deliberate.");
+  }
+
+  if(cap !== null && result.overall > cap) result.overall = cap;
+
+  return { ...result, hardStopNotes: notes };
+}
+
+function positioningFromScore(score){
+  if(score >= 80) return "Ready to scale safely";
+  if(score >= 65) return "Ready to start with structure";
+  if(score >= 50) return "Close, but tighten foundations";
+  return "Stage it, reduce risk first";
+}
+
+function buildInsights(dimPct, overall, hardStopNotes){
+  const strengths = [];
+  const risks = [];
+  const steps = [];
+
+  // Strengths: top 2 dimensions
+  const sorted = Object.entries(dimPct).sort((a,b)=>b[1]-a[1]);
+  sorted.slice(0,2).forEach(([d,p])=>{
+    strengths.push(`${DIMENSIONS[d].label}: strong (${p}%). ${DIMENSIONS[d].meaning}`);
+  });
+
+  // Risks: any dimension under 55
+  Object.entries(dimPct).forEach(([d,p])=>{
+    if(p < 55){
+      risks.push(`${DIMENSIONS[d].label} is a bottleneck (${p}%). ${DIMENSIONS[d].meaning}`);
+    }
+  });
+
+  // Flag driven risks
+  if(state.flags.has("ops_weak")) risks.push("Your workflow is inbox-led. That is where dropped balls and resentment come from.");
+  if(state.flags.has("qa_risk")) risks.push("QA is not yet consistent. This is one of the quickest ways to damage trust.");
+  if(state.flags.has("pricing_red")) risks.push("Pricing conversations are currently a stress point. That usually leads to undercharging and over-delivery.");
+  if(state.flags.has("capacity_red")) risks.push("Your life will take the hit first when volume rises. Build a buffer or support plan before you grow.");
+
+  // Steps: ordered, pragmatic
+  if(state.flags.has("low_buffer")){
+    steps.push("Build a buffer plan: define essential monthly costs, set a minimum target (start with 1 month, then 3), and separate tax and buffer pots.");
+  }
+  if(state.flags.has("unproven_demand")){
+    steps.push("Run a 14-day ‘proof of demand’ sprint: 10 targeted conversations, a simple offer, and one clean price point. Track yes/no reasons.");
+  }
+  if(state.flags.has("data_risk")){
+    steps.push("Lock down data handling: one secure sharing method, written process, ICO registration, and ‘no client docs via email’ as a hard rule.");
+  }
+  if(state.flags.has("ops_weak") || state.flags.has("ops_partial")){
+    steps.push("Build your engine: case intake checklist, workflow tracker (stages), and a standard update cadence to advisers.");
+  }
+  if(state.flags.has("qa_risk") || state.flags.has("qa_partial")){
+    steps.push("Implement a QA loop: checklist plus a 10-minute pause before final read. Your second read is where you earn your reputation.");
+  }
+  if(state.flags.has("pricing_wobble") || state.flags.has("pricing_red")){
+    steps.push("Rewrite your pricing script: one calm sentence that explains what your fee protects (quality, risk, turnaround), then stop talking.");
+  }
+  if(state.flags.has("help_weak") || state.flags.has("help_partial")){
+    steps.push("Plan your first delegation: choose admin or a specialist slice first. Document what ‘good’ looks like, then test with one case.");
+  }
+  if(steps.length === 0){
+    steps.push("Keep your rhythm: protect deep work, keep boundaries, and avoid ‘yes’ reflexes that recreate employment pressure.");
+  }
+
+  // Hard stop notes (if any)
+  hardStopNotes.forEach(n=>risks.unshift(n));
+
+  return { strengths, risks, steps };
+}
+
+function renderResults(){
+  // Validation
+  if(Object.keys(state.answers).length !== QUESTIONS.length){
+    alert("Answer all questions first so the report is accurate.");
+    return;
+  }
+
+  const base = computeScores();
+  const result = applyHardStops(base);
+  const dimPct = result.dimPct;
+  const overall = result.overall;
+
+  const positioning = positioningFromScore(overall);
+  const insights = buildInsights(dimPct, overall, result.hardStopNotes);
+
+  // UI update
+  const resultsEl = document.getElementById("results");
+  resultsEl.style.display = "block";
+
+  document.getElementById("scoreText").textContent = `${overall}/100`;
+  document.getElementById("positionText").textContent = positioning;
+  document.getElementById("scoreBar").style.width = `${overall}%`;
+
+  document.getElementById("strengths").innerHTML = insights.strengths.map(s=>`<div>• ${escapeHtml(s)}</div>`).join("");
+
+  const risksUl = document.getElementById("risks");
+  risksUl.innerHTML = "";
+  (insights.risks.length ? insights.risks : ["No immediate red flags. Keep it deliberate."]).forEach(r=>{
+    const li = document.createElement("li");
+    li.textContent = r;
+    risksUl.appendChild(li);
+  });
+
+  const stepsOl = document.getElementById("steps");
+  stepsOl.innerHTML = "";
+  insights.steps.forEach(s=>{
+    const li = document.createElement("li");
+    li.textContent = s;
+    stepsOl.appendChild(li);
+  });
+
+  // Breakdown table
+  const tbody = document.querySelector("#breakdownTable tbody");
+  tbody.innerHTML = "";
+  Object.entries(dimPct).forEach(([d,p])=>{
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${escapeHtml(DIMENSIONS[d].label)}</td>
+      <td>${p}%</td>
+      <td>${escapeHtml(DIMENSIONS[d].meaning)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Save generated report data in-memory for export/print
+  window.__REPORT__ = buildReportPayload(overall, positioning, dimPct, insights);
+  // Scroll to results
+  resultsEl.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function buildReportPayload(overall, positioning, dimPct, insights){
+  const answers = QUESTIONS.map((q, i)=>{
+    const a = state.answers[q.id];
+    return {
+      number: i+1,
+      question: q.title,
+      answer: a.label,
+      dimension: DIMENSIONS[a.dim].label
+    };
+  });
+
+  const now = new Date();
+  const stamp = now.toLocaleString("en-GB", { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
+
+  return { overall, positioning, dimPct, insights, answers, stamp };
+}
+
+function downloadReport(){
+  const r = window.__REPORT__;
+  if(!r){
+    alert("Generate the readiness report first.");
+    return;
+  }
+
+  // Create a clean printable HTML report
+  const html = `
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Readiness Report</title>
+<style>
+  :root{ --ink:#0b2b25; --paper:#fff; }
+  body{ font-family: Georgia, "Times New Roman", Times, serif; background: var(--paper); color: var(--ink); margin:0; }
+  .page{ max-width: 820px; margin: 0 auto; padding: 42px 34px; }
+  h1{ font-size: 22px; margin: 0 0 6px; }
+  h2{ font-size: 16px; margin: 24px 0 10px; }
+  p{ margin: 6px 0; }
+  .meta{ font-size: 12px; opacity: 0.85; margin-top: 4px; }
+  .box{ border:1px solid #d7dedc; padding: 12px 14px; border-radius: 10px; }
+  .kpi{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 10px; }
+  .kpi .mini{ border:1px solid #d7dedc; padding: 10px 12px; border-radius: 10px; min-width: 220px; }
+  ul, ol{ margin: 8px 0 0; padding-left: 20px; }
+  li{ margin: 6px 0; }
+  table{ width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12.5px; }
+  th, td{ border-bottom: 1px solid #e2e8e6; padding: 8px 6px; text-align:left; vertical-align:top; }
+  .small{ font-size: 12px; opacity: 0.85; }
+  @media print{
+    .no-print{ display:none; }
+    .page{ padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1>Self-Employed Paraplanner Readiness Report</h1>
+    <div class="meta">Generated: ${escapeHtml(r.stamp)} · Anonymous output</div>
+
+    <div class="kpi">
+      <div class="mini">
+        <div class="small">Readiness score</div>
+        <div style="font-size:18px; font-weight:700;">${r.overall}/100</div>
+      </div>
+      <div class="mini">
+        <div class="small">Positioning</div>
+        <div style="font-size:18px; font-weight:700;">${escapeHtml(r.positioning)}</div>
+      </div>
+    </div>
+
+    <h2>What’s helping you</h2>
+    <div class="box">
+      ${r.insights.strengths.map(s=>`<p>• ${escapeHtml(s)}</p>`).join("")}
+    </div>
+
+    <h2>Risks to address first</h2>
+    <div class="box">
+      <ul>
+        ${(r.insights.risks.length ? r.insights.risks : ["No immediate red flags. Keep it deliberate."]).map(x=>`<li>${escapeHtml(x)}</li>`).join("")}
+      </ul>
+    </div>
+
+    <h2>Suggested next steps (in order)</h2>
+    <div class="box">
+      <ol>
+        ${r.insights.steps.map(x=>`<li>${escapeHtml(x)}</li>`).join("")}
+      </ol>
+    </div>
+
+    <h2>Breakdown by dimension</h2>
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Score</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        ${Object.entries(r.dimPct).map(([d,p])=>`
+          <tr>
+            <td>${escapeHtml(DIMENSIONS[d].label)}</td>
+            <td>${p}%</td>
+            <td>${escapeHtml(DIMENSIONS[d].meaning)}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+
+    <h2>Your answers</h2>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Question</th><th>Your answer</th><th>Dimension</th></tr>
+      </thead>
+      <tbody>
+        ${r.answers.map(a=>`
+          <tr>
+            <td>${a.number}</td>
+            <td>${escapeHtml(a.question)}</td>
+            <td>${escapeHtml(a.answer)}</td>
+            <td>${escapeHtml(a.dimension)}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+
+    <p class="small" style="margin-top:18px;">
+      Disclaimer: This report is educational. It does not constitute financial, legal, or regulated advice. You remain responsible for your decisions.
+    </p>
+
+    <div class="no-print" style="margin-top:16px;">
+      <button onclick="window.print()" style="padding:10px 12px; border:1px solid #0b2b25; background:#0b2b25; color:#fff; border-radius:10px; cursor:pointer; font-weight:700;">
+        Print or Save as PDF
+      </button>
+    </div>
+  </div>
+</body>
+</html>`.trim();
+
+  const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const stamp = new Date().toISOString().slice(0,10);
+  a.href = url;
+  a.download = `beyond-readiness-report-${stamp}.html`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+}
+
+function printCurrent(){
+  if(!window.__REPORT__){
+    alert("Generate the readiness report first.");
+    return;
+  }
+  // Print the on-screen results view
+  window.print();
+}
+
+function resetAll(){
+  state.answers = {};
+  state.flags = new Set();
+  window.__REPORT__ = null;
+  renderQuestions();
+  document.getElementById("results").style.display = "none";
+  document.getElementById("scoreBar").style.width = "0%";
+  document.getElementById("scoreText").textContent = "0/100";
+  document.getElementById("positionText").textContent = "–";
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+// Wire up UI
+document.getElementById("btnGenerate").addEventListener("click", renderResults);
+document.getElementById("btnDownload").addEventListener("click", downloadReport);
+document.getElementById("btnPrint").addEventListener("click", printCurrent);
+document.getElementById("btnReset").addEventListener("click", resetAll);
+
+// Init
+renderQuestions();
+</script>
+</body>
+</html>
