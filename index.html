@@ -2,24 +2,22 @@
 <html lang="en">
 
 <head>
-   <link rel="icon" type="image/png" href="beyondiconn.png">
-<!-- For modern browsers with different sizes -->
-<link rel="icon" type="image/png" sizes="32x32" href="beyondiconn.png">
-<link rel="icon" type="image/png" sizes="16x16" href="beyondiconn.png">
-<!-- For iOS/Apple devices -->
-<link rel="apple-touch-icon" href="beyondiconn.png">
-<!-- For IE/Windows -->
-<link rel="shortcut icon" href="beyondiconn.png">
-   <!-- Other head elements -->
-    <meta property="og:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
-    <!-- For Twitter -->
-    <meta name="twitter:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
+  <link rel="icon" type="image/png" href="beyondiconn.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="beyondiconn.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="beyondiconn.png">
+  <link rel="apple-touch-icon" href="beyondiconn.png">
+  <link rel="shortcut icon" href="beyondiconn.png">
+
+  <meta property="og:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
+  <meta name="twitter:image" content="https://beyondparaplanning.github.io/yourrepository/BeyondLogo.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Beyond | Paraplanning & Intelligent Adviser Solutions</title>
-   <meta name="description" content="Beyond provides expert paraplanning and operational support for financial advisers. Our FCA-compliant report writing, systems optimization, and strategic services help advisers save time, improve compliance, and focus on client relationships." />  
+  <title>Beyond | Paraplanning & Intelligent Adviser Solutions</title>
+  <meta name="description" content="Beyond provides expert paraplanning and operational support for financial advisers. Our FCA-compliant report writing, systems optimization, and strategic services help advisers save time, improve compliance, and focus on client relationships." />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
   <style>
     :root {
       --dark-green: #0b2b25;
@@ -50,24 +48,24 @@
 
     .logo-container {
       text-align: center;
-      padding: 0 15px; /* Add horizontal padding */
-  box-sizing: border-box;
-  width: 100%;
-}
+      padding: 0 15px;
+      box-sizing: border-box;
+      width: 100%;
+    }
 
-.logo-container img {
-  max-width: 100%; /* Ensure image doesn't overflow on mobile */
-  max-width: 500px; /* Set max width for desktop */
-  height: auto;
-  margin-bottom: 0.5rem;
-}
+    .logo-container img {
+      max-width: 100%;
+      max-width: 500px;
+      height: auto;
+      margin-bottom: 0.5rem;
+    }
 
-@media (max-width: 768px) {
-  .logo-container img {
-    max-width: 50%; /* Adjust for smaller screens */
-  }
-}
-    
+    @media (max-width: 768px) {
+      .logo-container img {
+        max-width: 50%;
+      }
+    }
+
     header img {
       max-width: 400px;
       height: auto;
@@ -107,20 +105,19 @@
       background-color: var(--highlight);
       transform: translateY(-2px);
     }
-    
+
     .hero {
       padding: 4rem 2rem;
       text-align: center;
-      background: linear-gradient(rgba(11, 43, 37, 0.9), rgba(11, 43, 37, 0.7)),
-                  url('/api/placeholder/1200/400') center/cover no-repeat;
+      background: linear-gradient(rgba(11, 43, 37, 0.9), rgba(11, 43, 37, 0.7)), url('/api/placeholder/1200/400') center/cover no-repeat;
       margin-bottom: 2rem;
     }
-    
+
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
-    
+
     .hero p {
       font-size: 1.2rem;
       max-width: 800px;
@@ -162,7 +159,9 @@
       transform: translateY(0);
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       color: var(--light-text);
     }
 
@@ -185,28 +184,28 @@
       background-color: var(--accent-green);
     }
 
-ul.benefits {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
-}
+    ul.benefits {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-ul.benefits li {
-  position: relative;
-  padding-left: 2rem;
-  flex: 1 1 calc(50% - 1rem); /* Two columns on larger screens */
-  margin: 0.5rem 0;
-  box-sizing: border-box;
-}
+    ul.benefits li {
+      position: relative;
+      padding-left: 2rem;
+      flex: 1 1 calc(50% - 1rem);
+      margin: 0.5rem 0;
+      box-sizing: border-box;
+    }
 
-@media (max-width: 600px) {
-  ul.benefits li {
-    flex: 1 1 100%; /* Stack items vertically on mobile */
-  }
-}
+    @media (max-width: 600px) {
+      ul.benefits li {
+        flex: 1 1 100%;
+      }
+    }
 
     ul.benefits li::before {
       content: '✓';
@@ -373,299 +372,361 @@ ul.benefits li {
         padding: 1.5rem;
       }
     }
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-  }
 
-  .logo img {
-    max-height: 50px;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    margin: 0 1rem;
-    box-sizing: border-box;
-  }
-
-  @media (max-width: 600px) {
     .logo {
-      padding: 0.75rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
     }
 
     .logo img {
-      max-height: 40px;
-      margin: 0 0.5rem;
+      max-height: 50px;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      margin: 0 1rem;
+      box-sizing: border-box;
     }
-  }
-  /* Testimonial Slider Styles */
-  .testimonial-slider-container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-  }
 
-  .testimonial-slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-
-  .testimonial.slide {
-    min-width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    padding: 2rem;
-    box-sizing: border-box;
-  }
-
-  .testimonial.slide.active {
-    opacity: 1;
-  }
-
-  .slider-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-  }
-
-  .dots {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--subtle-bg);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .dot.active {
-    background-color: var(--accent-green);
-  }
-/* Services section styling - matches the site's dark theme */
-.service-block {
-  margin-bottom: 2.5rem;
-  padding-bottom: 2.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.service-block:last-child {
-  border-bottom: none;
-}
-
-.service-block h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--accent-green);
-}
-
-.service-block h4 {
-  font-size: 1.2rem;
-  margin: 1.5rem 0 1rem;
-}
-
-.price-tag {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--light-text);
-  margin: 1.5rem 0;
-}
-
-.sub-benefits {
-  list-style: none;
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.sub-benefits li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin: 0.25rem 0;
-}
-
-.sub-benefits li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--light-text);
-}
-
-.premium-package {
-  background-color: rgba(74, 94, 69, 0.2);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  border: 1px solid var(--accent-green);
-  margin-top: 3rem;
-}
-
-.services-section p {
-  margin-bottom: 1rem;
-}
-    .pricing-list {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.pricing-list li {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-  width: 100%;
-}
-
-.pricing-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--light-text);
-  font-weight: bold;
-}
-
-.package-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0;
-}
-
-.package-benefits > li {
-  position: relative;
-  padding-left: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-  width: 100%;
-}
-
-.package-benefits > li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--light-text);
-  font-weight: bold;
-}
-
-.sub-benefits {
-  list-style: none;
-  padding-left: 1.5rem;
-  margin-top: 0.5rem;
-  width: 100%;
-}
-
-.sub-benefits li {
-  position: relative;
-  padding-left: 1.5rem;
-  margin: 0.5rem 0;
-  display: block;
-}
-
-.sub-benefits li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: var(--light-text);
-}
-    
     @media (max-width: 600px) {
-  .package-benefits > li {
-    padding-left: 1.5rem;
-  }
+      .logo {
+        padding: 0.75rem 0;
+      }
 
-  .package-benefits > li > ul.sub-benefits {
-    padding-left: 1rem;
-  }
-
-  .package-benefits > li > ul.sub-benefits li {
-    padding-left: 1rem;
-    font-size: 0.9rem;
-    word-wrap: break-word;
-  }
-      
-}
-    @media (max-width: 600px) {
-  /* ... (Your previous mobile fixes) ... */
-
-  .pricing-list li {
-    padding-left: 1rem; /* Reduce from 2rem */
-    font-size: 0.9rem; /* Slightly reduce font size */
-    line-height: 1.4; /* Improve readability with smaller font */
-    word-wrap: break-word; /* Prevent long words from overflowing */
-  }
-
-  .pricing-list li strong {
-    font-size: 1rem; /* Keep the strong text slightly larger for emphasis */
-  }
-}
-
-     /* LinkedIn link styling */
-  .linkedin-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--light-text);
-    text-decoration: none;
-    margin-top: 0.5rem;
-    transition: color 0.3s ease;
-  }
-  
-  .linkedin-link:hover {
-    color: #0077b5; /* LinkedIn blue */
-  }
-  
-  .linkedin-link i {
-    font-size: 1.2rem;
-  }
-  
-  /* Founder's message layout */
-  .founder-message {
-    display: flex;
-    gap: 2rem;
-    margin: 2rem 0;
-    align-items: flex-start;
-  }
-  
-  .founder-image {
-    flex: 0 0 300px;
-  }
-  
-  .founder-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .founder-text {
-    flex: 1;
-  }
-  
-  .founder-text h3 {
-    margin-top: 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--accent-green);
-    margin-bottom: 1rem;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .founder-message {
-      flex-direction: column;
-      gap: 1.5rem;
+      .logo img {
+        max-height: 40px;
+        margin: 0 0.5rem;
+      }
     }
-    
-    .founder-image {
-      flex: 0 0 auto;
-      width: 100%;
-      max-width: 300px;
+
+    .testimonial-slider-container {
+      position: relative;
+      max-width: 800px;
       margin: 0 auto;
+      overflow: hidden;
     }
-  }
+
+    .testimonial-slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial.slide {
+      min-width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .testimonial.slide.active {
+      opacity: 1;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--subtle-bg);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+      background-color: var(--accent-green);
+    }
+
+    .service-block {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-block:last-child {
+      border-bottom: none;
+    }
+
+    .service-block h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      padding-left: 0.75rem;
+      border-left: 4px solid var(--accent-green);
+    }
+
+    .service-block h4 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 1rem;
+    }
+
+    .price-tag {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--light-text);
+      margin: 1.5rem 0;
+    }
+
+    .sub-benefits {
+      list-style: none;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+
+    .sub-benefits li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin: 0.5rem 0;
+      display: block;
+    }
+
+    .sub-benefits li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--light-text);
+    }
+
+    .premium-package {
+      background-color: rgba(74, 94, 69, 0.2);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      border: 1px solid var(--accent-green);
+      margin-top: 3rem;
+    }
+
+    .services-section p {
+      margin-bottom: 1rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-list li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      width: 100%;
+    }
+
+    .pricing-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--light-text);
+      font-weight: bold;
+    }
+
+    .package-benefits {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+
+    .package-benefits>li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      width: 100%;
+    }
+
+    .package-benefits>li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--light-text);
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .package-benefits>li {
+        padding-left: 1.5rem;
+      }
+
+      .package-benefits>li>ul.sub-benefits {
+        padding-left: 1rem;
+      }
+
+      .package-benefits>li>ul.sub-benefits li {
+        padding-left: 1rem;
+        font-size: 0.9rem;
+        word-wrap: break-word;
+      }
+
+      .pricing-list li {
+        padding-left: 1rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        word-wrap: break-word;
+      }
+
+      .pricing-list li strong {
+        font-size: 1rem;
+      }
+    }
+
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--light-text);
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .linkedin-link:hover {
+      color: #0077b5;
+    }
+
+    .linkedin-link i {
+      font-size: 1.2rem;
+    }
+
+    .founder-message {
+      display: flex;
+      gap: 2rem;
+      margin: 2rem 0;
+      align-items: flex-start;
+    }
+
+    .founder-image {
+      flex: 0 0 300px;
+    }
+
+    .founder-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .founder-text {
+      flex: 1;
+    }
+
+    .founder-text h3 {
+      margin-top: 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent-green);
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .founder-message {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .founder-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+    }
+
+    .pricing-image-wrap {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .pricing-image-trigger {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 1000px;
+      cursor: pointer;
+    }
+
+    .pricing-image-trigger img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-image-trigger:hover img {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .pricing-image-hint {
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      color: #cfcfcf;
+    }
+
+    .pricing-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .pricing-modal.open {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pricing-modal-content {
+      max-width: 95vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .pricing-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: #faf4f2;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-modal {
+        padding: 1rem;
+      }
+
+      .pricing-image-hint {
+        font-size: 0.85rem;
+      }
+
+      .pricing-modal-close {
+        top: 12px;
+        right: 18px;
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 
@@ -690,152 +751,143 @@ ul.benefits li {
     <p>We help advisers deliver better outcomes for their clients by providing expert paraplanning, business intelligence, and operational efficiency solutions.</p>
     <a href="#contact" class="cta-button">Get Started</a>
   </div>
+
   <section id="about" class="about-section">
-  <h2>About Beyond</h2>
-  
-  <!-- Founder's message with image layout -->
-  <div class="founder-message">
-    <div class="founder-image">
-      <img src="founderimage.jpg" alt="Founder's Photo" />
+    <h2>About Beyond</h2>
+
+    <div class="founder-message">
+      <div class="founder-image">
+        <img src="founderimage.jpg" alt="Founder's Photo" />
+      </div>
+      <div class="founder-text">
+        <h3>A Message from Our Founder</h3>
+        <p>Since the very start of my working life — both inside and outside of financial services — I've always found myself drawn to improving how things run. Whether I was piloting new processes or streamlining systems, I kept ending up in roles where the goal was the same: make things smoother, simpler, and more effective. And the truth is, I've found real joy in it.</p>
+        <p>That passion eventually led me to create Beyond.</p>
+        <p>After years of supporting advisers in-house, I saw how much time and energy gets lost to reporting, research, and admin — time that could be spent on the work that really matters. So I set out to offer something different: intelligent, reliable support that gives advisers space to do what only they can do.</p>
+        <p>Whether it's suitability and review reports, fund research, tool building or strategic operational help, Beyond is here to take the weight off your shoulders — so you can focus on your clients, your business, and the bigger picture.</p>
+        <p>We don't just deliver outputs — we give you back your time, energy, and headspace.</p>
+        <p><strong>Save time. Save energy. Go Beyond.</strong></p>
+        <p>Thanks for being here — I'd love to hear how we can support your journey.</p>
+        <p>Warmly,<br><strong>Phil Williams</strong><br>Founder, Beyond – Paraplanning & Intelligent Adviser Solutions<br><a href="https://www.linkedin.com/in/phillip-williams-dippfs-cert-cii-mp-er-b063444a/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a></p>
+      </div>
     </div>
-    <div class="founder-text">
-      <h3>A Message from Our Founder</h3>
-      <p>Since the very start of my working life — both inside and outside of financial services — I've always found myself drawn to improving how things run. Whether I was piloting new processes or streamlining systems, I kept ending up in roles where the goal was the same: make things smoother, simpler, and more effective. And the truth is, I've found real joy in it.</p>
-      <p>That passion eventually led me to create Beyond.</p>
-      <p>After years of supporting advisers in-house, I saw how much time and energy gets lost to reporting, research, and admin — time that could be spent on the work that really matters. So I set out to offer something different: intelligent, reliable support that gives advisers space to do what only they can do.</p>
-      <p>Whether it's suitability and review reports, fund research, tool building or strategic operational help, Beyond is here to take the weight off your shoulders — so you can focus on your clients, your business, and the bigger picture.</p>
-      <p>We don't just deliver outputs — we give you back your time, energy, and headspace.</p>
-      <p><strong>Save time. Save energy. Go Beyond.</strong></p>
-      <p>Thanks for being here — I'd love to hear how we can support your journey.</p>
-      <p>Warmly,<br><strong>Phil Williams</strong><br>Founder, Beyond – Paraplanning & Intelligent Adviser Solutions<br><a href="https://www.linkedin.com/in/phillip-williams-dippfs-cert-cii-mp-er-b063444a/" target="_blank" class="linkedin-link"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a></p>
+
+    <div class="highlight-box">
+      You didn't become an adviser to drown in admin. Beyond helps you get back to what matters: your clients, your advice, your impact.
     </div>
-  </div>
-  
-  <div class="highlight-box">
-    You didn't become an adviser to drown in admin. Beyond helps you get back to what matters: your clients, your advice, your impact.
-  </div>
-  
-  <h3>Why Choose Beyond?</h3>
-  <ul class="benefits">
-    <li>Expertise in financial services and regulatory requirements</li>
-    <li>Tailored solutions that reflect your unique advice style</li>
-    <li>Quick turnaround times to help you meet client deadlines</li>
-    <li>Capacity when you need it, without fixed overhead costs</li>
-    <li>Partnership approach focused on your business growth</li>
-  </ul>
-</section>
+
+    <h3>Why Choose Beyond?</h3>
+    <ul class="benefits">
+      <li>Expertise in financial services and regulatory requirements</li>
+      <li>Tailored solutions that reflect your unique advice style</li>
+      <li>Quick turnaround times to help you meet client deadlines</li>
+      <li>Capacity when you need it, without fixed overhead costs</li>
+      <li>Partnership approach focused on your business growth</li>
+    </ul>
+  </section>
 
   <section id="services" class="services-section">
     <h2>Our Services</h2>
     <p>Paraplanning and operational support to help you work smarter, not harder.</p>
-    
-    <!-- Report Writing Services -->
-   <div class="service-block">
-  <h3>Report Writing Services</h3>
-  <p>FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
-  
-<h4>Transparent, modular pricing — designed for clarity and fairness</h4>
 
-<ul class="pricing-list">
-  <li><strong>Annual Review Report</strong> – typically £125–£200+</li>
-  <li><strong>Protection Suitability Report</strong> – typically £200-£300+</li>
-  <li><strong>Mortgage Suitability Report</strong> – typically £150-£250</li>
-  <li><strong>Investment or Pension Suitability Report</strong> – typically £300–£400</li>
-  <li><strong>Multi-area or joint cases</strong> – usually £450–£600</li>
-  <li><strong>Drawdown, cashflow or complex planning</strong> – £600–£900+</li>
-  <li><strong>Equity Release Suitability Report</strong> – £220</li>
-  <li><strong>Additional research</strong> – £60 per hour (after first hour)</li>
-</ul>
+    <div class="service-block">
+      <h3>Report Writing Services</h3>
+      <p>FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
 
-<p style="font-size: 0.9rem; color: #aaa;">
-  Fees reflect the complexity of each case and are always quoted up front. Priority turnaround (under 3 working days) attracts a 20% surcharge.
-</p>
+      <h4>Transparent pricing — click below to view the full report writing menu</h4>
 
-<p style="font-size: 0.9rem; color: #aaa;">
-  Prefer a retainer or hybrid model? Let’s talk — Beyond can align with your advisory style and workload to provide consistent, scalable support.
-</p>
-  
-  <div class="highlight-box">
-    <p>Ideal for: Advisers who want to reclaim 10+ hours weekly while maintaining compliance excellence</p>
-  </div>
-</div>
+      <div class="pricing-image-wrap">
+        <div class="pricing-image-trigger" id="openPricingMenu" role="button" aria-label="Open full pricing menu">
+          <img src="pricing-menu.png" alt="Beyond report writing and technical support pricing menu">
+        </div>
+        <p class="pricing-image-hint">Click the pricing menu to enlarge</p>
+      </div>
 
-    
-    <!-- Systems & Operations Projects -->
+      <p style="font-size: 0.9rem; color: #aaa; margin-top: 1.25rem;">
+        Fees are quoted and agreed up front. Priority turnaround (under 3 working days) attracts a 20% surcharge.
+      </p>
+
+      <p style="font-size: 0.9rem; color: #aaa;">
+        Prefer a retainer or hybrid model? Let’s talk — Beyond can align with your advisory style and workload to provide consistent, scalable support.
+      </p>
+
+      <div class="highlight-box">
+        <p>Ideal for: Advisers who want to reclaim time, maintain compliance excellence, and work with clear, structured pricing.</p>
+      </div>
+    </div>
+
     <div class="service-block">
       <h3>Systems & Operations Projects</h3>
       <p>Streamline how you work behind the scenes. From workflows to file structure to templated emails — small changes that make a big difference.</p>
-      
-    <p class="price-tag">Projects are quoted up front </p>
 
-<p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
-  Projects are priced based on the scope, complexity, and level of involvement required. All work is scoped and quoted in advance.
-</p>
+      <p class="price-tag">Projects are quoted up front</p>
 
-<p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
-  Once a proposal is agreed, a deposit is taken to secure the work, with the balance payable in line with agreed milestones. A 7-day cooling-off period applies from acceptance.
-</p>
-      
+      <p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
+        Projects are priced based on the scope, complexity, and level of involvement required. All work is scoped and quoted in advance.
+      </p>
+
+      <p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
+        Once a proposal is agreed, a deposit is taken to secure the work, with the balance payable in line with agreed milestones. A 7-day cooling-off period applies from acceptance.
+      </p>
+
       <div class="highlight-box">
         <p>Ideal for: Firms preparing for growth, struggling with capacity, or looking to improve profit margins</p>
       </div>
     </div>
-    
-    <!-- Strategic Support -->
+
     <div class="service-block">
       <h3>Strategic Support</h3>
       <p>A thinking partner to bounce ideas off, make operational decisions with, or help you find clarity in complexity.</p>
-      
+
       <p class="price-tag">£60 per hour (pro-rated)</p>
-      
+
       <p>Includes calls when required + follow-up notes, with voice note/email access in between.</p>
-      
+
       <div class="highlight-box">
         <p>Ideal for: Self-employed advisers and practice owners who need experienced guidance without hiring a permanent operations manager</p>
       </div>
     </div>
-    
-    <!-- Custom Templates & Tools -->
+
     <div class="service-block">
       <h3>Custom Templates & Tools</h3>
       <p>Polished, practical assets that save time — whether it's an interactive income and expenditure sheet, provider charges comparison calculator or whitelabelled FCA-compliant suitability letter templates.</p>
-      
-<p class="price-tag">Quoted up front based on scope</p>
-<p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
-  Most tools are delivered with a short guidance note and can be branded to your firm’s style and process.
-</p>     
+
+      <p class="price-tag">Quoted up front based on scope</p>
+      <p style="font-size: 0.95rem; color: #aaa; margin-top: 0.75rem;">
+        Most tools are delivered with a short guidance note and can be branded to your firm’s style and process.
+      </p>
+
       <div class="highlight-box">
         <p>Ideal for: Advisers looking to improve client experience, conversion rates, and team efficiency</p>
       </div>
     </div>
- 
   </section>
-  
+
   <section id="process" class="process-section">
     <h2>Our Process</h2>
     <p>Working with Beyond is straightforward and designed to integrate seamlessly with your existing business processes. Here's how we work together:</p>
-    
+
     <div class="process-steps">
       <div class="process-step">
         <h3>Initial Consultation</h3>
         <p>We start by understanding your business, your advice process, and your specific needs. This helps us tailor our approach to complement your existing systems.</p>
       </div>
-      
+
       <div class="process-step">
         <h3>Onboarding</h3>
         <p>We'll set up secure channels for information sharing and establish clear communication protocols, ensuring a smooth working relationship from day one.</p>
       </div>
-      
+
       <div class="process-step">
         <h3>Task Submission</h3>
         <p>When you need our support, simply submit your request along with the relevant client information via secure messaging.</p>
       </div>
-      
+
       <div class="process-step">
         <h3>Quality Work Delivered</h3>
         <p>We'll address your requirements to the highest standard, securely sending it back for your review within the agreed timeframe.</p>
       </div>
-      
+
       <div class="process-step">
         <h3>Refinement</h3>
         <p>We welcome your feedback and will make any necessary adjustments to ensure the final deliverable meets your exact requirements.</p>
@@ -844,58 +896,58 @@ ul.benefits li {
   </section>
 
   <section id="testimonials" class="testimonials-section">
-  <h2>What Our Clients Say</h2>
-  <div class="testimonial-slider-container">
-    <div class="testimonial-slider">
-      <div class="testimonial slide">
-        <p class="testimonial-quote">"I was at a crossroads in my career, unsure where to focus next. One conversation with Phil brought fresh perspective and practical ideas. From moving into paraplanning and transitioning towards investment advice to specialising in equity release. He even gave me some great ideas to improve my lead flow. I came away with real clarity and a renewed sense of direction."</p>
-        <p class="testimonial-author">Karol Wolosiak CeMAP</p>
-        <p class="testimonial-company">Mortgage & Protection Adviser</p>
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-slider-container">
+      <div class="testimonial-slider">
+        <div class="testimonial slide">
+          <p class="testimonial-quote">"I was at a crossroads in my career, unsure where to focus next. One conversation with Phil brought fresh perspective and practical ideas. From moving into paraplanning and transitioning towards investment advice to specialising in equity release. He even gave me some great ideas to improve my lead flow. I came away with real clarity and a renewed sense of direction."</p>
+          <p class="testimonial-author">Karol Wolosiak CeMAP</p>
+          <p class="testimonial-company">Mortgage & Protection Adviser</p>
+        </div>
+
+        <div class="testimonial slide">
+          <p class="testimonial-quote">"I have worked with [Beyond] (previously Williams Admin Support) for several months to prepare suitability reports for both mortgage and protection applications. The instruction process is refreshingly straightforward, and the turnaround times are always met. The reports are consistently excellent – accurate, well-formatted, and easy to present to clients. I wouldn’t hesitate to recommend them to any adviser looking for dependable, high-quality support."</p>
+          <p class="testimonial-author">Carol Ellis, CeMAP, CeRER</p>
+          <p class="testimonial-company">Mortgage & Protection, and Equity Release Adviser</p>
+        </div>
+
+        <div class="testimonial slide">
+          <p class="testimonial-quote">"Phil took the initiative on improving our suitability report formatting, spotting a gap in the workflow and creating something far more engaging. It made a real difference and meant a lot to me that he stepped up on this."</p>
+          <p class="testimonial-author">Kate Scrace, APFS</p>
+          <p class="testimonial-company">Chartered Financial Planner</p>
+        </div>
       </div>
-      
-      <div class="testimonial slide">
-        <p class="testimonial-quote">"I have worked with [Beyond] (previously Williams Admin Support) for several months to prepare suitability reports for both mortgage and protection applications. The instruction process is refreshingly straightforward, and the turnaround times are always met. The reports are consistently excellent – accurate, well-formatted, and easy to present to clients. I wouldn’t hesitate to recommend them to any adviser looking for dependable, high-quality support."</p>
-        <p class="testimonial-author">Carol Ellis, CeMAP, CeRER</p>
-        <p class="testimonial-company">Mortgage & Protection, and Equity Release Adviser</p>
-      </div>
-      
-      <div class="testimonial slide">
-        <p class="testimonial-quote">"Phil took the initiative on improving our suitability report formatting, spotting a gap in the workflow and creating something far more engaging. It made a real difference and meant a lot to me that he stepped up on this."</p>
-        <p class="testimonial-author">Kate Scrace, APFS</p>
-        <p class="testimonial-company">Chartered Financial Planner</p>
+
+      <div class="slider-controls">
+        <div class="dots"></div>
       </div>
     </div>
-    
-    <div class="slider-controls">
-      <div class="dots"></div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
     <p>If you're ready to save time, improve efficiency, and take your business Beyond, we'd love to hear from you. Reach out today to discuss how we can support your practice.</p>
-    
+
     <div class="contact-methods">
       <div class="contact-method">
         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
         <h3>Email</h3>
         <p><a href="mailto:hello@beyondparaplanning.co.uk" style="color: #faf4f2;">hello@beyondparaplanning.co.uk</a></p>
       </div>
-      
+
       <div class="contact-method">
         <div class="contact-icon"><i class="fas fa-phone"></i></div>
         <h3>Phone</h3>
         <p>Contact via email for a callback</p>
       </div>
-      
+
       <div class="contact-method">
         <div class="contact-icon"><i class="fas fa-calendar-alt"></i></div>
         <h3>Book a Consultation</h3>
         <p>Email us to schedule a free 30-minute discovery call</p>
       </div>
     </div>
-    
+
     <div class="contact-cta">
       <a href="mailto:hello@beyondparaplanning.co.uk" class="cta-button">Get in Touch Today</a>
     </div>
@@ -910,7 +962,7 @@ ul.benefits li {
           <li><a href="#process">Process</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-column">
         <h3>Contact</h3>
         <ul>
@@ -918,22 +970,27 @@ ul.benefits li {
           <li><a href="#contact">Book a Call</a></li>
         </ul>
       </div>
+
       <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="privacy-notice.html">Privacy Notice</a></li>
-        <li><a href="terms-of-service-with-signature.html">Terms of Service</a></li>
-      </ul>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="privacy-notice.html">Privacy Notice</a></li>
+          <li><a href="terms-of-service-with-signature.html">Terms of Service</a></li>
+        </ul>
+      </div>
     </div>
-    </div>
-    
+
     <div class="copyright">
       <p>© 2025 Beyond – Paraplanning & Intelligent Adviser Solutions. All rights reserved.</p>
     </div>
   </footer>
 
+  <div class="pricing-modal" id="pricingModal" aria-hidden="true">
+    <button class="pricing-modal-close" id="closePricingMenu" aria-label="Close pricing menu">&times;</button>
+    <img src="pricing-menu.png" alt="Full size Beyond pricing menu" class="pricing-modal-content">
+  </div>
+
   <script>
-    // Intersection Observer for section animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -947,15 +1004,14 @@ ul.benefits li {
     document.querySelectorAll('section').forEach((section) => {
       observer.observe(section);
     });
-    
-    // Smooth scrolling for navigation links
+
     document.querySelectorAll('nav a, .cta-button').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        
+
         if (targetElement) {
           window.scrollTo({
             top: targetElement.offsetTop - 70,
@@ -964,87 +1020,116 @@ ul.benefits li {
         }
       });
     });
-    document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.querySelector('.testimonial-slider');
-    const slides = document.querySelectorAll('.testimonial.slide');
-    const dotsContainer = document.querySelector('.dots');
-    
-    if (!slider || slides.length === 0) return;
-    
-    let currentSlide = 0;
-    const slideInterval = 20000; // 10 second interval
-    
-    // Create dot indicators
-    slides.forEach((_, index) => {
-      const dot = document.createElement('div');
-      dot.classList.add('dot');
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(index));
-      dotsContainer.appendChild(dot);
-    });
-    
-    // Initialize first slide
-    slides[0].classList.add('active');
-    
-    // Function to go to a specific slide
-    function goToSlide(index) {
-      // Remove active class from all slides and dots
-      slides.forEach(slide => slide.classList.remove('active'));
-      document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-      
-      // Add active class to current slide and dot
-      currentSlide = index;
-      slides[currentSlide].classList.add('active');
-      document.querySelectorAll('.dot')[currentSlide].classList.add('active');
-      
-      // Move slider
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-    
-    // Function to go to next slide
-    function nextSlide() {
-      let next = currentSlide + 1;
-      if (next >= slides.length) next = 0;
-      goToSlide(next);
-    }
-    
-    // Set interval for automatic sliding
-    let slideTimer = setInterval(nextSlide, slideInterval);
-    
-    // Reset timer when manually changing slides
-    dotsContainer.addEventListener('click', () => {
-      clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, slideInterval);
-    });
-  });
-  </script>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-<script>
-window.addEventListener("load", function(){
-  window.cookieconsent.initialise({
-    palette: {
-      popup: {
-        background: "#0b2b25",
-        text: "#faf4f2"
-      },
-      button: {
-        background: "#354532",
-        text: "#faf4f2",
-        border: "#4a5e45"
-      }
-    },
-    theme: "classic",
-    position: "bottom",
-    content: {
-      message: "We use cookies to improve your experience. You can manage your preferences at any time.",
-      dismiss: "Accept",
-      link: "Privacy Notice",
-      href: "/privacy-notice.html"
-    }
-  });
-});
-</script>
 
+    document.addEventListener('DOMContentLoaded', function () {
+      const slider = document.querySelector('.testimonial-slider');
+      const slides = document.querySelectorAll('.testimonial.slide');
+      const dotsContainer = document.querySelector('.dots');
+
+      if (!slider || slides.length === 0) return;
+
+      let currentSlide = 0;
+      const slideInterval = 20000;
+
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+
+      slides[0].classList.add('active');
+
+      function goToSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        document.querySelectorAll('.dot')[currentSlide].classList.add('active');
+
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      function nextSlide() {
+        let next = currentSlide + 1;
+        if (next >= slides.length) next = 0;
+        goToSlide(next);
+      }
+
+      let slideTimer = setInterval(nextSlide, slideInterval);
+
+      dotsContainer.addEventListener('click', () => {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(nextSlide, slideInterval);
+      });
+    });
+  </script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        palette: {
+          popup: {
+            background: "#0b2b25",
+            text: "#faf4f2"
+          },
+          button: {
+            background: "#354532",
+            text: "#faf4f2",
+            border: "#4a5e45"
+          }
+        },
+        theme: "classic",
+        position: "bottom",
+        content: {
+          message: "We use cookies to improve your experience. You can manage your preferences at any time.",
+          dismiss: "Accept",
+          link: "Privacy Notice",
+          href: "/privacy-notice.html"
+        }
+      });
+    });
+  </script>
+
+  <script>
+    const openPricingMenu = document.getElementById('openPricingMenu');
+    const pricingModal = document.getElementById('pricingModal');
+    const closePricingMenu = document.getElementById('closePricingMenu');
+
+    if (openPricingMenu && pricingModal && closePricingMenu) {
+      openPricingMenu.addEventListener('click', () => {
+        pricingModal.classList.add('open');
+        pricingModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closePricingMenu.addEventListener('click', () => {
+        pricingModal.classList.remove('open');
+        pricingModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+
+      pricingModal.addEventListener('click', (e) => {
+        if (e.target === pricingModal) {
+          pricingModal.classList.remove('open');
+          pricingModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && pricingModal.classList.contains('open')) {
+          pricingModal.classList.remove('open');
+          pricingModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  </script>
 </body>
+
 </html>
