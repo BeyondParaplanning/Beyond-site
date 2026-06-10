@@ -84,6 +84,18 @@
       width: 32%;
     }
 
+    .mini-table input, .mini-table textarea {
+      width: 100%;
+      padding: 0.45rem;
+      border: 1px solid #4a5e45;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+      background: #fff;
+      color: #0b2b25;
+      font-family: Arial, sans-serif;
+    }
+
     .signature-section {
       margin-top: 3rem;
       padding: 2rem;
@@ -550,11 +562,11 @@
   </tr>
   <tr>
     <th>Client</th>
-    <td>Add Wealth</td>
+    <td><input type="text" id="engagementClientName" name="engagementClientName" value="Add Wealth" placeholder="Enter client firm name"></td>
   </tr>
   <tr>
     <th>Client Registered Address</th>
-    <td>[Insert Registered Address]</td>
+    <td><textarea id="engagementRegisteredAddress" name="engagementRegisteredAddress" rows="3" placeholder="Enter registered address"></textarea></td>
   </tr>
   <tr>
     <th>Service</th>
@@ -578,7 +590,7 @@
   </tr>
   <tr>
     <th>Commencement Date</th>
-    <td>[Insert Date]</td>
+    <td><input type="date" id="engagementCommencementDate" name="engagementCommencementDate"></td>
   </tr>
 </table>
 
@@ -730,6 +742,37 @@
   }
 
   document.getElementById('signatureDate').valueAsDate = new Date();
+
+  // ===== Sync Engagement Details with Acceptance Section =====
+  const engagementClientName = document.getElementById('engagementClientName');
+  const engagementRegisteredAddress = document.getElementById('engagementRegisteredAddress');
+  const engagementCommencementDate = document.getElementById('engagementCommencementDate');
+  const firmNameInput = document.getElementById('firmName');
+  const registeredAddressInput = document.getElementById('registeredAddress');
+  const commencementDateInput = document.getElementById('commencementDate');
+
+  function syncFromEngagementDetails() {
+    firmNameInput.value = engagementClientName.value;
+    registeredAddressInput.value = engagementRegisteredAddress.value;
+    commencementDateInput.value = engagementCommencementDate.value;
+  }
+
+  function syncFromAcceptanceSection() {
+    engagementClientName.value = firmNameInput.value;
+    engagementRegisteredAddress.value = registeredAddressInput.value;
+    engagementCommencementDate.value = commencementDateInput.value;
+  }
+
+  engagementClientName.addEventListener('input', syncFromEngagementDetails);
+  engagementRegisteredAddress.addEventListener('input', syncFromEngagementDetails);
+  engagementCommencementDate.addEventListener('change', syncFromEngagementDetails);
+
+  firmNameInput.addEventListener('input', syncFromAcceptanceSection);
+  registeredAddressInput.addEventListener('input', syncFromAcceptanceSection);
+  commencementDateInput.addEventListener('change', syncFromAcceptanceSection);
+
+  syncFromEngagementDetails();
+
 
   // ===== Simple validation =====
   function hasSignatureInk() {
