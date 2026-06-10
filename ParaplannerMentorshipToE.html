@@ -232,11 +232,21 @@
 <h1>Terms of Business</h1>
 <p><strong>Mentoring, Technical Coaching &amp; Professional Development Services</strong></p>
 <p class="muted"><strong>Service Provider:</strong> Beyond Paraplanning &amp; Intelligent Adviser Solutions</p>
-<p class="muted"><strong>Client:</strong> Add Wealth</p>
-<p class="muted"><strong>Effective Date:</strong> [Insert Date]</p>
+
+<div class="value-box">
+  <div class="form-group">
+    <label for="headerClientName">Client:</label>
+    <input type="text" id="headerClientName" name="headerClientName" placeholder="Enter client firm name">
+  </div>
+
+  <div class="form-group">
+    <label for="effectiveDate">Effective Date:</label>
+    <input type="date" id="effectiveDate" name="effectiveDate">
+  </div>
+</div>
 
 <div class="callout">
-  <strong>How this document works:</strong> These Terms govern an ongoing hourly mentoring, technical coaching and professional development arrangement between Beyond Paraplanning &amp; Intelligent Adviser Solutions and Add Wealth. This agreement does not cover outsourced paraplanning, report writing, file checking or regulated advice.
+  <strong>How this document works:</strong> These Terms govern an ongoing hourly mentoring, technical coaching and professional development arrangement between Beyond Paraplanning &amp; Intelligent Adviser Solutions and the Client named in this document. This agreement does not cover outsourced paraplanning, report writing, file checking or regulated advice.
 </div>
 
 <p class="muted">
@@ -251,7 +261,7 @@
 <h2>1. Introduction</h2>
 <p>
   These Terms of Business set out the basis upon which Beyond Paraplanning &amp; Intelligent Adviser Solutions
-  ("Beyond Paraplanning", "we", "us", "our") will provide mentoring, technical coaching and professional development services to Add Wealth
+  ("Beyond Paraplanning", "we", "us", "our") will provide mentoring, technical coaching and professional development services to the Client named in the Engagement Details section of this document
   ("the Client").
 </p>
 <p>
@@ -562,7 +572,7 @@
   </tr>
   <tr>
     <th>Client</th>
-    <td><input type="text" id="engagementClientName" name="engagementClientName" value="Add Wealth" placeholder="Enter client firm name"></td>
+    <td><input type="text" id="engagementClientName" name="engagementClientName" placeholder="Enter client firm name"></td>
   </tr>
   <tr>
     <th>Client Registered Address</th>
@@ -607,7 +617,7 @@
 
   <div class="form-group">
     <label for="firmName">Client Firm Name:</label>
-    <input type="text" id="firmName" name="firmName" value="Add Wealth">
+    <input type="text" id="firmName" name="firmName" placeholder="Enter client firm name">
   </div>
 
   <div class="form-group">
@@ -743,7 +753,9 @@
 
   document.getElementById('signatureDate').valueAsDate = new Date();
 
-  // ===== Sync Engagement Details with Acceptance Section =====
+  // ===== Sync Header, Engagement Details and Acceptance Section =====
+  const headerClientName = document.getElementById('headerClientName');
+  const effectiveDate = document.getElementById('effectiveDate');
   const engagementClientName = document.getElementById('engagementClientName');
   const engagementRegisteredAddress = document.getElementById('engagementRegisteredAddress');
   const engagementCommencementDate = document.getElementById('engagementCommencementDate');
@@ -751,28 +763,44 @@
   const registeredAddressInput = document.getElementById('registeredAddress');
   const commencementDateInput = document.getElementById('commencementDate');
 
-  function syncFromEngagementDetails() {
-    firmNameInput.value = engagementClientName.value;
-    registeredAddressInput.value = engagementRegisteredAddress.value;
-    commencementDateInput.value = engagementCommencementDate.value;
+  function setValueIfDifferent(element, value) {
+    if (element && element.value !== value) {
+      element.value = value;
+    }
   }
 
-  function syncFromAcceptanceSection() {
-    engagementClientName.value = firmNameInput.value;
-    engagementRegisteredAddress.value = registeredAddressInput.value;
-    engagementCommencementDate.value = commencementDateInput.value;
+  function syncClientName(source) {
+    const value = source.value;
+    [headerClientName, engagementClientName, firmNameInput].forEach(function(element) {
+      if (element !== source) setValueIfDifferent(element, value);
+    });
   }
 
-  engagementClientName.addEventListener('input', syncFromEngagementDetails);
-  engagementRegisteredAddress.addEventListener('input', syncFromEngagementDetails);
-  engagementCommencementDate.addEventListener('change', syncFromEngagementDetails);
+  function syncCommencementDate(source) {
+    const value = source.value;
+    [effectiveDate, engagementCommencementDate, commencementDateInput].forEach(function(element) {
+      if (element !== source) setValueIfDifferent(element, value);
+    });
+  }
 
-  firmNameInput.addEventListener('input', syncFromAcceptanceSection);
-  registeredAddressInput.addEventListener('input', syncFromAcceptanceSection);
-  commencementDateInput.addEventListener('change', syncFromAcceptanceSection);
+  function syncRegisteredAddress(source) {
+    const value = source.value;
+    [engagementRegisteredAddress, registeredAddressInput].forEach(function(element) {
+      if (element !== source) setValueIfDifferent(element, value);
+    });
+  }
 
-  syncFromEngagementDetails();
+  [headerClientName, engagementClientName, firmNameInput].forEach(function(element) {
+    element.addEventListener('input', function() { syncClientName(element); });
+  });
 
+  [effectiveDate, engagementCommencementDate, commencementDateInput].forEach(function(element) {
+    element.addEventListener('change', function() { syncCommencementDate(element); });
+  });
+
+  [engagementRegisteredAddress, registeredAddressInput].forEach(function(element) {
+    element.addEventListener('input', function() { syncRegisteredAddress(element); });
+  });
 
   // ===== Simple validation =====
   function hasSignatureInk() {
