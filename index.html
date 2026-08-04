@@ -617,6 +617,143 @@
         font-size: 2rem;
       }
     }
+    .fee-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .fee-group {
+      background: var(--subtle-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+    }
+
+    .fee-group h4 {
+      margin-top: 0;
+      font-size: 1.05rem;
+      border-bottom: 2px solid var(--accent-green);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .fee-subhead {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #cfcfcf;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .fee-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+    }
+
+    .fee-row:last-child { border-bottom: none; }
+
+    .fee-price { font-weight: bold; white-space: nowrap; }
+
+    .fee-note {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin: -0.25rem 0 0.5rem;
+    }
+
+    .fee-footnote {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: #aaa;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .retainer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .retainer-card {
+      background: var(--subtle-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .retainer-card.featured { border: 2px solid var(--accent-green); }
+
+    .retainer-price { font-size: 2rem; font-weight: bold; }
+
+    .retainer-term {
+      display: inline-block;
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .retainer-card ul {
+      list-style: none;
+      padding: 1rem 0 0;
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+
+    .retainer-card li {
+      font-size: 0.85rem;
+      margin-bottom: 0.6rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .retainer-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .example-table th {
+      text-align: right;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #cfcfcf;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-green);
+    }
+
+    .example-table th:first-child { text-align: left; }
+
+    .example-table td {
+      text-align: right;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .example-table td:first-child { text-align: left; font-weight: bold; }
+
+    @media (max-width: 768px) {
+      .fee-grid, .retainer-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
@@ -684,14 +821,134 @@
       <h3>Report Writing Services</h3>
       <p>FCA-compliant reports tailored to your process. Delivered reliably, with no corner-cutting.</p>
 
-      <h4>Transparent pricing — click below to view the full report writing menu</h4>
+    <h4>Transparent pricing</h4>
 
-      <div class="pricing-image-wrap">
-        <div class="pricing-image-trigger" id="openPricingMenu" role="button" aria-label="Open full pricing menu">
-          <img src="pricing-menu.png" alt="Beyond report writing and technical support pricing menu">
+      <div class="fee-grid">
+        <div class="fee-group">
+          <h4>Annual Review Reports</h4>
+          <div class="fee-row"><span class="fee-name">Standard Review</span><span class="fee-price">£175</span></div>
+          <p class="fee-note">Performance summary, wrapper review, commentary</p>
+          <div class="fee-row"><span class="fee-name">Cashflow Integrated Review</span><span class="fee-price">£250</span></div>
+          <p class="fee-note">Includes projection outputs and sustainability narrative</p>
+          <div class="fee-row"><span class="fee-name">Complex / Multi-Wrapper Review</span><span class="fee-price">£325</span></div>
+          <p class="fee-note">Multiple wrappers, sequencing considerations or detailed planning commentary</p>
+
+          <p class="fee-subhead">Research &amp; Technical Analysis</p>
+          <div class="fee-row"><span class="fee-name">Product &amp; Platform Research Pack</span><span class="fee-price">£250</span></div>
+          <div class="fee-row"><span class="fee-name">Transfer Cost &amp; Charges Comparison</span><span class="fee-price">£125</span></div>
+          <div class="fee-row"><span class="fee-name">Cashflow Modelling (Single Client)</span><span class="fee-price">£150</span></div>
+          <div class="fee-row"><span class="fee-name">Cashflow Modelling (Joint / Multi)</span><span class="fee-price">£225</span></div>
+          <p class="fee-note">Additional scenarios: £50 each</p>
+          <div class="fee-row"><span class="fee-name">Drawdown Sustainability Analysis</span><span class="fee-price">£175</span></div>
+          <div class="fee-row"><span class="fee-name">BR / VCT / EIS Research</span><span class="fee-price">£125</span></div>
         </div>
-        <p class="pricing-image-hint">Click the pricing menu to enlarge</p>
+
+        <div class="fee-group">
+          <h4>Suitability Reports</h4>
+          <p class="fee-subhead">Investment &amp; Pensions</p>
+          <div class="fee-row"><span class="fee-name">Top-Ups (Existing Wrapper)</span><span class="fee-price">£275</span></div>
+          <div class="fee-row"><span class="fee-name">New Investment / Pension Suitability</span><span class="fee-price">£300</span></div>
+          <div class="fee-row"><span class="fee-name">Pension Transfer (Non-DB)</span><span class="fee-price">£325</span></div>
+          <div class="fee-row"><span class="fee-name">Flexi-Access Drawdown Suitability</span><span class="fee-price">£350</span></div>
+          <div class="fee-row"><span class="fee-name">Simple Annuity Suitability</span><span class="fee-price">£300</span></div>
+          <div class="fee-row"><span class="fee-name">Complex Decumulation / Multi-Wrapper</span><span class="fee-price">£350</span></div>
+          <p class="fee-note">+ £150 per additional advice area</p>
+          <p class="fee-footnote">Defined Benefit transfers — by quotation (not currently offered)</p>
+
+          <p class="fee-subhead">Protection</p>
+          <div class="fee-row"><span class="fee-name">Protection Suitability</span><span class="fee-price">£175</span></div>
+          <div class="fee-row"><span class="fee-name">Multi-Policy Protection Suitability</span><span class="fee-price">£225</span></div>
+          <div class="fee-row"><span class="fee-name">Business Protection / Trust Structures</span><span class="fee-price">From £275</span></div>
+
+          <p class="fee-subhead">Mortgage &amp; Equity Release</p>
+          <div class="fee-row"><span class="fee-name">Mortgage Suitability</span><span class="fee-price">£150</span></div>
+          <div class="fee-row"><span class="fee-name">Complex Mortgage Case</span><span class="fee-price">£200</span></div>
+          <div class="fee-row"><span class="fee-name">Equity Release Suitability</span><span class="fee-price">£220</span></div>
+          <div class="fee-row"><span class="fee-name">Complex Equity Release Case</span><span class="fee-price">£300</span></div>
+          <div class="fee-row"><span class="fee-name">Care Annuity</span><span class="fee-price">£300</span></div>
+        </div>
+
+        <div class="fee-group">
+          <h4>Add-ons &amp; Adjustments</h4>
+          <div class="fee-row"><span class="fee-name">Joint Clients (same review / suitability)</span><span class="fee-price">£50</span></div>
+          <div class="fee-row"><span class="fee-name">Additional Wrapper Recommendation</span><span class="fee-price">£50</span></div>
+          <div class="fee-row"><span class="fee-name">Additional Pension Plan Review</span><span class="fee-price">£40</span></div>
+          <div class="fee-row"><span class="fee-name">Additional Crystallisation Tranche</span><span class="fee-price">£50</span></div>
+          <div class="fee-row"><span class="fee-name">Tax Band Planning / Sequencing</span><span class="fee-price">£75</span></div>
+          <div class="fee-row"><span class="fee-name">Investment Bond Recommendation</span><span class="fee-price">£75</span></div>
+          <div class="fee-row"><span class="fee-name">Intergenerational / Trust Element</span><span class="fee-price">£95</span></div>
+          <div class="fee-row"><span class="fee-name">BR / VCT / EIS</span><span class="fee-price">£125</span></div>
+
+          <p class="fee-subhead">Service Standards</p>
+          <ul class="benefits" style="display:block;">
+            <li>Fees quoted &amp; agreed prior to commencement</li>
+            <li>10 working day turnaround (post receipt of full information)</li>
+            <li>FCA Suitability &amp; Consumer Duty aligned</li>
+            <li>Price excludes VAT (subject to change)</li>
+            <li>Prices reviewed periodically</li>
+          </ul>
+        </div>
       </div>
+
+      <h4 style="margin-top: 3rem;">Monthly Retainers</h4>
+      <p>For firms requiring regular outsourced paraplanning, our Monthly Retainers provide a simple and flexible way to secure ongoing support while benefiting from preferential pricing. By committing to a monthly retainer, you can budget with confidence, simplify invoicing and receive reduced pricing across our published fee schedule.</p>
+
+      <div class="retainer-grid">
+        <div class="retainer-card">
+          <div class="retainer-price">£1,000</div>
+          <div>Monthly Retainer</div>
+          <div class="retainer-term">Minimum Term: 3 Months</div>
+          <ul>
+            <li>Services charged at 95% of our published prices</li>
+            <li>Retainer paid monthly in advance</li>
+            <li>Unused credit rolls forward for one additional month</li>
+            <li>Any work exceeding your monthly retainer is charged at the same preferential rate</li>
+          </ul>
+        </div>
+        <div class="retainer-card featured">
+          <div class="retainer-price">£3,000</div>
+          <div>Monthly Retainer</div>
+          <div class="retainer-term">Minimum Term: 3 Months</div>
+          <ul>
+            <li>Services charged at 92.5% of our published prices</li>
+            <li>Retainer paid monthly in advance</li>
+            <li>Unused credit rolls forward for one additional month</li>
+            <li>Any work exceeding your monthly retainer is charged at the same preferential rate</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <h3>Choose your monthly retainer</h3>
+        </div>
+        <div class="process-step">
+          <h3>Retainer paid in advance each month</h3>
+        </div>
+        <div class="process-step">
+          <h3>Cases charged against your retainer at your preferential rate</h3>
+        </div>
+        <div class="process-step">
+          <h3>Unused credit may be carried forward one month</h3>
+        </div>
+        <div class="process-step">
+          <h3>Work exceeding the retainer is invoiced at the same preferential rate</h3>
+        </div>
+      </div>
+
+      <table class="example-table">
+        <thead>
+          <tr><th>Published Price</th><th>£1,000 Retainer</th><th>£3,000 Retainer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>£175</td><td>£166.25</td><td>£161.88</td></tr>
+          <tr><td>£220</td><td>£209.00</td><td>£203.50</td></tr>
+          <tr><td>£300</td><td>£285.00</td><td>£277.50</td></tr>
+          <tr><td>£325</td><td>£308.75</td><td>£300.63</td></tr>
+          <tr><td>£350</td><td>£332.50</td><td>£323.75</td></tr>
+          <tr><td>£425</td><td>£403.75</td><td>£393.13</td></tr>
+        </tbody>
+      </table>
 
       <p style="font-size: 0.9rem; color: #aaa; margin-top: 1.25rem;">Fees are quoted and agreed up front. Priority turnaround (under 3 working days) attracts a 20% surcharge.</p>
 
@@ -721,7 +978,7 @@
       <h3>Strategic Support</h3>
       <p>A thinking partner to bounce ideas off, make operational decisions with, or help you find clarity in complexity.</p>
 
-      <p class="price-tag">£60 per hour (pro-rated)</p>
+      <p class="price-tag">£80 per hour (pro-rated)</p>
 
       <p>Includes calls when required + follow-up notes, with voice note/email access in between.</p>
 
@@ -865,11 +1122,6 @@
     </div>
   </footer>
 
-  <div class="pricing-modal" id="pricingModal" aria-hidden="true">
-    <button class="pricing-modal-close" id="closePricingMenu" aria-label="Close pricing menu">&times;</button>
-    <img src="pricing-menu.png" alt="Full size Beyond pricing menu" class="pricing-modal-content">
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
     const observer = new IntersectionObserver((entries) => {
@@ -941,39 +1193,6 @@
         });
       }
 
-      const openPricingMenu = document.getElementById('openPricingMenu');
-      const pricingModal = document.getElementById('pricingModal');
-      const closePricingMenu = document.getElementById('closePricingMenu');
-
-      if (openPricingMenu && pricingModal && closePricingMenu) {
-        openPricingMenu.addEventListener('click', () => {
-          pricingModal.classList.add('open');
-          pricingModal.setAttribute('aria-hidden', 'false');
-          document.body.style.overflow = 'hidden';
-        });
-
-        closePricingMenu.addEventListener('click', () => {
-          pricingModal.classList.remove('open');
-          pricingModal.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-        });
-
-        pricingModal.addEventListener('click', (e) => {
-          if (e.target === pricingModal) {
-            pricingModal.classList.remove('open');
-            pricingModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-          }
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && pricingModal.classList.contains('open')) {
-            pricingModal.classList.remove('open');
-            pricingModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-          }
-        });
-      }
     });
 
     window.addEventListener('load', function () {
