@@ -617,12 +617,42 @@
         font-size: 2rem;
       }
     }
+.fee-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.fee-group:nth-child(1) {
+    grid-column: span 2;
+}
+
+.fee-group:nth-child(2) {
+    grid-column: span 2;
+}
+
+.fee-group:nth-child(3) {
+    grid-column: span 2;
+}
+
+.fee-group:nth-child(4) {
+    grid-column: span 3;
+}
+
+.fee-group:nth-child(5) {
+    grid-column: span 3;
+}
+
+@media (max-width: 900px) {
     .fee-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+        grid-template-columns: 1fr;
     }
+
+    .fee-group {
+        grid-column: auto !important;
+    }
+}
 
     .fee-group {
       background: var(--subtle-bg);
@@ -823,7 +853,7 @@
 
     <h4>Service Catalogue</h4>
 
-     <div class="fee-grid">
+<div class="fee-grid">
 
   <!-- Annual Reviews -->
   <div class="fee-group">
@@ -852,7 +882,7 @@
     <div class="fee-row"><span class="fee-name">Simple Annuity</span><span class="fee-price">£300</span></div>
     <div class="fee-row"><span class="fee-name">Complex / Multi-Wrapper / Decumulation</span><span class="fee-price">£350</span></div>
 
-    <p class="fee-note">Additional advice areas: +£150 each</p>
+    <p class="fee-note">Additional advice areas: + £150 each</p>
     <p class="fee-footnote">Defined Benefit transfers by quotation (not currently offered).</p>
 
     <p class="fee-subhead">Protection</p>
@@ -870,7 +900,7 @@
     <div class="fee-row"><span class="fee-name">Care Annuity</span><span class="fee-price">£300</span></div>
   </div>
 
-  <!-- Research & Technical -->
+  <!-- Research -->
   <div class="fee-group">
     <h4>Research &amp; Technical Support</h4>
 
@@ -883,13 +913,13 @@
     <div class="fee-row"><span class="fee-name">Cashflow Modelling (Joint)</span><span class="fee-price">£225</span></div>
 
     <p class="fee-note">
-      Designed as an add-on to suitability reports for investment, pension and drawdown advice. Includes agreed planning assumptions. Additional scenarios £50 each.
+      Add-on to investment, pension and drawdown suitability reports. Additional scenarios: £50 each.
     </p>
 
     <div class="fee-row"><span class="fee-name">Holistic Cashflow Planning</span><span class="fee-price">POA</span></div>
 
     <p class="fee-note">
-      Comprehensive lifetime financial planning incorporating detailed cashflow modelling, adviser collaboration, multiple planning scenarios and retirement strategy.
+      Comprehensive lifetime financial planning with multiple scenarios and adviser collaboration.
     </p>
 
     <div class="fee-row"><span class="fee-name">Drawdown Sustainability Analysis</span><span class="fee-price">£175</span></div>
@@ -899,7 +929,7 @@
 
   <!-- Add-ons -->
   <div class="fee-group">
-    <h4>Add-ons &amp; Service Standards</h4>
+    <h4>Typical Add-ons</h4>
 
     <div class="fee-row"><span class="fee-name">Joint Clients</span><span class="fee-price">£50</span></div>
     <div class="fee-row"><span class="fee-name">Additional Wrapper</span><span class="fee-price">£50</span></div>
@@ -909,17 +939,23 @@
     <div class="fee-row"><span class="fee-name">Investment Bond Recommendation</span><span class="fee-price">£75</span></div>
     <div class="fee-row"><span class="fee-name">Intergenerational / Trust Planning</span><span class="fee-price">£95</span></div>
     <div class="fee-row"><span class="fee-name">BR / VCT / EIS Supplement</span><span class="fee-price">£125</span></div>
+  </div>
 
-    <p class="fee-subhead">Service Standards</p>
+  <!-- Service Standards -->
+  <div class="fee-group">
+    <h4>Service Standards</h4>
 
     <ul class="benefits" style="display:block;">
       <li>Fixed fees agreed before work commences</li>
       <li>Standard turnaround of 10 working days following receipt of all information</li>
       <li>Consumer Duty &amp; FCA aligned</li>
+      <li>Secure document exchange via Microsoft OneDrive</li>
       <li>VAT not currently applicable (subject to change)</li>
       <li>Retainer pricing available for regular instruction volumes</li>
     </ul>
   </div>
+
+</div>
 
 </div>
       <h4 style="margin-top: 3rem;">Monthly Retainers</h4>
